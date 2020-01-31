@@ -2,7 +2,7 @@
 
 ## Version 1.0
 - [x] license
-- [ ] setup.py
+- [x] setup.py
 - [ ] documentation
 - [ ] test suite
 - [ ] wrapper functions load/dump
