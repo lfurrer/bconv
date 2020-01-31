@@ -1,7 +1,7 @@
 # TODO
 
 ## Version 1.0
-- [ ] license
+- [x] license
 - [ ] setup.py
 - [ ] documentation
 - [ ] test suite
