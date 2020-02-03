@@ -33,11 +33,11 @@ class EuPMCFormatter(StreamFormatter):
          self.pref,
          self.uri) = info
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         documents = content.units('document')
-        self._write(stream, documents)
+        self._write(documents, stream)
 
-    def _write(self, stream, documents):
+    def _write(self, documents, stream):
         for document in documents:
             doc = self._document(document, self.metadata)
             if doc['anns']:
@@ -91,7 +91,7 @@ class EuPMCZipFormatter(EuPMCFormatter):
     ext = 'zip'
     binary = True
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         documents = content.units('document')
         # Iterate in hunks of 10,000, the max number of lines per file allowed.
         hunks = it.groupby(documents, key=lambda _, i=it.count(): next(i)//10000)
@@ -104,6 +104,6 @@ class EuPMCZipFormatter(EuPMCFormatter):
                 except RuntimeError:  # Python < 3.6 doesn't support mode='w'
                     member = io.BytesIO()
                 with io.TextIOWrapper(member, encoding='utf8') as f:
-                    self._write(f, hunk)
+                    self._write(hunk, f)
                     if isinstance(member, io.BytesIO):
                         zf.writestr(arcname, member.getvalue())

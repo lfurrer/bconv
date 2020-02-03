@@ -40,7 +40,7 @@ class Formatter:
             Path(dir_).mkdir(exist_ok=True)
             stream = open(**open_params)
         with stream:
-            self.write(stream, content)
+            self.write(content, stream)
 
     def _get_open_params(self, dir_, content):
         basename = content.id or content.filename or timestamp()
@@ -50,13 +50,19 @@ class Formatter:
         else:
             return dict(file=path, mode='w', encoding='utf8')
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         """
         Write this content to an open file.
         """
         raise NotImplementedError()
 
-    def dump(self, content):
+    def dump(self, content, stream):  # alias for write()
+        """
+        Write this content to an open file.
+        """
+        return self.write(content, stream)
+
+    def dumps(self, content):
         """
         Serialise the content to str or bytes.
         """
@@ -65,28 +71,28 @@ class Formatter:
 
 class MemoryFormatter(Formatter):
     """
-    Abstract formatter with a primary dump method.
+    Abstract formatter with a primary dumps method.
 
-    Subclasses must override dump(), on which write() is based.
+    Subclasses must override dumps(), on which write() is based.
     """
 
-    def write(self, stream, content):
-        stream.write(self.dump(content))
+    def write(self, content, stream):
+        stream.write(self.dumps(content))
 
 
 class StreamFormatter(Formatter):
     """
     Abstract formatter with a primary write method.
 
-    Subclasses must override write(), on which dump() is based.
+    Subclasses must override write(), on which dumps() is based.
     """
 
-    def dump(self, content):
+    def dumps(self, content):
         if self.binary:
             buffer = io.BytesIO()
         else:
             buffer = io.StringIO()
-        self.write(buffer, content)
+        self.write(content, buffer)
         return buffer.getvalue()
 
 
@@ -94,18 +100,18 @@ class XMLMemoryFormatter(MemoryFormatter):
     """
     Formatter for XML-based output.
 
-    Subclasses must define a method _dump() which returns
+    Subclasses must define a method _dump_tree() which returns
     an lxml.etree.Element node.
     """
 
     ext = 'xml'
     binary = True
 
-    def dump(self, content):
-        node = self._dump(content)
+    def dumps(self, content):
+        node = self._dump_tree(content)
         return self._tostring(node)
 
-    def _dump(self, content):
+    def _dump_tree(self, content):
         raise NotImplementedError()
 
     @staticmethod

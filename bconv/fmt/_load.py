@@ -21,7 +21,7 @@ class Loader:
 
     def load_one(self, source, id_):
         """
-        Load a single content (Article or Collection).
+        Load a single content (Document or Collection).
         """
         raise NotImplementedError()
 

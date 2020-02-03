@@ -31,7 +31,7 @@ class TSVFormatter(StreamFormatter):
         self.extra_fields = fields
         self.include_header = include_header
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         writer = csv.writer(stream, **tsv_format)
 
         if self.include_header:

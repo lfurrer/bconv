@@ -167,7 +167,7 @@ class CoNLLFormatter(StreamFormatter):
             tag = '{}-{}'.format(tag, label)
         return tag
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         writer = csv.writer(stream, **tsv_format)
 
         for doc in content.units('document'):

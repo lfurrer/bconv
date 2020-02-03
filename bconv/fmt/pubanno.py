@@ -29,7 +29,7 @@ class PubAnnoJSONFormatter(StreamFormatter):
     def __init__(self, cui='cui'):
         self.cui = cui
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         json_object = {}
         json_object['text'] = content.text
         json_object['denotations'] = [self._entity(e)

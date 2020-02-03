@@ -41,7 +41,7 @@ class BratFormatter(StreamFormatter):
         self.att = att
         self.extra = extra
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         counters = [it.count(1) for _ in range(2)]
         for doc in content.units('document'):
             self._write_anno(stream, doc, *counters)
@@ -93,7 +93,7 @@ class BioNLPFormatter(StreamFormatter):
         super().__init__()
         self.att = att
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         counter = it.count(1)
         for doc in content.units('document'):
             self._write_anno(stream, doc, counter)

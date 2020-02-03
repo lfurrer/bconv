@@ -137,7 +137,7 @@ class PubTatorFormatter(StreamFormatter):
         (self.type,
          self.cui) = info
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         tsv = csv.writer(stream, **tsv_format)
         first = True
         for doc in content.units('document'):

@@ -141,5 +141,5 @@ class TXTFormatter(StreamFormatter):
     ext = 'txt'
 
     @staticmethod
-    def write(stream, content):
+    def write(content, stream):
         stream.writelines(content.iter_text())

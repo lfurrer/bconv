@@ -232,15 +232,15 @@ class BioCXMLFormatter(BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
 
     doctype = '<!DOCTYPE collection SYSTEM "BioC.dtd">'
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         if isinstance(content, Collection):
             # For their size, serialise collections in a memory-friendly way.
             # The downside is that indentation isn't perfect.
             stream.writelines(self._iter_bytes(content))
         else:
-            super().write(stream, content)
+            super().write(content, stream)
 
-    def _dump(self, content):
+    def _dump_tree(self, content):
         coll = wrap_in_collection(content)
         return self._collection(coll)
 
@@ -370,7 +370,7 @@ class BioCJSONFormatter(BioCFormatter, StreamFormatter, _OffsetMixin):
 
     ext = 'json'
 
-    def write(self, stream, content):
+    def write(self, content, stream):
         coll = wrap_in_collection(content)
         prep = self._collection(coll)
         stream.writelines(json_iterencode(prep))
@@ -458,7 +458,7 @@ class BioCJSONFormatter(BioCFormatter, StreamFormatter, _OffsetMixin):
 
 def wrap_in_collection(content):
     """
-    If this is an article, wrap it in a collection.
+    If this is a document, wrap it in a collection.
     """
     if not isinstance(content, Collection):
         coll = Collection(content.id, content.filename)

@@ -13,6 +13,7 @@
 
 - [ ] loaders for stand-off format
 - [ ] iterator-compatible dump mechanism
+- [ ] optional removal of overlapping entities for conll output
 
 
 ## Version 1.2
