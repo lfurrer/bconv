@@ -25,11 +25,11 @@ class Formatter:
     ext = None  # type: str
     binary = False  # text or binary file mode?
 
-    def export(self, content, dir_='.'):
+    def export(self, content, dest='.'):
         """
         Write this content to disk.
         """
-        open_params = self._get_open_params(dir_, content)
+        open_params = self._get_open_params(dest, content)
         try:
             stream = open(**open_params)
         except FileNotFoundError:
@@ -37,14 +37,14 @@ class Formatter:
             # Create it and try again.
             # (Use exist_ok because of race conditions -- another
             # process might have created it in the meantime.)
-            Path(dir_).mkdir(exist_ok=True)
+            Path(dest).mkdir(exist_ok=True)
             stream = open(**open_params)
         with stream:
             self.write(content, stream)
 
-    def _get_open_params(self, dir_, content):
+    def _get_open_params(self, dest, content):
         basename = content.id or content.filename or timestamp()
-        path = Path(dir_, '{}.{}'.format(basename, self.ext))
+        path = Path(dest, '{}.{}'.format(basename, self.ext))
         if self.binary:
             return dict(file=path, mode='wb')
         else:

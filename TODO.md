@@ -5,7 +5,7 @@
 - [x] setup.py
 - [ ] documentation
 - [ ] test suite
-- [ ] wrapper functions load/dump
+- [x] wrapper functions load/dump
 - [ ] make room for v1.1 additions
 
 
