@@ -10,3 +10,6 @@ bconv: converter for bio-NLP formats.
 
 
 __version__ = '0.1'
+
+
+from .fmt import load, loads, dump, dumps

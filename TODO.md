@@ -19,3 +19,4 @@
 ## Version 1.2
 
 - [ ] discontinuous spans
+- [ ] keep relations in BioC
