@@ -95,11 +95,14 @@ def loads(fmt, source, id_=None, mode='auto', **options):
     return load(fmt, wrap(source), id_, mode, **options)
 
 
-def dump(fmt, content, stream=None, dest='.', **options):
+def dump(fmt, content, stream=None, dest=None, **options):
     """
     Serialise a document or collection to a file.
     """
     exporter = EXPORTERS[fmt](**options)
+    if stream is dest is None:
+        raise ValueError(
+            'missing argument: one of stream or dest must be given')
     if stream is None:
         exporter.export(content, dest)
     else:
