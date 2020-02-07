@@ -171,7 +171,7 @@ class Sentence(Unit):
         """
         if self.text:
             toks = TOKENIZER.span_tokenize_words(self.text, self.start)
-            self._children = list(map(Token, toks))
+            self._children = [Token(t, s, e) for t, s, e in toks]
 
     def add_entities(self, entities):
         """
