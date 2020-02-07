@@ -150,7 +150,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
     def _iterfind(self, node, query):
         raise NotImplementedError
 
-    def _text(self, node, query='text', ifnone=''):
+    def _text(self, node, query='text', onerror=None, ifnone=''):
         raise NotImplementedError
 
 
@@ -182,8 +182,8 @@ class BioCXMLLoader(_BioCLoader):
         return node.iterfind(query)
 
     @staticmethod
-    def _text(node, query='text', ifnone=''):
-        return text_node(node, query, ifnone=ifnone)
+    def _text(node, query='text', onerror=None, ifnone=''):
+        return text_node(node, query, onerror=onerror, ifnone=ifnone)
 
 
 class BioCJSONLoader(_BioCLoader):
@@ -209,8 +209,15 @@ class BioCJSONLoader(_BioCLoader):
         return iter(node[query + 's'])
 
     @staticmethod
-    def _text(node, query='text', ifnone=''):
-        return node.get(query, ifnone)
+    def _text(node, query='text', onerror=None, ifnone=''):
+        try:
+            text = node[query]
+        except KeyError:
+            text = onerror
+        else:
+            if text is None:
+                text = ifnone
+        return text
 
 
 class BioCFormatter(Formatter):
