@@ -9,57 +9,50 @@ Format converters.
 """
 
 
-# pylint: disable=wildcard-import
-
 import io
 
-from .txt import *
-from .tsv import *
-from .bioc import *
-from .brat import *
-from .conll import *
-from .pubmed import *
-from .pubanno import *
-from .pubtator import *
-from .europepmc import *
-from .bioc import wrap_in_collection
+from . import txt
+from . import tsv
+from . import bioc
+from . import brat
+from . import conll
+from . import pubmed
+from . import pubanno
+from . import pubtator
+from . import europepmc
 
 
 # Keep these mappings up to date.
 LOADERS = {
-    'txt': TXTLoader,
-    'txt_json': TXTJSONLoader,
-    'bioc_xml': BioCXMLLoader,
-    'bioc_json': BioCJSONLoader,
-    'conll': CoNLLLoader,
-    'pubtator': PubTatorLoader,
-    'pubtator_fbk': PubTatorFBKLoader,
-    'pubmed': PXMLFetcher,
-    'pxml': PXMLLoader,
-    'pxml.gz': MedlineLoader,
-    'pmc': PMCFetcher,
-    'nxml': PMCLoader,
+    'txt': txt.TXTLoader,
+    'txt_json': txt.TXTJSONLoader,
+    'bioc_xml': bioc.BioCXMLLoader,
+    'bioc_json': bioc.BioCJSONLoader,
+    'conll': conll.CoNLLLoader,
+    'pubtator': pubtator.PubTatorLoader,
+    'pubtator_fbk': pubtator.PubTatorFBKLoader,
+    'pubmed': pubmed.PXMLFetcher,
+    'pxml': pubmed.PXMLLoader,
+    'pxml.gz': pubmed.MedlineLoader,
+    'pmc': pubmed.PMCFetcher,
+    'nxml': pubmed.PMCLoader,
 }
-
-INFMTS = list(LOADERS.keys())
 
 EXPORTERS = {
-    'tsv': TSVFormatter,
-    'txt': TXTFormatter,
-    'text_tsv': TextTSVFormatter,
-    'bioc_xml': BioCXMLFormatter,
-    'bioc_json': BioCJSONFormatter,
-    'bionlp': BioNLPFormatter,
-    'brat': BratFormatter,
-    'conll': CoNLLFormatter,
-    'pubanno_json': PubAnnoJSONFormatter,
-    'pubtator': PubTatorFormatter,
-    'pubtator_fbk': PubTatorFBKFormatter,
-    'europepmc': EuPMCFormatter,
-    'europepmc.zip': EuPMCZipFormatter,
+    'txt': txt.TXTFormatter,
+    'tsv': tsv.TSVFormatter,
+    'text_tsv': tsv.TextTSVFormatter,
+    'bioc_xml': bioc.BioCXMLFormatter,
+    'bioc_json': bioc.BioCJSONFormatter,
+    'bionlp': brat.BioNLPFormatter,
+    'brat': brat.BratFormatter,
+    'conll': conll.CoNLLFormatter,
+    'pubanno_json': pubanno.PubAnnoJSONFormatter,
+    'pubtator': pubtator.PubTatorFormatter,
+    'pubtator_fbk': pubtator.PubTatorFBKFormatter,
+    'europepmc': europepmc.EuPMCFormatter,
+    'europepmc.zip': europepmc.EuPMCZipFormatter,
 }
-
-OUTFMTS = list(EXPORTERS.keys())
 
 
 def load(fmt, source, id_=None, mode='auto', **options):
@@ -67,9 +60,9 @@ def load(fmt, source, id_=None, mode='auto', **options):
     Load a document or collection from a file.
 
     The mode parameter determines the return type:
-        - collection: always one Collection object
-        - document: always an iterator of Document objects
-        - auto: always one object of the native type
+        - collection: a Collection object
+        - document: an iterator of Document objects
+        - auto: an object of the format's native type
                 (Document or Collection)
     """
     loader = LOADERS[fmt](**options)
@@ -82,7 +75,7 @@ def load(fmt, source, id_=None, mode='auto', **options):
         if mode == 'document':
             content = iter([content])
         elif mode == 'collection':
-            content = wrap_in_collection(content)
+            content = bioc.wrap_in_collection(content)
 
     return content
 
