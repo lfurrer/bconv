@@ -24,7 +24,7 @@ from ._export import StreamFormatter
 from ..doc.document import Document, Entity
 from ..util.misc import tsv_format
 from ..util.iterate import context_coroutine
-from ..util.stream import text_stream
+from ..util.stream import text_stream, basename
 
 
 # Lookup constants.
@@ -48,11 +48,12 @@ class CoNLLLoader(DocIterator):
     def iter_documents(self, source):
         with text_stream(source) as f:
             rows = csv.reader(f, **tsv_format)
-            yield from self._iter_documents(rows)
+            default_docid = basename(source)
+            yield from self._iter_documents(rows, default_docid)
 
-    def _iter_documents(self, rows):
+    def _iter_documents(self, rows, default_docid):
         ids = it.count(1)
-        for docid, doc_rows in it.groupby(rows, _DocIDTracker()):
+        for docid, doc_rows in it.groupby(rows, _DocIDTracker(default_docid)):
             if docid is not _DocIDTracker.DocumentSeparator:
                 yield self._document(docid, doc_rows, ids)
 
@@ -137,8 +138,8 @@ class _DocIDTracker:
 
     DocumentSeparator = object()
 
-    def __init__(self):
-        self.docid = None
+    def __init__(self, default=None):
+        self.docid = default
 
     def __call__(self, row):
         if row and row[0].startswith('# doc_id = '):

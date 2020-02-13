@@ -19,7 +19,7 @@ from ._load import CollLoader
 from ._export import StreamFormatter
 from ..doc.document import Collection, Document, Entity
 from ..util.misc import tsv_format
-from ..util.stream import text_stream
+from ..util.stream import text_stream, basename
 
 
 class PubTatorLoader(CollLoader):
@@ -32,7 +32,7 @@ class PubTatorLoader(CollLoader):
     def collection(self, source, id_):
         entity_counter = it.count(1)
         docs = self._iter_documents(source, entity_counter)
-        return Collection.from_iterable(docs, id_)
+        return Collection.from_iterable(docs, id_, basename(source))
 
     def iter_documents(self, source):
         return self._iter_documents(source)

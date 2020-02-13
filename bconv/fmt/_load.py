@@ -10,6 +10,7 @@ Loader base classes.
 
 
 from ..doc.document import Collection
+from ..util.stream import basename
 
 
 class Loader:
@@ -75,7 +76,7 @@ class DocIterator(Loader):
 
     def load_one(self, source, id_):
         docs = self.iter_documents(source)
-        return Collection.from_iterable(docs, id_)
+        return Collection.from_iterable(docs, id_, basename(source))
 
     def iter_documents(self, source):
         """

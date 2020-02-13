@@ -60,5 +60,5 @@ def basename(source):
     if isinstance(source, str):
         source = Path(source)
     if isinstance(source, PATHLIKE):
-        return source.name
+        return source.stem
     return None

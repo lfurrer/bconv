@@ -14,12 +14,11 @@ __all__ = ['TXTLoader', 'TXTJSONLoader', 'TXTFormatter']
 
 import io
 import json
-from pathlib import Path
 
 from ._load import DocLoader, DocIterator
 from ._export import StreamFormatter
 from ..doc.document import Document
-from ..util.stream import text_stream
+from ..util.stream import text_stream, basename
 
 
 class _TXTLoaderMixin:
@@ -47,9 +46,7 @@ class _TXTLoaderMixin:
 
         if docid is None:
             # Resort to using the filename as an ID, if available.
-            # (The stream might have an empty or no "name" attribute.)
-            path = getattr(stream, 'name', None) or 'unknown'
-            docid = Path(path).stem
+            docid = basename(stream)
 
         doc = Document(docid)
         for text in sections:
