@@ -3,7 +3,7 @@
 ## Version 1.0
 - [x] license
 - [x] setup.py
-- [ ] documentation
+- [ ] documentation of all input/output formats in the wiki
 - [ ] test suite
 - [x] wrapper functions load/dump
 - [ ] make room for v1.1 additions
@@ -19,5 +19,5 @@
 ## Version 1.2
 
 - [ ] discontinuous spans
-- [ ] keep relations in BioC
+- [ ] keep relations in BioC and PubTator
 - [ ] support the same range of sources for all input formats (path, url, file)
