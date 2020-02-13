@@ -4,15 +4,22 @@
 
 The following formats are currently supported:
 
-- `bioc_xml`, `bioc_json`: BioC
-- `bionlp`: BioNLP stand-off (output only)
-- `brat`: brat stand-off (output only)
-- `conll`: CoNLL
-- `europepmc`, `europepmc.zip`: Europe-PMC JSON (output only)
-- `pubtator`:, `pubtator_fbk`: PubTator
-- `pubmed`, `pxml`, `pxml.gz`: PubMed abstracts (input only)
-- `pmc`, `nxml`: PMC full-text (input only)
-- `pubanno_json`: PubAnnotation JSON (output only)
-- `tsv`, `text_tsv`: tab-separated values (output only)
-- `txt`: plain text
-- `txt_json`: collection of plain-text documents (input only)
+| Name                         | I | O | T | A | Description |
+| ---------------------------- | - | - | - | - | ----------- |
+| `bioc_xml`, `bioc_json`      | ✓ | ✓ | ✓ | ✓ | BioC |
+| `bionlp`                     |   | ✓ |   | ✓ | BioNLP stand-off |
+| `brat`                       |   | ✓ |   | ✓ | brat stand-off |
+| `conll`                      | ✓ | ✓ | ✓ | ✓ | CoNLL |
+| `europepmc`, `europepmc.zip` |   | ✓ |   | ✓ | Europe-PMC JSON |
+| `pubtator`, `pubtator_fbk`   | ✓ | ✓ | ✓ | ✓ | PubTator |
+| `pubmed`, `pxml`, `pxml.gz`  | ✓ |   | ✓ |   | PubMed abstracts |
+| `pmc`, `nxml`                | ✓ |   | ✓ |   | PMC full-text |
+| `pubanno_json`               |   | ✓ | ✓ | ✓ | PubAnnotation JSON |
+| `tsv`, `text_tsv`            |   | ✓ | ✓ | ✓ | tab-separated values |
+| `txt`                        | ✓ | ✓ | ✓ |   | plain text |
+| `txt_json`                   | ✓ |   | ✓ |   | collection of plain-text documents |
+
+I: input format;
+O: output format;
+T: can represent text;
+A: can represent annotations (entities).
