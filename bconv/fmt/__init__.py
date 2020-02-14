@@ -31,11 +31,14 @@ LOADERS = {
     'conll': conll.CoNLLLoader,
     'pubtator': pubtator.PubTatorLoader,
     'pubtator_fbk': pubtator.PubTatorFBKLoader,
-    'pubmed': pubmed.PXMLFetcher,
     'pxml': pubmed.PXMLLoader,
     'pxml.gz': pubmed.MedlineLoader,
-    'pmc': pubmed.PMCFetcher,
     'nxml': pubmed.PMCLoader,
+}
+
+FETCHERS = {
+    'pubmed': pubmed.PXMLFetcher,
+    'pmc': pubmed.PMCFetcher,
 }
 
 EXPORTERS = {
@@ -66,6 +69,9 @@ def load(fmt, source, id_=None, mode='auto', **options):
                 (Document or Collection)
     """
     loader = LOADERS[fmt](**options)
+    return _load(loader, source, id_, mode)
+
+def _load(loader, source, id_, mode):
     if mode == 'document' and hasattr(loader, 'iter_documents'):
         content = loader.iter_documents(source)
     else:
@@ -86,6 +92,14 @@ def loads(fmt, source, id_=None, mode='auto', **options):
     """
     wrap = io.StringIO if isinstance(source, str) else io.BytesIO
     return load(fmt, wrap(source), id_, mode, **options)
+
+
+def fetch(fmt, query, id_=None, mode='auto', **options):
+    """
+    Load a document or collection from a remote service.
+    """
+    fetcher = FETCHERS[fmt](**options)
+    return _load(fetcher, query, id_, mode)
 
 
 def dump(fmt, content, stream=None, dest=None, **options):
