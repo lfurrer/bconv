@@ -249,7 +249,7 @@ class _NCBIFetcher(DocIterator, _IterparseLoader):
         """
         Iterate over documents from NCBI.
         """
-        docids = ','.join(source)
+        docids = source if isinstance(source, str) else ','.join(source)
         if not docids:
             raise ValueError('Empty document-ID list.')
         query = urllib.parse.urlencode(
