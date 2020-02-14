@@ -245,6 +245,12 @@ class _NCBIFetcher(DocIterator, _IterparseLoader):
             for k, v in [('tool', tool), ('email', email), ('api_key', api_key)]
             if v is not None}
 
+    def load_one(self, source, id_):
+        # Filename makes no sense for a fetched collection -- delete it.
+        coll = super().load_one(source, id_)
+        coll.filename = None
+        return coll
+
     def iter_documents(self, source):
         """
         Iterate over documents from NCBI.
