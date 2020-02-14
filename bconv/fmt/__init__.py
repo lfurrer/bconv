@@ -67,7 +67,7 @@ def load(fmt, source, id_=None, mode='auto', **options):
     """
     loader = LOADERS[fmt](**options)
     if mode == 'document' and hasattr(loader, 'iter_documents'):
-        content = loader.iter_documents(source, id_)
+        content = loader.iter_documents(source)
     else:
         content = loader.load_one(source, id_)
 
