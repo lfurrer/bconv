@@ -20,6 +20,7 @@ from . import pubmed
 from . import pubanno
 from . import pubtator
 from . import europepmc
+from ._load import wrap_in_collection
 
 
 # Keep these mappings up to date.
@@ -81,7 +82,7 @@ def _load(loader, source, id_, mode):
         if mode == 'document':
             content = iter([content])
         elif mode == 'collection':
-            content = bioc.wrap_in_collection(content)
+            content = wrap_in_collection(content)
 
     return content
 

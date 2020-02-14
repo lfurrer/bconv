@@ -20,7 +20,7 @@ from lxml import etree
 from lxml.builder import E
 
 from ..doc.document import Collection, Document, Entity
-from ._load import CollLoader, text_node
+from ._load import CollLoader, text_node, wrap_in_collection
 from ._export import Formatter, XMLMemoryFormatter, StreamFormatter
 from ..util.iterate import peek, json_iterencode
 from ..util.misc import iter_codepoint_indices_utf8, iter_byte_indices_utf8
@@ -461,17 +461,6 @@ class BioCJSONFormatter(BioCFormatter, StreamFormatter, _OffsetMixin):
             'text': entity.text,
             'locations': [dict(offset=start, length=length)]
         }
-
-
-def wrap_in_collection(content):
-    """
-    If this is a document, wrap it in a collection.
-    """
-    if not isinstance(content, Collection):
-        coll = Collection(content.id, content.filename)
-        coll.add_document(content)
-        content = coll
-    return content
 
 
 class _OffsetManager:

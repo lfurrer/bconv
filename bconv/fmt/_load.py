@@ -85,6 +85,17 @@ class DocIterator(Loader):
         raise NotImplementedError()
 
 
+def wrap_in_collection(content):
+    """
+    If this is a document, wrap it in a collection.
+    """
+    if not isinstance(content, Collection):
+        coll = Collection(content.id, content.filename)
+        coll.add_document(content)
+        content = coll
+    return content
+
+
 def text_node(tree_or_elem, xpath, onerror=None, ifnone=None):
     """
     Get the text node of the referenced element.
