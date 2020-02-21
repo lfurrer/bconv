@@ -13,6 +13,7 @@ __all__ = ['BioCXMLLoader', 'BioCJSONLoader',
            'BioCXMLFormatter', 'BioCJSONFormatter']
 
 
+import os
 import json
 from collections import OrderedDict
 
@@ -170,6 +171,8 @@ class BioCXMLLoader(_BioCLoader):
 
     @staticmethod
     def _iterparse(source):
+        if isinstance(source, os.PathLike):
+            source = str(source)
         for _, node in etree.iterparse(source, tag='document'):
             yield node
             node.clear()

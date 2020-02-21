@@ -13,6 +13,7 @@ __all__ = ['MedlineLoader',
            'PXMLLoader', 'PXMLFetcher', 'PMCLoader', 'PMCFetcher']
 
 
+import os
 import gzip
 import logging
 import urllib.parse
@@ -268,24 +269,31 @@ class _NCBIFetcher(DocIterator, _IterparseLoader):
             yield from self._iterparse(f)
 
 
-class PXMLLoader(DocLoader, _MedlineParser):
+class _XMLLoader(DocLoader):
+    """
+    Loader for single-doc XML.
+    """
+
+    def document(self, source, id_):
+        if isinstance(source, os.PathLike):
+            source = str(source)
+        node = etree.parse(source)
+        return self._document(node, id_)
+
+    def _document(self, node, id_):
+        raise NotImplementedError
+
+
+class PXMLLoader(_MedlineParser, _XMLLoader):
     """
     Loader for single-doc Medline XML (pxml).
     """
 
-    def document(self, source, id_):
-        node = etree.parse(source)
-        return self._document(node, id_)
 
-
-class PMCLoader(DocLoader, _PMCParser):
+class PMCLoader(_PMCParser, _XMLLoader):
     """
     Loader for single-doc PMC full-text XML (nxml).
     """
-
-    def document(self, source, id_):
-        node = etree.parse(source)
-        return self._document(node, id_)
 
 
 class PMCFetcher(_NCBIFetcher, _PMCParser):
