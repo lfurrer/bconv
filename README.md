@@ -29,6 +29,16 @@ T: can represent text;
 A: can represent annotations (entities).
 
 
+## Installation
+
+`bconv` is hosted on [PyPI](https://pypi.org/project/bconv/), so you can use `pip` to install it:
+```sh
+$ pip install bconv
+```
+By default, `pip` attempts a system-level installation, which might require admin privileges.
+Alternatively, use `pip`'s `--user` flag for an installation owned by the current user.
+
+
 ## Usage
 
 Load an annotated collection in BioC XML format:
