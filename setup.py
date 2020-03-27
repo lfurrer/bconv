@@ -9,15 +9,23 @@ import setuptools
 import bconv
 
 
-with open('README.md') as f:
-    long_description = f.read()
+try:
+    from m2r import parse_from_file
+except ImportError:
+    with open('README.md') as f:
+        long_description = f.read()
+    content_type = "text/markdown"
+else:
+    long_description = parse_from_file('README.md')
+    content_type = "text/x-rst"
+
 
 setuptools.setup(
     name='bconv',
     version=bconv.__version__,
     description="Convert between BioNLP formats",
     long_description=long_description,
-    long_description_content_type="text/markdown",
+    long_description_content_type=content_type,
     url='https://github.com/lfurrer/bconv',
     author='Lenz Furrer',
     author_email='lenz.furrer@gmail.com',

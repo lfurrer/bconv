@@ -27,3 +27,4 @@
 ## Anytime
 
 - [ ] add a test file with non-ASCII characters to verify proper offsets
+- [ ] extend pubmed/pmc format to include BioC API
