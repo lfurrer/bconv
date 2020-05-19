@@ -1,0 +1,110 @@
+{
+  "ids": ["12098649"],
+  "text": [
+    [
+      [
+        "Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.\n"
+      ],
+      [
+        "Estrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. ",
+        "We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). ",
+        "Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. ",
+        "This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.\n"
+      ]
+    ]
+  ],
+  "entities": [
+    [
+      [
+        1,
+        "estrogen receptor 1",
+        28,
+        47,
+        {
+          "type": "Gene",
+          "cui": "2099"
+        }
+      ],
+      [
+        2,
+        "multiple sclerosis",
+        71,
+        89,
+        {
+          "type": "Disease",
+          "cui": "D009103"
+        }
+      ],
+      [
+        3,
+        "Estrogen receptor 1",
+        119,
+        138,
+        {
+          "type": "Gene",
+          "cui": "2099"
+        }
+      ],
+      [
+        4,
+        "ESR1",
+        159,
+        163,
+        {
+          "type": "Gene",
+          "cui": "2099"
+        }
+      ],
+      [
+        5,
+        "multiple sclerosis",
+        203,
+        221,
+        {
+          "type": "Disease",
+          "cui": "D009103"
+        }
+      ],
+      [
+        6,
+        "MS",
+        223,
+        225,
+        {
+          "type": "Disease",
+          "cui": "D009103"
+        }
+      ],
+      [
+        7,
+        "ESR1",
+        309,
+        313,
+        {
+          "type": "Gene",
+          "cui": "2099"
+        }
+      ],
+      [
+        8,
+        "MS",
+        349,
+        351,
+        {
+          "type": "Disease",
+          "cui": "D009103"
+        }
+      ],
+      [
+        9,
+        "MS",
+        514,
+        516,
+        {
+          "type": "Disease",
+          "cui": "D009103"
+        }
+      ]
+    ]
+  ]
+}

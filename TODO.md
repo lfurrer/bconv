@@ -4,7 +4,7 @@
 - [x] license
 - [x] setup.py
 - [ ] documentation of all input/output formats in the wiki
-- [ ] test suite
+- [x] test suite
 - [x] wrapper functions load/fetch/dump
 - [ ] make room for v1.1/.2 additions
 

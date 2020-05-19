@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source></source>
+  <date></date>
+  <key></key>
+<document>
+  <id>12098649</id>
+  <passage>
+    <infon key="type">Title</infon>
+    <offset>0</offset>
+    <text>Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.
+</text>
+    <annotation id="1">
+      <infon key="type">Gene</infon>
+      <infon key="cui">2099</infon>
+      <location offset="28" length="19"/>
+      <text>estrogen receptor 1</text>
+    </annotation>
+    <annotation id="2">
+      <infon key="type">Disease</infon>
+      <infon key="cui">D009103</infon>
+      <location offset="71" length="18"/>
+      <text>multiple sclerosis</text>
+    </annotation>
+  </passage>
+  <passage>
+    <infon key="type">Abstract</infon>
+    <offset>119</offset>
+    <text>Estrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.
+</text>
+    <annotation id="3">
+      <infon key="type">Gene</infon>
+      <infon key="cui">2099</infon>
+      <location offset="119" length="19"/>
+      <text>Estrogen receptor 1</text>
+    </annotation>
+    <annotation id="4">
+      <infon key="type">Gene</infon>
+      <infon key="cui">2099</infon>
+      <location offset="159" length="4"/>
+      <text>ESR1</text>
+    </annotation>
+    <annotation id="5">
+      <infon key="type">Disease</infon>
+      <infon key="cui">D009103</infon>
+      <location offset="203" length="18"/>
+      <text>multiple sclerosis</text>
+    </annotation>
+    <annotation id="6">
+      <infon key="type">Disease</infon>
+      <infon key="cui">D009103</infon>
+      <location offset="223" length="2"/>
+      <text>MS</text>
+    </annotation>
+    <annotation id="7">
+      <infon key="type">Gene</infon>
+      <infon key="cui">2099</infon>
+      <location offset="309" length="4"/>
+      <text>ESR1</text>
+    </annotation>
+    <annotation id="8">
+      <infon key="type">Disease</infon>
+      <infon key="cui">D009103</infon>
+      <location offset="349" length="2"/>
+      <text>MS</text>
+    </annotation>
+    <annotation id="9">
+      <infon key="type">Disease</infon>
+      <infon key="cui">D009103</infon>
+      <location offset="514" length="2"/>
+      <text>MS</text>
+    </annotation>
+  </passage>
+</document>
+</collection>

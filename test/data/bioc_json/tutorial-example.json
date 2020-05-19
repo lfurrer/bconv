@@ -1,0 +1,163 @@
+{
+  "source": "",
+  "date": "",
+  "key": "",
+  "infons": {},
+  "documents": [
+    {
+      "id": "12098649",
+      "infons": {},
+      "passages": [
+        {
+          "infons": {
+            "type": "Title"
+          },
+          "offset": 0,
+          "text": "Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.\n",
+          "sentences": [],
+          "annotations": [
+            {
+              "id": "1",
+              "infons": {
+                "type": "Gene",
+                "cui": "2099"
+              },
+              "text": "estrogen receptor 1",
+              "locations": [
+                {
+                  "offset": 28,
+                  "length": 19
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "infons": {
+                "type": "Disease",
+                "cui": "D009103"
+              },
+              "text": "multiple sclerosis",
+              "locations": [
+                {
+                  "offset": 71,
+                  "length": 18
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "infons": {
+            "type": "Abstract"
+          },
+          "offset": 119,
+          "text": "Estrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.\n",
+          "sentences": [],
+          "annotations": [
+            {
+              "id": "3",
+              "infons": {
+                "type": "Gene",
+                "cui": "2099"
+              },
+              "text": "Estrogen receptor 1",
+              "locations": [
+                {
+                  "offset": 119,
+                  "length": 19
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "infons": {
+                "type": "Gene",
+                "cui": "2099"
+              },
+              "text": "ESR1",
+              "locations": [
+                {
+                  "offset": 159,
+                  "length": 4
+                }
+              ]
+            },
+            {
+              "id": "5",
+              "infons": {
+                "type": "Disease",
+                "cui": "D009103"
+              },
+              "text": "multiple sclerosis",
+              "locations": [
+                {
+                  "offset": 203,
+                  "length": 18
+                }
+              ]
+            },
+            {
+              "id": "6",
+              "infons": {
+                "type": "Disease",
+                "cui": "D009103"
+              },
+              "text": "MS",
+              "locations": [
+                {
+                  "offset": 223,
+                  "length": 2
+                }
+              ]
+            },
+            {
+              "id": "7",
+              "infons": {
+                "type": "Gene",
+                "cui": "2099"
+              },
+              "text": "ESR1",
+              "locations": [
+                {
+                  "offset": 309,
+                  "length": 4
+                }
+              ]
+            },
+            {
+              "id": "8",
+              "infons": {
+                "type": "Disease",
+                "cui": "D009103"
+              },
+              "text": "MS",
+              "locations": [
+                {
+                  "offset": 349,
+                  "length": 2
+                }
+              ]
+            },
+            {
+              "id": "9",
+              "infons": {
+                "type": "Disease",
+                "cui": "D009103"
+              },
+              "text": "MS",
+              "locations": [
+                {
+                  "offset": 514,
+                  "length": 2
+                }
+              ]
+            }
+          ],
+          "relations": []
+        }
+      ],
+      "relations": []
+    }
+  ]
+}

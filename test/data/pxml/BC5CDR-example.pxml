@@ -1,0 +1,125 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">354896</PMID>
+        <DateCompleted>
+            <Year>1978</Year>
+            <Month>10</Month>
+            <Day>25</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2019</Year>
+            <Month>05</Month>
+            <Day>14</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Print">0012-3692</ISSN>
+                <JournalIssue CitedMedium="Print">
+                    <Volume>74</Volume>
+                    <Issue>2</Issue>
+                    <PubDate>
+                        <Year>1978</Year>
+                        <Month>Aug</Month>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Chest</Title>
+                <ISOAbbreviation>Chest</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Lidocaine-induced cardiac asystole.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>227-9</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>Intravenous administration of a single 50-mg bolus of lidocaine in a 67-year-old man resulted in profound depression of the activity of the sinoatrial and atrioventricular nodal pacemakers. The patient had no apparent associated conditions which might have predisposed him to the development of bradyarrhythmias; and, thus, this probably represented a true idiosyncrasy to lidocaine.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Manyari-Ortega</LastName>
+                    <ForeName>D E</ForeName>
+                    <Initials>DE</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Brennan</LastName>
+                    <ForeName>F J</ForeName>
+                    <Initials>FJ</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType UI="D002363">Case Reports</PublicationType>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>United States</Country>
+            <MedlineTA>Chest</MedlineTA>
+            <NlmUniqueID>0231335</NlmUniqueID>
+            <ISSNLinking>0012-3692</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>98PI200987</RegistryNumber>
+                <NameOfSubstance UI="D008012">Lidocaine</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>AIM</CitationSubset>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D001145" MajorTopicYN="N">Arrhythmias, Cardiac</DescriptorName>
+                <QualifierName UI="Q000139" MajorTopicYN="Y">chemically induced</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D004562" MajorTopicYN="N">Electrocardiography</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006323" MajorTopicYN="N">Heart Arrest</DescriptorName>
+                <QualifierName UI="Q000139" MajorTopicYN="Y">chemically induced</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008012" MajorTopicYN="N">Lidocaine</DescriptorName>
+                <QualifierName UI="Q000009" MajorTopicYN="Y">adverse effects</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>1978</Year>
+                <Month>8</Month>
+                <Day>1</Day>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>1978</Year>
+                <Month>8</Month>
+                <Day>1</Day>
+                <Hour>0</Hour>
+                <Minute>1</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>1978</Year>
+                <Month>8</Month>
+                <Day>1</Day>
+                <Hour>0</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">354896</ArticleId>
+            <ArticleId IdType="pii">S0012-3692(16)39526-5</ArticleId>
+            <ArticleId IdType="doi">10.1378/chest.74.2.227</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>

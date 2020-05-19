@@ -1,0 +1,211 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+        <PMID Version="1">12098649</PMID>
+        <DateCompleted>
+            <Year>2002</Year>
+            <Month>09</Month>
+            <Day>13</Day>
+        </DateCompleted>
+        <DateRevised>
+            <Year>2019</Year>
+            <Month>07</Month>
+            <Day>01</Day>
+        </DateRevised>
+        <Article PubModel="Print">
+            <Journal>
+                <ISSN IssnType="Print">0304-3940</ISSN>
+                <JournalIssue CitedMedium="Print">
+                    <Volume>327</Volume>
+                    <Issue>2</Issue>
+                    <PubDate>
+                        <Year>2002</Year>
+                        <Month>Jul</Month>
+                        <Day>19</Day>
+                    </PubDate>
+                </JournalIssue>
+                <Title>Neuroscience letters</Title>
+                <ISOAbbreviation>Neurosci. Lett.</ISOAbbreviation>
+            </Journal>
+            <ArticleTitle>Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.</ArticleTitle>
+            <Pagination>
+                <MedlinePgn>115-8</MedlinePgn>
+            </Pagination>
+            <Abstract>
+                <AbstractText>Estrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.</AbstractText>
+            </Abstract>
+            <AuthorList CompleteYN="Y">
+                <Author ValidYN="Y">
+                    <LastName>Savettieri</LastName>
+                    <ForeName>Giovanni</ForeName>
+                    <Initials>G</Initials>
+                    <AffiliationInfo>
+                        <Affiliation>Institute of Neurology, University of Palermo, Palermo, Italy.</Affiliation>
+                    </AffiliationInfo>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Cittadella</LastName>
+                    <ForeName>Rita</ForeName>
+                    <Initials>R</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Valentino</LastName>
+                    <ForeName>Paola</ForeName>
+                    <Initials>P</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Manna</LastName>
+                    <ForeName>Ida</ForeName>
+                    <Initials>I</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Andreoli</LastName>
+                    <ForeName>Virginia</ForeName>
+                    <Initials>V</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>La Russa</LastName>
+                    <ForeName>Antonella</ForeName>
+                    <Initials>A</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>La Porta</LastName>
+                    <ForeName>Gaetana</ForeName>
+                    <Initials>G</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Ruscica</LastName>
+                    <ForeName>Francesca</ForeName>
+                    <Initials>F</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Ragonese</LastName>
+                    <ForeName>Paolo</ForeName>
+                    <Initials>P</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Pirritano</LastName>
+                    <ForeName>Domenico</ForeName>
+                    <Initials>D</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Bonavita</LastName>
+                    <ForeName>Simona</ForeName>
+                    <Initials>S</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Tedeschi</LastName>
+                    <ForeName>Gioacchino</ForeName>
+                    <Initials>G</Initials>
+                </Author>
+                <Author ValidYN="Y">
+                    <LastName>Quattrone</LastName>
+                    <ForeName>Aldo</ForeName>
+                    <Initials>A</Initials>
+                </Author>
+            </AuthorList>
+            <Language>eng</Language>
+            <PublicationTypeList>
+                <PublicationType UI="D016428">Journal Article</PublicationType>
+            </PublicationTypeList>
+        </Article>
+        <MedlineJournalInfo>
+            <Country>Ireland</Country>
+            <MedlineTA>Neurosci Lett</MedlineTA>
+            <NlmUniqueID>7600130</NlmUniqueID>
+            <ISSNLinking>0304-3940</ISSNLinking>
+        </MedlineJournalInfo>
+        <ChemicalList>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D047628">Estrogen Receptor alpha</NameOfSubstance>
+            </Chemical>
+            <Chemical>
+                <RegistryNumber>0</RegistryNumber>
+                <NameOfSubstance UI="D011960">Receptors, Estrogen</NameOfSubstance>
+            </Chemical>
+        </ChemicalList>
+        <CitationSubset>IM</CitationSubset>
+        <MeshHeadingList>
+            <MeshHeading>
+                <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D047628" MajorTopicYN="N">Estrogen Receptor alpha</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D005787" MajorTopicYN="N">Gene Frequency</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D020022" MajorTopicYN="N">Genetic Predisposition to Disease</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D005838" MajorTopicYN="N">Genotype</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D007558" MajorTopicYN="N" Type="Geographic">Italy</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D009103" MajorTopicYN="N">Multiple Sclerosis</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D011110" MajorTopicYN="Y">Polymorphism, Genetic</DescriptorName>
+            </MeshHeading>
+            <MeshHeading>
+                <DescriptorName UI="D011960" MajorTopicYN="N">Receptors, Estrogen</DescriptorName>
+                <QualifierName UI="Q000235" MajorTopicYN="Y">genetics</QualifierName>
+            </MeshHeading>
+        </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+        <History>
+            <PubMedPubDate PubStatus="pubmed">
+                <Year>2002</Year>
+                <Month>7</Month>
+                <Day>6</Day>
+                <Hour>10</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="medline">
+                <Year>2002</Year>
+                <Month>9</Month>
+                <Day>14</Day>
+                <Hour>10</Hour>
+                <Minute>1</Minute>
+            </PubMedPubDate>
+            <PubMedPubDate PubStatus="entrez">
+                <Year>2002</Year>
+                <Month>7</Month>
+                <Day>6</Day>
+                <Hour>10</Hour>
+                <Minute>0</Minute>
+            </PubMedPubDate>
+        </History>
+        <PublicationStatus>ppublish</PublicationStatus>
+        <ArticleIdList>
+            <ArticleId IdType="pubmed">12098649</ArticleId>
+            <ArticleId IdType="pii">S030439400200410X</ArticleId>
+            <ArticleId IdType="doi">10.1016/s0304-3940(02)00410-x</ArticleId>
+        </ArticleIdList>
+    </PubmedData>
+</PubmedArticle>
