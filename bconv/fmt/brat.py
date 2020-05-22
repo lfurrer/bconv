@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Formatters for brat-like stand-off formats.
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['BratFormatter', 'BioNLPFormatter']
 

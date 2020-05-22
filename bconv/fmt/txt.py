@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Loaders and formatter for plain text.
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['TXTLoader', 'TXTJSONLoader', 'TXTFormatter']
 

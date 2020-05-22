@@ -1,12 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2020
-
-
 """
 Test bconv.dump() and bconv.dumps().
 """
+
+
+__author__ = "Lenz Furrer"
 
 
 import io

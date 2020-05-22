@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2019--2020
-
-
 """
 Loader and formatter for CoNLL format.
 
@@ -11,6 +5,8 @@ The format details are based on Sampo Pyysalo's converter:
 https://github.com/spyysalo/standoff2conll
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['CoNLLLoader', 'CoNLLFormatter']
 

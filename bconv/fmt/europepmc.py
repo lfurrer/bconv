@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2019--2020
-
-
 """
 Formatter for Europe PMC's JSON-lines format.
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['EuPMCFormatter', 'EuPMCZipFormatter']
 

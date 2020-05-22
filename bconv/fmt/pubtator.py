@@ -1,12 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2018--2020
-
-
 """
 Loader and formatter for the PubTator format.
 """
+
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['PubTatorLoader', 'PubTatorFBKLoader',
            'PubTatorFormatter', 'PubTatorFBKFormatter']

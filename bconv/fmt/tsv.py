@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Formatter for TSV output (with/without context).
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['TSVFormatter', 'TextTSVFormatter']
 

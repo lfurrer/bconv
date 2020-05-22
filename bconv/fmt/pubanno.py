@@ -1,15 +1,11 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Nicola Colic, Lenz Furrer, 2018--2020
-
-
 """
 Formatter for PubAnnotation JSON output.
 
 http://www.pubannotation.org/docs/annotation-format/
 """
 
+
+__author__ = "Nicola Colic, Lenz Furrer"
 
 __all__ = ['PubAnnoJSONFormatter']
 

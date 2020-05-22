@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2016--2020
-
-
 """
 Loaders for different formats provided by PubMed.
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['MedlineLoader',
            'PXMLLoader', 'PXMLFetcher', 'PMCLoader', 'PMCFetcher']

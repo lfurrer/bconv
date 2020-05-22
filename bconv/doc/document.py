@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Representation of text and annotations.
 
@@ -19,6 +13,9 @@ The structural units are organised into a hierarchy:
 Entities are anchored at the sentence level, but not
 as child nodes.
 """
+
+
+__author__ = "Lenz Furrer"
 
 
 import re

@@ -1,12 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Loader base classes.
 """
+
+
+__author__ = "Lenz Furrer"
 
 
 from ..doc.document import Collection

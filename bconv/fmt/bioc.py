@@ -1,13 +1,9 @@
-#!/usr/bin/env python3
-# coding: utf8
-
-# Author: Lenz Furrer, 2017--2020
-
-
 """
 Loaders and formatters for BioC (XML and JSON).
 """
 
+
+__author__ = "Lenz Furrer"
 
 __all__ = ['BioCXMLLoader', 'BioCJSONLoader',
            'BioCXMLFormatter', 'BioCJSONFormatter']
