@@ -68,7 +68,7 @@ class EuPMCFormatter(StreamFormatter):
         return doc
 
     def _section_name(self, section, src):
-        name = section.type_
+        name = section.type
         if src == 'PMC':
             if name not in self._pmc_sections:
                 name = 'Article'
@@ -98,7 +98,8 @@ class EuPMCZipFormatter(EuPMCFormatter):
 
         with zipfile.ZipFile(stream, 'w', zipfile.ZIP_DEFLATED) as zf:
             for n, hunk in hunks:
-                arcname = '{}_{}.jsonl'.format(content.id_, n+1)
+                arcname = '{}_{}.jsonl'.format(
+                    content.id or content.filename, n+1)
                 try:
                     member = zf.open(arcname, mode='w')
                 except RuntimeError:  # Python < 3.6 doesn't support mode='w'
