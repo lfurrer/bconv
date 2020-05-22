@@ -26,7 +26,7 @@ class BratFormatter(StreamFormatter):
     Accompany each output file with a txt dump.
     """
 
-    ext = 'bionlp'
+    ext = 'ann'
     _fieldname_pattern = re.compile(r'\W+')
 
     def __init__(self, att='type', extra=()):
@@ -86,7 +86,7 @@ class BioNLPFormatter(StreamFormatter):
     - no extra attributes supported
     """
 
-    ext = 'ann'
+    ext = 'bionlp'
     template = 'T{counter}\t{att} {e.start} {e.end}\t{e.text_wn}\n'
 
     def __init__(self, att='type'):
