@@ -5,12 +5,10 @@ Loaders for different formats provided by PubMed.
 
 __author__ = "Lenz Furrer"
 
-__all__ = ['MedlineLoader',
-           'PXMLLoader', 'PXMLFetcher', 'PMCLoader', 'PMCFetcher']
+__all__ = ['PXMLLoader', 'PXMLFetcher', 'PMCLoader', 'PMCFetcher']
 
 
 import os
-import gzip
 import logging
 import urllib.parse
 import urllib.request
@@ -18,15 +16,17 @@ import itertools as it
 
 from lxml import etree
 
-from ._load import Loader, DocLoader, DocIterator, text_node
+from ._load import DocIterator, text_node
 from ..doc.document import Document, Entity
 from ..nlp.tokenize import TOKENIZER
 
 
-class _MedlineParser(Loader):
+class _MedlineParser:
     """
-    Parser for PubMed abstracts in Medline's XML format.
+    Mixin for parsing PubMed abstracts in Medline's XML format.
     """
+
+    tag = 'MedlineCitation'
 
     def __init__(self, single_section=False,
                  include_mesh=False, mesh_as_entities=False):
@@ -136,11 +136,12 @@ class _MedlineParser(Loader):
             sent.add_entities((Entity(id_, text, start, end, info),))
 
 
-class _PMCParser(Loader):
+class _PMCParser:
     """
-    Parser for PubMed Central's full-text XML.
+    Mixin for parsing PubMed Central's full-text XML.
     """
 
+    tag = 'article'
     NL = '\n\n'
 
     def _document(self, node, docid):
@@ -207,17 +208,19 @@ class _PMCParser(Loader):
         return ''.join(node.itertext()).strip() + self.NL
 
 
-class _IterparseLoader:
+class _IterparseLoader(DocIterator):
     """
-    Mix-in for lazily loading documents from a large XML.
+    Lazy loader for single- or multi-doc XML.
 
     Subclasses must override the "tag" class attribute.
     """
 
     tag = None  # type: str
 
-    def _iterparse(self, stream):
-        for _, node in etree.iterparse(stream, tag=self.tag):
+    def iter_documents(self, source):
+        if isinstance(source, os.PathLike):
+            source = str(source)
+        for _, node in etree.iterparse(source, tag=self.tag):
             yield self._document(node, None)
             node.clear()  # free memory
 
@@ -225,7 +228,7 @@ class _IterparseLoader:
         raise NotImplementedError()
 
 
-class _NCBIFetcher(DocIterator, _IterparseLoader):
+class _NCBIFetcher(_IterparseLoader):
     """
     Fetch documents from NCBI's efetch interface.
 
@@ -262,66 +265,32 @@ class _NCBIFetcher(DocIterator, _IterparseLoader):
         req = urllib.request.Request(self.url, data=query.encode('ascii'))
 
         with urllib.request.urlopen(req) as f:
-            yield from self._iterparse(f)
+            yield from super().iter_documents(f)
 
 
-class _XMLLoader(DocLoader):
+class PXMLLoader(_MedlineParser, _IterparseLoader):
     """
-    Loader for single-doc XML.
-    """
-
-    def document(self, source, id_):
-        if isinstance(source, os.PathLike):
-            source = str(source)
-        node = etree.parse(source)
-        return self._document(node, id_)
-
-    def _document(self, node, id_):
-        raise NotImplementedError
-
-
-class PXMLLoader(_MedlineParser, _XMLLoader):
-    """
-    Loader for single-doc Medline XML (pxml).
+    Lazy loader for Medline XML (pxml).
     """
 
 
-class PMCLoader(_PMCParser, _XMLLoader):
+class PMCLoader(_PMCParser, _IterparseLoader):
     """
-    Loader for single-doc PMC full-text XML (nxml).
-    """
-
-
-class PMCFetcher(_NCBIFetcher, _PMCParser):
-    """
-    Loader for PMC full-text documents through efetch.
+    Lazy loader for PMC full-text XML (nxml).
     """
 
-    db = 'pmc'
-    tag = 'article'
 
-
-class PXMLFetcher(_NCBIFetcher, _MedlineParser):
+class PXMLFetcher(_MedlineParser, _NCBIFetcher):
     """
     Loader for PubMed abstracts through efetch.
     """
 
     db = 'pubmed'
-    tag = 'PubmedArticle'
 
 
-class MedlineLoader(DocIterator, _MedlineParser, _IterparseLoader):
+class PMCFetcher(_PMCParser, _NCBIFetcher):
     """
-    Loader for gzipped collections of Medline abstracts.
+    Loader for PMC full-text documents through efetch.
     """
-    # Implementation note: behaves like a fetcher, but takes a filename
-    # instead of an ID list.
 
-    tag = 'MedlineCitation'
-
-    def iter_documents(self, source):
-        """
-        Iterate over documents from a gzipped Medline collection.
-        """
-        with gzip.open(source, 'rb') as f:
-            yield from self._iterparse(f)
+    db = 'pmc'

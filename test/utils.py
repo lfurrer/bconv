@@ -24,7 +24,7 @@ def path_id(value):
 
 def xopen(source, fmt):
     """Text or binary IO, depending on the format."""
-    binary = fmt.endswith(('xml', '.gz', '.zip'))
+    binary = fmt.endswith(('xml', '.zip'))
     if isinstance(source, Path):
         if binary:
             f = open(source, mode='rb')

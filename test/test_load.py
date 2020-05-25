@@ -30,7 +30,6 @@ RESTRICTIONS = {
     'txt': {TEXT_ONLY, STRIP_WS},
     'txt_json': {TEXT_ONLY, STRIP_WS},
     'pxml': {TEXT_ONLY},
-    'pxml.gz': {TEXT_ONLY},
     'nxml': {TEXT_ONLY},
     'pubmed': {TEXT_ONLY},
     'pmc': {TEXT_ONLY},

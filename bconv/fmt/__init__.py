@@ -30,7 +30,6 @@ LOADERS = {
     'pubtator': pubtator.PubTatorLoader,
     'pubtator_fbk': pubtator.PubTatorFBKLoader,
     'pxml': pubmed.PXMLLoader,
-    'pxml.gz': pubmed.MedlineLoader,
     'nxml': pubmed.PMCLoader,
 }
 

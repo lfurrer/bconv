@@ -16,7 +16,7 @@ The following formats are currently supported:
 | `conll`                      | ✓ | ✓ | ✓ | ✓ | CoNLL |
 | `europepmc`, `europepmc.zip` |   | ✓ |   | ✓ | Europe-PMC JSON |
 | `pubtator`, `pubtator_fbk`   | ✓ | ✓ | ✓ | ✓ | PubTator |
-| `pubmed`, `pxml`, `pxml.gz`  | ✓ |   | ✓ |   | PubMed abstracts |
+| `pubmed`, `pxml`             | ✓ |   | ✓ |   | PubMed abstracts |
 | `pmc`, `nxml`                | ✓ |   | ✓ |   | PMC full-text |
 | `pubanno_json`               |   | ✓ | ✓ | ✓ | PubAnnotation JSON |
 | `tsv`, `text_tsv`            |   | ✓ | ✓ | ✓ | tab-separated values |
