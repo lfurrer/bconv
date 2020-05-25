@@ -56,27 +56,29 @@ EXPORTERS = {
 }
 
 
-def load(fmt, source, id_=None, mode='auto', **options):
+def load(fmt, source, id_=None, mode='native', **options):
     """
     Load a document or collection from a file.
 
     The mode parameter determines the return type:
-        - collection: a Collection object
-        - document: an iterator of Document objects
-        - auto: an object of the format's native type
-                (Document or Collection)
+        - native: a Document or Collection object, depending
+            on the format;
+        - collection: a Collection object wrapping all content;
+        - lazy: an iterator of Document objects, consumed
+            lazily if possible.
     """
     loader = LOADERS[fmt](**options)
     return _load(loader, source, id_, mode)
 
+
 def _load(loader, source, id_, mode):
-    if mode == 'document' and hasattr(loader, 'iter_documents'):
+    if mode == 'lazy' and hasattr(loader, 'iter_documents'):
         content = loader.iter_documents(source)
     else:
         content = loader.load_one(source, id_)
 
     if hasattr(loader, 'document'):
-        if mode == 'document':
+        if mode == 'lazy':
             content = iter([content])
         elif mode == 'collection':
             content = wrap_in_collection(content)
@@ -84,7 +86,7 @@ def _load(loader, source, id_, mode):
     return content
 
 
-def loads(fmt, source, id_=None, mode='auto', **options):
+def loads(fmt, source, id_=None, mode='native', **options):
     """
     Load a document or collection from str or bytes.
     """
@@ -92,7 +94,7 @@ def loads(fmt, source, id_=None, mode='auto', **options):
     return load(fmt, wrap(source), id_, mode, **options)
 
 
-def fetch(fmt, query, id_=None, mode='auto', **options):
+def fetch(fmt, query, id_=None, mode='native', **options):
     """
     Load a document or collection from a remote service.
     """
