@@ -26,26 +26,20 @@ class Formatter:
         """
         Write this content to disk.
         """
-        open_params = self._get_open_params(dest, content)
-        try:
-            stream = open(**open_params)
-        except FileNotFoundError:
-            # An intermediate directory didn't exist.
-            # Create it and try again.
-            # (Use exist_ok because of race conditions -- another
-            # process might have created it in the meantime.)
-            Path(dest).mkdir(exist_ok=True)
-            stream = open(**open_params)
-        with stream:
+        with self._open(Path(dest), content) as stream:
             self.write(content, stream)
 
-    def _get_open_params(self, dest, content):
-        basename = content.id or content.filename or timestamp()
-        path = Path(dest, '{}.{}'.format(basename, self.ext))
+    def _open(self, dest, content):
+        if dest.is_dir():
+            basename = content.id or content.filename or timestamp()
+            dest = Path(dest, '{}.{}'.format(basename, self.ext))
+        elif not dest.parent.exists():
+            # Use exist_ok because of potential race conditions.
+            dest.parent.mkdir(parents=True, exist_ok=True)
         if self.binary:
-            return dict(file=path, mode='wb')
+            return open(file=dest, mode='wb')
         else:
-            return dict(file=path, mode='w', encoding='utf8')
+            return open(file=dest, mode='w', encoding='utf8')
 
     def write(self, content, stream):
         """
