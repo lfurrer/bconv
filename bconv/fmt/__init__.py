@@ -101,18 +101,18 @@ def fetch(fmt, query, id_=None, mode='native', **options):
     return _load(fetcher, query, id_, mode)
 
 
-def dump(fmt, content, stream=None, dest=None, **options):
+def dump(fmt, content, dest, **options):
     """
     Serialise a document or collection to a file.
+
+    The destination can be a file open for writing or a
+    path to a file or to an existing directory.
     """
     exporter = EXPORTERS[fmt](**options)
-    if stream is dest is None:
-        raise ValueError(
-            'missing argument: one of stream or dest must be given')
-    if stream is None:
-        exporter.export(content, dest)
+    if hasattr(dest, 'write'):
+        exporter.write(content, dest)
     else:
-        exporter.write(content, stream)
+        exporter.export(content, dest)
 
 
 def dumps(fmt, content, **options):
