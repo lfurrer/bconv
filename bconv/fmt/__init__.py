@@ -7,6 +7,7 @@ __author__ = "Lenz Furrer"
 
 
 import io
+from pathlib import Path
 
 from . import txt
 from . import tsv
@@ -55,7 +56,7 @@ EXPORTERS = {
 }
 
 
-def load(source, fmt, id_=None, mode='native', **options):
+def load(source, fmt=None, id_=None, mode='native', **options):
     """
     Load a document or collection from a file.
 
@@ -66,6 +67,8 @@ def load(source, fmt, id_=None, mode='native', **options):
         - lazy: an iterator of Document objects, consumed
             lazily if possible.
     """
+    if fmt is None:
+        fmt = _guess_format(source, LOADERS)
     loader = LOADERS[fmt](**options)
     return _load(loader, source, id_, mode)
 
@@ -101,13 +104,15 @@ def fetch(query, fmt, id_=None, mode='native', **options):
     return _load(fetcher, query, id_, mode)
 
 
-def dump(content, dest, fmt, **options):
+def dump(content, dest, fmt=None, **options):
     """
     Serialise a document or collection to a file.
 
     The destination can be a file open for writing or a
     path to a file or to an existing directory.
     """
+    if fmt is None:
+        fmt = _guess_format(dest, EXPORTERS)
     exporter = EXPORTERS[fmt](**options)
     if hasattr(dest, 'write'):
         exporter.write(content, dest)
@@ -121,3 +126,21 @@ def dumps(content, fmt, **options):
     """
     exporter = EXPORTERS[fmt](**options)
     return exporter.dumps(content)
+
+
+def _guess_format(path, choices):
+    try:
+        path = Path(path)
+    except TypeError:
+        pass  # raise later
+    else:
+        suffix = path.suffix.lstrip('.')
+        if suffix in choices:
+            return suffix
+        # Try double suffices, eg. foo.bioc.json.
+        suffix2 = path.with_suffix('').suffix.lstrip('.')
+        for joiner in ('_', '.'):
+            fmt = joiner.join((suffix, suffix2))
+            if fmt in choices:
+                return fmt
+    raise ValueError('cannot infer `fmt` from {}'.format(path))
