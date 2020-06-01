@@ -62,13 +62,13 @@ Case = namedtuple('Case', 'fmt path coll options')
 
 def test_dump(case):
     f = xopen(None, case.fmt)
-    bconv.dump(case.fmt, case.coll, f, **case.options)
+    bconv.dump(case.coll, f, case.fmt, **case.options)
     f.seek(0)
     _validate(f, case.fmt, case.path)
 
 
 def test_dumps(case):
-    dump = bconv.dumps(case.fmt, case.coll, **case.options)
+    dump = bconv.dumps(case.coll, case.fmt, **case.options)
     f = xopen(dump, case.fmt)
     _validate(f, case.fmt, case.path)
 

@@ -44,7 +44,7 @@ Alternatively, use `pip`'s `--user` flag for an installation owned by the curren
 Load an annotated collection in BioC XML format:
 ```pycon
 >>> import bconv
->>> coll = bconv.load('bioc_xml', 'path/to/example.xml')
+>>> coll = bconv.load('path/to/example.xml', fmt='bioc_xml')
 >>> coll
 <Collection with 37 subelements at 0x7f1966e4b3c8>
 ```
@@ -70,5 +70,5 @@ Find the first annotation for this sentence:
 Write the whole collection to a new file in CoNLL format:
 ```pycon
 >>> with open('path/to/example.conll', 'w', encoding='utf8') as f:
-...     bconv.dump('conll', coll, f, tagset='IOBES', include_offsets=True)
+...     bconv.dump(coll, f, fmt='conll', tagset='IOBES', include_offsets=True)
 ```

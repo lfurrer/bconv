@@ -55,7 +55,7 @@ EXPORTERS = {
 }
 
 
-def load(fmt, source, id_=None, mode='native', **options):
+def load(source, fmt, id_=None, mode='native', **options):
     """
     Load a document or collection from a file.
 
@@ -85,15 +85,15 @@ def _load(loader, source, id_, mode):
     return content
 
 
-def loads(fmt, source, id_=None, mode='native', **options):
+def loads(source, fmt, id_=None, mode='native', **options):
     """
     Load a document or collection from str or bytes.
     """
     wrap = io.StringIO if isinstance(source, str) else io.BytesIO
-    return load(fmt, wrap(source), id_, mode, **options)
+    return load(wrap(source), fmt, id_, mode, **options)
 
 
-def fetch(fmt, query, id_=None, mode='native', **options):
+def fetch(query, fmt, id_=None, mode='native', **options):
     """
     Load a document or collection from a remote service.
     """
@@ -101,7 +101,7 @@ def fetch(fmt, query, id_=None, mode='native', **options):
     return _load(fetcher, query, id_, mode)
 
 
-def dump(fmt, content, dest, **options):
+def dump(content, dest, fmt, **options):
     """
     Serialise a document or collection to a file.
 
@@ -115,7 +115,7 @@ def dump(fmt, content, dest, **options):
         exporter.export(content, dest)
 
 
-def dumps(fmt, content, **options):
+def dumps(content, fmt, **options):
     """
     Serialise a document or collection to str or bytes.
     """

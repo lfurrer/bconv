@@ -49,7 +49,7 @@ def expected():
 @pytest.mark.parametrize('fmt,path', get_cases(bconv.LOADERS), ids=path_id)
 def test_load(fmt, path, expected):
     """Test the load function."""
-    parsed = bconv.load(fmt, path)
+    parsed = bconv.load(path, fmt)
     _validate(parsed, fmt, expected[path.stem])
 
 
@@ -57,7 +57,7 @@ def test_load(fmt, path, expected):
 def test_loads(fmt, path, expected):
     """Test the loads function."""
     with xopen(path, fmt) as f:
-        parsed = bconv.loads(fmt, f.read())
+        parsed = bconv.loads(f.read(), fmt)
     _validate(parsed, fmt, expected[path.stem])
 
 
@@ -67,7 +67,7 @@ def test_fetch(fmt, path, expected, monkeypatch):
     def _mock_response(_):
         return open(path, 'rb')
     monkeypatch.setattr(urllib.request, 'urlopen', _mock_response)
-    parsed = bconv.fetch(fmt, 'ignored')
+    parsed = bconv.fetch('ignored', fmt)
     _validate(parsed, fmt, expected[path.stem])
 
 
