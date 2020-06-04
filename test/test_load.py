@@ -28,7 +28,7 @@ RESTRICTIONS = {
     'bioc_json': {STR_IDS},
     'bioc_xml': {STR_IDS},
     'txt': {TEXT_ONLY, STRIP_WS},
-    'txt_json': {TEXT_ONLY, STRIP_WS},
+    'txt.json': {TEXT_ONLY, STRIP_WS},
     'pxml': {TEXT_ONLY},
     'nxml': {TEXT_ONLY},
     'pubmed': {TEXT_ONLY},

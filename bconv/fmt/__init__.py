@@ -24,7 +24,7 @@ from ._load import wrap_in_collection
 # Keep these mappings up to date.
 LOADERS = {
     'txt': txt.TXTLoader,
-    'txt_json': txt.TXTJSONLoader,
+    'txt.json': txt.TXTJSONLoader,
     'bioc_xml': bioc.BioCXMLLoader,
     'bioc_json': bioc.BioCJSONLoader,
     'conll': conll.CoNLLLoader,

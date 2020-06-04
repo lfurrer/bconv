@@ -21,7 +21,7 @@ The following formats are currently supported:
 | `pubanno_json`               |   | ✓ | ✓ | ✓ | PubAnnotation JSON |
 | `tsv`, `text_tsv`            |   | ✓ | ✓ | ✓ | tab-separated values |
 | `txt`                        | ✓ | ✓ | ✓ |   | plain text |
-| `txt_json`                   | ✓ |   | ✓ |   | collection of plain-text documents |
+| `txt.json`                   | ✓ |   | ✓ |   | collection of plain-text documents |
 
 I: input format;
 O: output format;
