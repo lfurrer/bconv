@@ -219,7 +219,7 @@ class BioCJSONLoader(_BioCLoader):
         return text
 
 
-class BioCFormatter(Formatter):
+class _BioCFormatter(Formatter):
     """
     Base class for BioC formatting.
     """
@@ -231,7 +231,7 @@ class BioCFormatter(Formatter):
         self.metadata = metadata
 
 
-class BioCXMLFormatter(BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
+class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
     """
     BioC XML output format.
     """
@@ -369,7 +369,7 @@ class BioCXMLFormatter(BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
         node.append(E('infon', value, key=key))
 
 
-class BioCJSONFormatter(BioCFormatter, StreamFormatter, _OffsetMixin):
+class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
     """
     BioC JSON output format.
     """
