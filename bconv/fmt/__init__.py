@@ -49,6 +49,7 @@ EXPORTERS = {
     'brat': brat.BratFormatter,
     'conll': conll.CoNLLFormatter,
     'pubanno_json': pubanno.PubAnnoJSONFormatter,
+    'pubanno_json.tgz': pubanno.PubAnnoTGZFormatter,
     'pubtator': pubtator.PubTatorFormatter,
     'pubtator_fbk': pubtator.PubTatorFBKFormatter,
     'europepmc': europepmc.EuPMCFormatter,

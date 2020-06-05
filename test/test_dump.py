@@ -8,6 +8,7 @@ __author__ = "Lenz Furrer"
 
 import io
 import json
+import tarfile
 import zipfile
 from pathlib import Path
 from collections import namedtuple
@@ -82,6 +83,8 @@ def _validate(to_test, fmt, path):
         parse = _json_lines
     elif fmt == 'europepmc.zip':
         parse = _zip_of_json_lines
+    elif fmt == 'pubanno_json.tgz':
+        parse = _tar_of_json_docs
     elif fmt == 'txt':  # skip blank lines (needed for test_load as sec sep)
         parse = lambda f: [line for line in f if not line.isspace()]
     else:
@@ -113,4 +116,13 @@ def _zip_of_json_lines(stream):
         for info in z.infolist():
             with io.TextIOWrapper(z.open(info), encoding='utf8') as f:
                 members[info.filename] = _json_lines(f)
+    return members
+
+
+def _tar_of_json_docs(stream):
+    members = {}
+    with tarfile.open(fileobj=stream) as t:
+        for info in t:
+            with io.TextIOWrapper(t.extractfile(info), encoding='utf8') as f:
+                members[info.name] = json.load(f)
     return members
