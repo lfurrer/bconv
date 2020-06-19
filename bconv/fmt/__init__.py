@@ -57,7 +57,7 @@ EXPORTERS = {
 }
 
 
-def load(source, fmt=None, id_=None, mode='native', **options):
+def load(source, fmt=None, mode='native', id_=None, **options):
     """
     Load a document or collection from a file.
 
@@ -71,10 +71,10 @@ def load(source, fmt=None, id_=None, mode='native', **options):
     if fmt is None:
         fmt = _guess_format(source, LOADERS)
     loader = LOADERS[fmt](**options)
-    return _load(loader, source, id_, mode)
+    return _load(loader, mode, source, id_)
 
 
-def _load(loader, source, id_, mode):
+def _load(loader, mode, source, id_):
     if mode == 'lazy' and hasattr(loader, 'iter_documents'):
         content = loader.iter_documents(source)
     else:
@@ -89,20 +89,20 @@ def _load(loader, source, id_, mode):
     return content
 
 
-def loads(source, fmt, id_=None, mode='native', **options):
+def loads(source, fmt, mode='native', id_=None, **options):
     """
     Load a document or collection from str or bytes.
     """
     wrap = io.StringIO if isinstance(source, str) else io.BytesIO
-    return load(wrap(source), fmt, id_, mode, **options)
+    return load(wrap(source), fmt, mode, id_, **options)
 
 
-def fetch(query, fmt, id_=None, mode='native', **options):
+def fetch(query, fmt, mode='native', id_=None, **options):
     """
     Load a document or collection from a remote service.
     """
     fetcher = FETCHERS[fmt](**options)
-    return _load(fetcher, query, id_, mode)
+    return _load(fetcher, mode, query, id_)
 
 
 def dump(content, dest, fmt=None, **options):
