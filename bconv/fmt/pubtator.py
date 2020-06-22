@@ -26,6 +26,10 @@ class PubTatorLoader(CollLoader):
 
     _section_labels = {'t': 'Title', 'a': 'Abstract'}
 
+    def __init__(self, info=('type', 'cui')):
+        (self.type,
+         self.cui) = info
+
     def collection(self, source, id_):
         entity_counter = it.count(1)
         docs = self._iter_documents(source, entity_counter)
@@ -100,11 +104,10 @@ class PubTatorLoader(CollLoader):
         label = self._section_labels.get(label)
         return label, text
 
-    @staticmethod
-    def _entity(ids, start, end, text, type_, cui=None):
-        info = {'type': type_}
+    def _entity(self, ids, start, end, text, type_, cui=None):
+        info = {self.type: type_}
         if cui is not None:
-            info['cui'] = cui
+            info[self.cui] = cui
         return Entity(next(ids), text, int(start), int(end), info)
 
 
@@ -113,13 +116,16 @@ class PubTatorFBKLoader(PubTatorLoader):
     Load FBK-flavored PubTator documents.
     """
 
-    @staticmethod
-    def _entity(_, id_, type_, start, end, text):
+    def __init__(self, info='type'):
+        super().__init__([info, None])
+        del self.cui
+
+    def _entity(self, _, id_, type_, start, end, text):
         try:
             id_ = int(id_.lstrip('T'))
         except ValueError:
             pass
-        info = {'type': type_}
+        info = {self.type: type_}
         return Entity(id_, text, int(start), int(end), info)
 
 
