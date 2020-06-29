@@ -38,8 +38,8 @@ BEGIN = ('B', 'S')
 class CoNLLLoader(DocIterator):
     """Read verticalized, annotated text."""
 
-    def __init__(self, att='type'):
-        self.att = att
+    def __init__(self, label='type'):
+        self.label = label
 
     def iter_documents(self, source):
         with text_stream(source) as f:
@@ -107,11 +107,11 @@ class CoNLLLoader(DocIterator):
 
     def _make_entities(self, labels, text, offset, ids):
         for annotation in labels:
-            att, start, end = annotation[0]
+            label, start, end = annotation[0]
             if len(annotation) > 1:
                 end = annotation[-1]
             term = text[start-offset:end-offset]
-            yield Entity(next(ids), term, start, end, {self.att: att})
+            yield Entity(next(ids), term, start, end, {self.label: label})
 
 
 def fix_tag(tag, last):
@@ -149,10 +149,10 @@ class CoNLLFormatter(StreamFormatter):
 
     ext = 'conll'
 
-    def __init__(self, att='type', tagset='IOBES',
+    def __init__(self, label='type', tagset='IOBES',
                  include_docid=True, include_offsets=True):
         super().__init__()
-        self.att = att
+        self.label = label
         self.tagset = TAGSETS[tagset]
         self.include_docid = include_docid
         self.include_offsets = include_offsets
@@ -203,7 +203,7 @@ class CoNLLFormatter(StreamFormatter):
     def _tokenwise_labels(self, sentence):
         with self._entities_by_pos(sentence.entities) as entities:
             for token in sentence:
-                label = ';'.join(e.info[self.att] for e in entities.send(token))
+                label = ';'.join(e.info[self.label] for e in entities.send(token))
                 yield label
 
     @context_coroutine
