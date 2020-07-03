@@ -5,7 +5,7 @@ Loaders and formatter for plain text.
 
 __author__ = "Lenz Furrer"
 
-__all__ = ['TXTLoader', 'TXTJSONLoader', 'TXTFormatter']
+__all__ = ['TXTLoader', 'TXTJSONLoader', 'TXTFormatter', 'TXTJSONFormatter']
 
 
 import io
@@ -136,3 +136,17 @@ class TXTFormatter(StreamFormatter):
     @staticmethod
     def write(content, stream):
         stream.writelines(content.iter_text())
+
+
+class TXTJSONFormatter(StreamFormatter):
+    """
+    Formatter for multiple plain-text documents embedded in JSON.
+    """
+
+    ext = 'json'
+
+    @staticmethod
+    def write(content, stream):
+        collection = [{'id': doc.id, 'text': doc.text}
+                      for doc in content.units('document')]
+        json.dump(collection, stream)

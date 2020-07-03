@@ -41,6 +41,7 @@ FETCHERS = {
 
 EXPORTERS = {
     'txt': txt.TXTFormatter,
+    'txt.json': txt.TXTJSONFormatter,
     'tsv': tsv.TSVFormatter,
     'text_tsv': tsv.TextTSVFormatter,
     'bioc_xml': bioc.BioCXMLFormatter,

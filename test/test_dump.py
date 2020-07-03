@@ -77,6 +77,8 @@ def test_dumps(case):
 def _validate(to_test, fmt, path):
     if fmt.endswith('xml'):
         parse = _xml_nodes
+    elif fmt == 'txt.json':
+        parse = _txt_json
     elif fmt.endswith('json'):
         parse = json.load
     elif fmt == 'europepmc':
@@ -86,11 +88,22 @@ def _validate(to_test, fmt, path):
     elif fmt == 'pubanno_json.tgz':
         parse = _tar_of_json_docs
     elif fmt == 'txt':  # skip blank lines (needed for test_load as sec sep)
-        parse = lambda f: [line for line in f if not line.isspace()]
+        parse = _non_blank_lines
     else:
         parse = list  # line-wise comparison of file-handles
     with xopen(path, fmt) as ref:
         assert parse(to_test) == parse(ref)
+
+
+def _txt_json(stream):
+    coll = json.load(stream)
+    for doc in coll:
+        doc['text'] = _non_blank_lines(doc['text'].split('\n'))
+    return coll
+
+
+def _non_blank_lines(lines):
+    return [line for line in lines if line.strip()]
 
 
 def _xml_nodes(stream):
