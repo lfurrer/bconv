@@ -3,7 +3,7 @@
 ## Version 1.0
 - [x] license
 - [x] setup.py
-- [ ] documentation of all input/output formats in the wiki
+- [x] documentation of all input/output formats in the wiki
 - [x] test suite
 - [x] wrapper functions load/fetch/dump
 - [ ] make room for v1.1/.2 additions

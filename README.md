@@ -10,23 +10,33 @@ The following formats are currently supported:
 
 | Name                               | I | O | T | A | Description |
 | ---------------------------------- | - | - | - | - | ----------- |
-| `bioc_xml`, `bioc_json`            | ✓ | ✓ | ✓ | ✓ | BioC |
-| `bionlp`                           |   | ✓ |   | ✓ | BioNLP stand-off |
-| `brat`                             |   | ✓ |   | ✓ | brat stand-off |
-| `conll`                            | ✓ | ✓ | ✓ | ✓ | CoNLL |
-| `europepmc`, `europepmc.zip`       |   | ✓ |   | ✓ | Europe-PMC JSON |
-| `pubtator`, `pubtator_fbk`         | ✓ | ✓ | ✓ | ✓ | PubTator |
-| `pubmed`, `pxml`                   | ✓ |   | ✓ |   | PubMed abstracts |
-| `pmc`, `nxml`                      | ✓ |   | ✓ |   | PMC full-text |
-| `pubanno_json`, `pubanno_json.tgz` |   | ✓ | ✓ | ✓ | PubAnnotation JSON |
-| `tsv`, `text_tsv`                  |   | ✓ | ✓ | ✓ | tab-separated values |
-| `txt`                              | ✓ | ✓ | ✓ |   | plain text |
-| `txt.json`                         | ✓ |   | ✓ |   | collection of plain-text documents |
+| `bioc_xml`, `bioc_json`            | ✓ | ✓ | ✓ | ✓ | [BioC][1] |
+| `bionlp`                           |   | ✓ |   | ✓ | [BioNLP stand-off][2] |
+| `brat`                             |   | ✓ |   | ✓ | [brat stand-off][2] |
+| `conll`                            | ✓ | ✓ | ✓ | ✓ | [CoNLL][3] |
+| `europepmc`, `europepmc.zip`       |   | ✓ |   | ✓ | [Europe-PMC JSON][4] |
+| `pubtator`, `pubtator_fbk`         | ✓ | ✓ | ✓ | ✓ | [PubTator][5] |
+| `pubmed`, `pxml`                   | ✓ |   | ✓ |   | [PubMed abstracts][6] |
+| `pmc`, `nxml`                      | ✓ |   | ✓ |   | [PMC full-text][6] |
+| `pubanno_json`, `pubanno_json.tgz` |   | ✓ | ✓ | ✓ | [PubAnnotation JSON][7] |
+| `tsv`, `text_tsv`                  |   | ✓ | ✓ | ✓ | [tab-separated values][8] |
+| `txt`                              | ✓ | ✓ | ✓ |   | [plain text][9] |
+| `txt.json`                         | ✓ |   | ✓ |   | [collection of plain-text documents][9] |
 
 **I**: input format;
 **O**: output format;
 **T**: can represent text;
 **A**: can represent annotations (entities).
+
+[1]: https://github.com/lfurrer/bconv/wiki/BioC
+[2]: https://github.com/lfurrer/bconv/wiki/Brat
+[3]: https://github.com/lfurrer/bconv/wiki/CoNLL
+[4]: https://github.com/lfurrer/bconv/wiki/EuropePMC
+[5]: https://github.com/lfurrer/bconv/wiki/PubTator
+[6]: https://github.com/lfurrer/bconv/wiki/PubMed
+[7]: https://github.com/lfurrer/bconv/wiki/PubAnnotation
+[8]: https://github.com/lfurrer/bconv/wiki/TSV
+[9]: https://github.com/lfurrer/bconv/wiki/TXT
 
 
 ## Installation
@@ -72,3 +82,8 @@ Write the whole collection to a new file in CoNLL format:
 >>> with open('path/to/example.conll', 'w', encoding='utf8') as f:
 ...     bconv.dump(coll, f, fmt='conll', tagset='IOBES', include_offsets=True)
 ```
+
+
+## Documentation
+
+`bconv` is documented in the [GitHub wiki](https://github.com/lfurrer/bconv/wiki).
