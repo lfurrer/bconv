@@ -48,6 +48,15 @@ class Unit:
     def metadata(self, value):
         self._metadata = value
 
+    @property
+    def type(self):
+        """Dedicated accessor for an important metadata element."""
+        return self.metadata.get('type')
+
+    @type.setter
+    def type(self, value):
+        self.metadata['type'] = value
+
     def __repr__(self):
         name = self.__class__.__name__
         elems = len(self._children)
@@ -198,7 +207,7 @@ class Sentence(Unit):
         """
         try:
             return self.section.type
-        except AttributeError:
+        except AttributeError:  # there is no section
             return default
 
 
@@ -327,11 +336,11 @@ class Document(Exportable):
 
     _child_type = Section
 
-    def __init__(self, id_, filename=None, type_=None, year=None):
+    def __init__(self, id_, filename=None, type_=None):
         super().__init__(id_, filename)
-        self.type = type_
-        self.year = year
         self._char_cursor = 0
+        if type_ is not None:
+            self.type = type_
 
     def add_section(self, section_type, text, offset=None):
         """

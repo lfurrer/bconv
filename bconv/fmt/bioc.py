@@ -71,8 +71,6 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         """
         doc = Document(self._text(node, 'id', ifnone=None))
         doc.metadata = self.infon_dict(node)
-        doc.year = doc.metadata.pop('year', None)
-        doc.type = doc.metadata.pop('type', None)
 
         offset_mngr = self._offset_mngr()
         for passage in self._iterfind(node, 'passage'):
@@ -92,7 +90,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
     def _section(self, node, offset_mngr):
         """Get all relevant data from a passage node."""
         infon = self.infon_dict(node)
-        type_ = infon.pop('type', None)
+        type_ = infon.get('type')
         text = self._text(node)
         if text is None:
             # Text and annotations at sentence level.
@@ -297,11 +295,6 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
 
     def _document(self, doc):
         node = E('document', E('id', str(doc.id)))
-
-        if doc.year is not None:
-            self._infon(node, 'year', doc.year)
-        if doc.type is not None:
-            self._infon(node, 'type', doc.type)
         self._add_meta(node, doc.metadata)
 
         offset_mngr = self._offset_mngr()
@@ -312,8 +305,6 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
 
     def _passage(self, section, offset_mngr):
         node = E('passage')
-        if section.type is not None:
-            self._infon(node, 'type', section.type)
         self._add_meta(node, section.metadata)
         node.append(E('offset', str(offset_mngr.passage(section))))
 
@@ -398,23 +389,15 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
     def _document(self, doc):
         offset_mngr = self._offset_mngr()
 
-        infons = dict(doc.metadata)
-        if doc.year is not None:
-            infons['year'] = doc.year
-        if doc.type is not None:
-            infons['type'] = doc.type
-
         return {
             'id': str(doc.id),
-            'infons': infons,
+            'infons': dict(doc.metadata),
             'passages': [self._passage(s, offset_mngr) for s in doc],
             'relations': (),
         }
 
     def _passage(self, section, offset_mngr):
         infons = dict(section.metadata)
-        if section.type is not None:
-            infons['type'] = section.type
         offset = offset_mngr.passage(section)
         text = ''         # empty for sentence-level anchoring
         annotations = []  # empty for sentence-level anchoring

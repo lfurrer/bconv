@@ -42,9 +42,7 @@ class _MedlineParser:
 
         doc = Document(docid)
         # Add metadata if they can be found.
-        doc.year = text_node(node, './/DateCompleted/Year')
-        # There may be multiple publication types -- the first one is enough.
-        doc.type = text_node(node, './/PublicationType')
+        doc.metadata = dict(self._get_metadata(node))
 
         # Title.
         title = ''.join(node.find('.//ArticleTitle').itertext())
@@ -63,6 +61,17 @@ class _MedlineParser:
                 self._insert_annotations(doc[-1], anno, anno_counter)
 
         return doc
+
+    @staticmethod
+    def _get_metadata(root):
+        date = root.find('.//DateCompleted')
+        if date is not None:
+            yield 'date', '-'.join(date.find(x).text
+                                   for x in ('.//Year', './/Month', './/Day'))
+        # There may be multiple publication types -- the first one is enough.
+        type_ = text_node(root, './/PublicationType')
+        if type_:
+            yield 'type', type_
 
     def _iter_sections(self, root):
         placeholder = [None]
