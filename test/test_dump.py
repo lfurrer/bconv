@@ -25,6 +25,8 @@ from .utils import DATA, get_cases, xopen
 OPTIONS = {
     'europepmc': dict(provider='bconv', info=('type', 'cui', 'cui')),
     'europepmc.zip': dict(provider='bconv', info=('type', 'cui', 'cui')),
+    'csv': dict(lineterminator='\n'),
+    'text_csv': dict(lineterminator='\n'),
 }
 
 

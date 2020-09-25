@@ -19,7 +19,8 @@ The following formats are currently supported:
 | `pubmed`, `pxml`                   | ✓ |   | ✓ |   | [PubMed abstracts][6] |
 | `pmc`, `nxml`                      | ✓ |   | ✓ |   | [PMC full-text][6] |
 | `pubanno_json`, `pubanno_json.tgz` |   | ✓ | ✓ | ✓ | [PubAnnotation JSON][7] |
-| `tsv`, `text_tsv`                  |   | ✓ | ✓ | ✓ | [tab-separated values][8] |
+| `csv`, `tsv`                       |   | ✓ |   | ✓ | [comma/tab-separated values][8] |
+| `text_csv`, `text_tsv`             |   | ✓ | ✓ | ✓ | [comma/tab-separated values][8] |
 | `txt`                              | ✓ | ✓ | ✓ |   | [plain text][9] |
 | `txt.json`                         | ✓ |   | ✓ |   | [collection of plain-text documents][9] |
 
@@ -35,7 +36,7 @@ The following formats are currently supported:
 [5]: https://github.com/lfurrer/bconv/wiki/PubTator
 [6]: https://github.com/lfurrer/bconv/wiki/PubMed
 [7]: https://github.com/lfurrer/bconv/wiki/PubAnnotation
-[8]: https://github.com/lfurrer/bconv/wiki/TSV
+[8]: https://github.com/lfurrer/bconv/wiki/CSV
 [9]: https://github.com/lfurrer/bconv/wiki/TXT
 
 

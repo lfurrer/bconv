@@ -10,7 +10,7 @@ import io
 from pathlib import Path
 
 from . import txt
-from . import tsv
+from . import csv_
 from . import bioc
 from . import brat
 from . import conll
@@ -42,8 +42,10 @@ FETCHERS = {
 EXPORTERS = {
     'txt': txt.TXTFormatter,
     'txt.json': txt.TXTJSONFormatter,
-    'tsv': tsv.TSVFormatter,
-    'text_tsv': tsv.TextTSVFormatter,
+    'csv': csv_.CSVFormatter,
+    'tsv': csv_.TSVFormatter,
+    'text_csv': csv_.TextCSVFormatter,
+    'text_tsv': csv_.TextTSVFormatter,
     'bioc_xml': bioc.BioCXMLFormatter,
     'bioc_json': bioc.BioCJSONFormatter,
     'bionlp': brat.BioNLPFormatter,
