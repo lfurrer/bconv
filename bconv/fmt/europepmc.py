@@ -42,10 +42,12 @@ class EuPMCFormatter(StreamFormatter):
 
     def _document(self, document, meta):
         doc = dict(meta, id=document.id, anns=[])
-        text = document.text
         for s, sent in enumerate(document.units('sentence'), start=1):
+            text = sent.text
+            offset = sent.start
             section = self._section_name(sent.section, meta['src'])
-            locations = it.groupby(sent.entities, key=lambda e: (e.start, e.end))
+            locations = it.groupby(sent.entities,
+                                   key=lambda e: (e.start-offset, e.end-offset))
             for l, ((start, end), colocated) in enumerate(locations, start=1):
                 types = it.groupby(colocated, key=lambda e: e.info[self.type])
                 for type_, entities in types:
