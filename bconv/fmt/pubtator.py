@@ -74,14 +74,15 @@ class PubTatorLoader(CollLoader):
             docid, *fields = line.split(sep)
             if sep == '|' and not anno:
                 sections.append(self._section(fields))
-            elif sep == '\t' and sections:
+            elif sep == '\t' and sections and 3 <= len(fields) <= 5:
                 if len(fields) == 3:
                     # Relation annotations are silently ignored.
                     continue
                 fields[-1] = fields[-1].rstrip('\n\r')
                 anno.append(self._entity(entity_counter, *fields))
             else:
-                raise ValueError('invalid format: doc {}'.format(docid))
+                raise ValueError('invalid format: doc {}, line:\n{}'
+                                 .format(docid, line))
         return docid, sections, anno
 
     @staticmethod
