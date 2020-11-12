@@ -22,7 +22,7 @@ The following formats are currently supported:
 | `csv`, `tsv`                       |   | ✓ |   | ✓ | [comma/tab-separated values][8] |
 | `text_csv`, `text_tsv`             |   | ✓ | ✓ | ✓ | [comma/tab-separated values][8] |
 | `txt`                              | ✓ | ✓ | ✓ |   | [plain text][9] |
-| `txt.json`                         | ✓ |   | ✓ |   | [collection of plain-text documents][9] |
+| `txt.json`                         | ✓ | ✓ | ✓ |   | [collection of plain-text documents][9] |
 
 **I**: input format;
 **O**: output format;
