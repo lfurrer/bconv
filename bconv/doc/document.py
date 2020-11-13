@@ -105,8 +105,8 @@ class Unit:
                     # entity=Entity,
                 )[type_.lower()]
             except KeyError:
-                raise TypeError('unknown unit type: {}'
-                                .format(type_))
+                raise ValueError('unknown unit type: {}'
+                                 .format(type_))
 
         if isinstance(self, type_):
             # The root level matches.
