@@ -24,7 +24,8 @@ def ngrams(iterable, n, pad_left=False, pad_right=False,
             yield tuple(window)
     for _ in range((n-1)*pad_right):
         window.append(right_pad_symbol)
-        yield tuple(window)
+        if len(window) == n:
+            yield tuple(window)
 
 
 def peek(iterable):
