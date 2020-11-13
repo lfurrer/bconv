@@ -23,10 +23,14 @@ from .utils import DATA, get_cases, xopen
 
 
 OPTIONS = {
+    # Format-specific options.
     'europepmc': dict(provider='bconv', info=('type', 'cui', 'cui')),
     'europepmc.zip': dict(provider='bconv', info=('type', 'cui', 'cui')),
     'csv': dict(lineterminator='\n'),
     'text_csv': dict(lineterminator='\n'),
+
+    # Document-specific options.
+    'sentence-level': dict(sentence_level=True),
 }
 
 
@@ -57,6 +61,7 @@ def case(request, internal):
     fmt, path = request.param
     coll = internal[path.stem]
     options = OPTIONS.get(fmt, {})
+    options.update(OPTIONS.get(path.stem, {}))
     return Case(fmt, path, coll, options)
 
 

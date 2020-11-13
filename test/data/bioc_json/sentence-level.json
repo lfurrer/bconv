@@ -1,0 +1,107 @@
+{
+  "source": "",
+  "date": "",
+  "key": "",
+  "infons": {},
+  "documents": [
+    {
+      "id": "33173119",
+      "infons": {},
+      "passages": [
+        {
+          "infons": {
+            "type": "Title"
+          },
+          "offset": 0,
+          "text": "",
+          "sentences": [
+            {
+              "infons": {},
+              "offset": 0,
+              "text": "Experimental tests of bivalve shell shape reveal potential tradeoffs between mechanical and behavioral defenses.\n",
+              "annotations": [],
+              "relations": []
+            }
+          ],
+          "annotations": [],
+          "relations": []
+        },
+        {
+          "infons": {
+            "type": "Abstract"
+          },
+          "offset": 113,
+          "text": "",
+          "sentences": [
+            {
+              "infons": {},
+              "offset": 113,
+              "text": "Bivalves protect themselves from predators using both mechanical and behavioral defenses. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 203,
+              "text": "While their shells serve as mechanical armor, bivalve\u00a0shells also enable evasive behaviors such as swimming and burrowing. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 327,
+              "text": "Therefore, bivalve shell shape is a critical determinant of how successfully an organism can defend against attack. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 443,
+              "text": "Shape is believed to be related to shell strength with bivalve shell shapes converging on a select few morphologies that correlate with life mode and motility. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 603,
+              "text": "In this study, mathematical modeling and 3D printing were used to analyze the protective function of different shell shapes against vertebrate shell-crushing predators. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 772,
+              "text": "Considering what life modes different shapes permit and analyzing the strength of these shapes in compression provides insight to evolutionary and ecological tradeoffs with respect to mechanical and behavioral defenses. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 992,
+              "text": "These empirical tests are the first of their kind to isolate the influence of bivalve shell shape on strength and quantitatively demonstrate that shell strength is derived from multiple shape parameters. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 1196,
+              "text": "The findings of this theoretical study are consistent with examples of shell shapes that allow escape behaviors being mechanically weaker than those which do not. ",
+              "annotations": [],
+              "relations": []
+            },
+            {
+              "infons": {},
+              "offset": 1359,
+              "text": "Additionally, shell elongation from the umbo, a metric often overlooked, is shown to have significant effects on shell strength.\n",
+              "annotations": [],
+              "relations": []
+            }
+          ],
+          "annotations": [],
+          "relations": []
+        }
+      ],
+      "relations": []
+    }
+  ]
+}
