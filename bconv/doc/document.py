@@ -171,11 +171,14 @@ class Sentence(Unit):
         self.start = start
         self.end = end if end is not None else start + len(text)
 
-    def tokenize(self):
+    def tokenize(self, cache=False):
         """
         Word-tokenize this sentence.
+
+        If `cache` is True and this method has been called
+        earlier, it will be skipped this time.
         """
-        if self.text:
+        if self.text and (not self._children or not cache):
             toks = TOKENIZER.span_tokenize_words(self.text, self.start)
             self._children = [Token(t, s, e) for t, s, e in toks]
 

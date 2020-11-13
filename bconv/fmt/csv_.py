@@ -123,7 +123,7 @@ class TextCSVFormatter(CSVFormatter):
     def _document(self, doc):
         # Make sure all sentences are tokenized.
         for sentence in doc.units('sentence'):
-            sentence.tokenize()
+            sentence.tokenize(cache=True)
         return super()._document(doc)
 
     def _tok_rows(self, start, end, tokens, loc):
