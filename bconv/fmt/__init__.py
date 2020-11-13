@@ -138,11 +138,11 @@ def _guess_format(path, choices):
     except TypeError:
         pass  # raise later
     else:
-        suffix = path.suffix.lstrip('.')
+        suffix = path.suffix.lstrip('.').lower()
         if suffix in choices:
             return suffix
         # Try double suffices, eg. foo.bioc.json.
-        suffix2 = path.with_suffix('').suffix.lstrip('.')
+        suffix2 = path.with_suffix('').suffix.lstrip('.').lower()
         for joiner in ('_', '.'):
             fmt = joiner.join((suffix, suffix2))
             if fmt in choices:
