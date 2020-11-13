@@ -1,0 +1,24 @@
+{
+  "ids": ["33143088"],
+  "text": [
+    [
+      [
+        "Protective Role of St. John's Wort and Its Components Hyperforin and Hypericin against Diabetes through Inhibition of Inflammatory Signaling: Evidence from In Vitro and In Vivo Studies.\n"
+      ]
+    ]
+  ],
+  "entities": [
+    [
+      [
+        1,
+        "St. John's Wort",
+        19,
+        34,
+        {
+          "type": "Organism",
+          "cui": "NCBITaxon:65561"
+        }
+      ]
+    ]
+  ]
+}

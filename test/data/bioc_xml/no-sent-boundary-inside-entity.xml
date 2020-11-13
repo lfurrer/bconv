@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source></source>
+  <date></date>
+  <key></key>
+<document>
+  <id>33143088</id>
+  <passage>
+    <infon key="type">Title</infon>
+    <offset>0</offset>
+    <text>Protective Role of St. John's Wort and Its Components Hyperforin and Hypericin against Diabetes through Inhibition of Inflammatory Signaling: Evidence from In Vitro and In Vivo Studies.
+</text>
+    <annotation id="1">
+      <infon key="type">Organism</infon>
+      <infon key="cui">NCBITaxon:65561</infon>
+      <location offset="19" length="15"/>
+      <text>St. John's Wort</text>
+    </annotation>
+  </passage>
+</document>
+</collection>
