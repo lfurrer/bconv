@@ -61,7 +61,7 @@ class PubTatorLoader(CollLoader):
         docid, sections, anno = self._parse(lines, entity_counter)
         doc = Document(docid)
         for label, text in sections:
-            doc.add_section(label, text)
+            doc.add_section(label, text, entities=iter(anno))
         doc.add_entities(anno)
         return doc
 

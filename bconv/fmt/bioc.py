@@ -76,10 +76,9 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         for passage in self._iterfind(node, 'passage'):
             sec_type, text, offset, infon, anno = self._section(passage,
                                                                 offset_mngr)
-            doc.add_section(sec_type, text, offset)
+            doc.add_section(sec_type, text, offset, anno)
             section = doc[-1]
             section.metadata = infon
-            section.add_entities(anno)
             # Get infon elements on sentence level.
             for sent, sent_node in zip(section,
                                        self._iterfind(passage, 'sentence')):
@@ -102,7 +101,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         else:
             # Text and annotations at passage level.
             offset = offset_mngr.update(node, text)
-            anno = self._get_annotations(node, offset_mngr)
+            anno = list(self._get_annotations(node, offset_mngr))
         return type_, text, offset, infon, anno
 
     def _sentence(self, node, offset_mngr):

@@ -219,7 +219,7 @@ class Section(Unit):
 
     _child_type = Sentence
 
-    def __init__(self, section_type, text, document, start=0):
+    def __init__(self, section_type, text, document, start=0, entities=()):
         """
         A section (eg. title, abstract, mesh list).
 
@@ -237,12 +237,15 @@ class Section(Unit):
 
         if isinstance(text, str):
             # Single string element.
-            self.add_sentences(
-                TOKENIZER.span_tokenize_sentences(text, start))
             self._text = text
+            sentences = TOKENIZER.span_tokenize_sentences(text, start)
+            sentences = self._merge_sentences_at_entity(sentences, entities)
         else:
             # Iterable of strings or <string, offset...> tuples.
-            self.add_sentences(self._guess_offsets(text, start))
+            sentences = self._guess_offsets(text, start)
+
+        self.add_sentences(sentences)
+        self.add_entities(entities)
 
     @property
     def text(self):
@@ -267,6 +270,26 @@ class Section(Unit):
         # Check for trailing whitespace.
         if offset < self.end:
             yield ' ' * (self.end-offset)
+
+    @staticmethod
+    def _merge_sentences_at_entity(sentences, entities):
+        """
+        Avoid sentence boundaries in the middle of an entity.
+        """
+        forbidden = set(i for e in entities for i in range(e.start+1, e.end))
+        try:
+            pending = next(sentences)
+        except StopIteration:  # no sentences -- nothing to do
+            return
+        for sent, start, end in sentences:
+            if start in forbidden:
+                # Merge with the pending sentence.
+                sent = pending[0] + sent
+                start = pending[1]
+            else:
+                yield pending
+            pending = sent, start, end
+        yield pending
 
     @staticmethod
     def _guess_offsets(sentences, offset):
@@ -345,7 +368,7 @@ class Document(Exportable):
         if type_ is not None:
             self.type = type_
 
-    def add_section(self, section_type, text, offset=None):
+    def add_section(self, section_type, text, offset=None, entities=()):
         """
         Append a section to the end.
 
@@ -353,7 +376,7 @@ class Document(Exportable):
         """
         if offset is None:
             offset = self._char_cursor
-        section = Section(section_type, text, self, offset)
+        section = Section(section_type, text, self, offset, entities)
         self._add_child(section)
         self._char_cursor = section.end
 
