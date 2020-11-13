@@ -91,7 +91,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         infon = self.infon_dict(node)
         type_ = infon.get('type')
         text = self._text(node)
-        if text is None:
+        if not text:
             # Text and annotations at sentence level.
             offset = offset_mngr.start(node)
             text, anno = [], []
