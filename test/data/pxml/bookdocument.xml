@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<!DOCTYPE PubmedArticleSet PUBLIC "-//NLM//DTD PubMedArticle, 1st January 2019//EN" "https://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_190101.dtd">
+<PubmedArticleSet>
+<PubmedBookArticle>
+	<BookDocument>
+		<PMID Version="1">32150360</PMID>
+		<ArticleIdList>
+			<ArticleId IdType="bookaccession">NBK554776</ArticleId>
+		</ArticleIdList>
+		<Book>
+			<Publisher>
+				<PublisherName>StatPearls Publishing</PublisherName>
+				<PublisherLocation>Treasure Island (FL)</PublisherLocation>
+			</Publisher>
+			<BookTitle book="statpearls">StatPearls</BookTitle>
+			<PubDate>
+				<Year>2020</Year>
+				<Month>01</Month>
+			</PubDate>
+			<BeginningDate>
+				<Year>2020</Year>
+				<Month>01</Month>
+			</BeginningDate>
+			<Medium>Internet</Medium>
+		</Book>
+		<ArticleTitle book="statpearls" part="article-52171">Features, Evaluation, and Treatment of Coronavirus</ArticleTitle>
+		<Language>eng</Language>
+		<AuthorList Type="authors">
+			<Author>
+				<LastName>Cascella</LastName>
+				<ForeName>Marco</ForeName>
+				<Initials>M</Initials>
+				<AffiliationInfo>
+					<Affiliation>Istituto Nazionale Tumori - IRCCS - Fondazione Pascale, Via Mariano Semmola 80100, Napoli. Italy</Affiliation>
+				</AffiliationInfo>
+			</Author>
+			<Author>
+				<LastName>Rajnik</LastName>
+				<ForeName>Michael</ForeName>
+				<Initials>M</Initials>
+				<AffiliationInfo>
+					<Affiliation>Uniformed Services Un of the Health Sc</Affiliation>
+				</AffiliationInfo>
+			</Author>
+			<Author>
+				<LastName>Cuomo</LastName>
+				<ForeName>Arturo</ForeName>
+				<Initials>A</Initials>
+				<AffiliationInfo>
+					<Affiliation>Istituto Nazionale Tumori - IRCCS - Fondazione Pascale. Napoli, Italy</Affiliation>
+				</AffiliationInfo>
+			</Author>
+			<Author>
+				<LastName>Dulebohn</LastName>
+				<ForeName>Scott C.</ForeName>
+				<Initials>SC</Initials>
+			</Author>
+			<Author>
+				<LastName>Di Napoli</LastName>
+				<ForeName>Raffaela</ForeName>
+				<Initials>R</Initials>
+				<AffiliationInfo>
+					<Affiliation>Institut Jules Bordet -Brussels, Belgium</Affiliation>
+				</AffiliationInfo>
+			</Author>
+		</AuthorList>
+		<PublicationType UI="D016454">Review</PublicationType>
+		<Abstract>
+			<AbstractText>According to the World Health Organization (WHO), viral diseases continue to emerge and represent a serious issue to public health. In the last twenty years, several viral epidemics such as the severe acute respiratory syndrome coronavirus (SARS-CoV) from 2002 to 2003, and H1N1 influenza in 2009, have been recorded. Most recently, the Middle East respiratory syndrome coronavirus (MERS-CoV) was first identified in Saudi Arabia in 2012. In a timeline that reaches the present day, an epidemic of cases with unexplained low respiratory infections detected in Wuhan, the largest metropolitan area in China's Hubei province, was first reported to the WHO Country Office in China, on December 31, 2019. Published literature can trace the beginning of symptomatic individuals back to the beginning of December 2019. As they were unable to identify the causative agent, these first cases (n=29) were classified as &quot;pneumonia of unknown etiology.&quot; The Chinese Center for Disease Control and Prevention (CDC) and local CDCs organized an intensive outbreak investigation program. The etiology of this illness was attributed to a novel virus belonging to the coronavirus (CoV) family. On February 11, 2020, the WHO Director-General, Dr. Tedros Adhanom Ghebreyesus, announced that the disease caused by this new CoV was a &quot;COVID-19,&quot; which is the acronym of &quot;coronavirus disease 2019&quot;. In the past twenty years, two additional CoVs epidemics have occurred. SARS-CoV provoked a large-scale epidemic beginning in China and involving two dozen countries with approximately 8000 cases and 800 deaths (fatality rate of 9,6%)[1], and the MERS-CoV that began in Saudi Arabia and has approximately 2,500 cases and 800 deaths (fatality rate of 35%) and still causes as sporadic cases[2]. This new virus is very contagious and has quickly spread globally. In a meeting on January 30, 2020, per the International Health Regulations (IHR, 2005), the outbreak was declared by the WHO a Public Health Emergency of International Concern (PHEIC) as it had spread to 18 countries with four countries reporting human-to-human transmission. An additional landmark occurred on February 26, 2020, as the first case of the disease, not imported from China, was recorded in the United States (US).  Initially, the new virus was called 2019-nCoV. Subsequently, the task of experts of the International Committee on Taxonomy of Viruses (ICTV) termed it the SARS-CoV-2 virus as it is very similar to the one that caused the SARS outbreak (SARS-CoVs).  The CoVs have become the major pathogens of emerging respiratory disease outbreaks. They are a large family of single-stranded RNA viruses (+ssRNA) that can be isolated in different animal species.[3] For reasons yet to be explained, these viruses can cross species barriers and can cause, in humans, illness ranging from the common cold to more severe diseases such as MERS and SARS. Interestingly, these latter viruses have probably originated from bats and then moving into other mammalian hosts — the Himalayan palm civet for SARS-CoV, and the dromedary camel for MERS-CoV — before jumping to humans. The dynamics of SARS-Cov-2 are currently unknown, but there is speculation that it also has an animal origin. The potential for these viruses to grow to become a pandemic worldwide represents a serious public health risk. Concerning COVID-19, the WHO raised the threat to the CoV epidemic to the &quot;very high&quot; level, on February 28, 2020. On March 11, as the number of COVID-19 cases outside China has increased 13 times and the number of countries involved has tripled with more than 118,000 cases in 114 countries and over 4,000 deaths, WHO declared the COVID-19 a pandemic. World governments are at work to establish countermeasures to stem the devastating effects and it has been estimated that strict shutdowns may have saved 3 million lives across 11 European countries[4]. Health organizations coordinate information flows and issues directives and guidelines to best mitigate the impact of the threat. At the same time, scientists around the world work tirelessly, and information about the transmission mechanisms, the clinical spectrum of disease, new diagnostics, and prevention and therapeutic strategies are rapidly developing. Many uncertainties remain with regard to both the virus-host interaction and the evolution of the pandemic, with specific reference to the times when it will reach its peak. At the moment, the therapeutic strategies to deal with the infection are only supportive, and prevention aimed at reducing transmission in the community is our best weapon. Aggressive isolation measures in China have led to a progressive reduction of cases. From China, the disease spread to Europe. In Italy, in geographic regions of the north, initially, and subsequently throughout the peninsula, political and health authorities have made incredible efforts to contain a shock wave that has severely tested the health system. Afterward, the COVID-19 quickly crossed the ocean and as of June 20, 2020, about 2,282,000 cases (with 121,000 deaths) have been recorded in the US, whereas Brazil with more than 1,000,000 cases and about 50,000 deaths is the most affected state in South America and the second in the world after the US. Although over time the lethality rate (total number of deaths for a given disease in relation to the total number of patients) of COVID-19 has been significantly lower than that of the SARS and MERS epidemics, the transmission of the SARS-CoV-2 virus is much larger than that of the previous viruses, with a much higher total number of deaths. It has been estimated that about one in five individuals worldwide could be at increased risk of severe COVID-19 disease if they become infected, due to underlying health conditions[5]. In the midst of the crisis, the authors have chosen to use the &quot;Statpearls&quot; platform because, within the PubMed scenario, it represents a unique tool that may allow them to make updates in real-time. The aim, therefore, is to collect information and scientific evidence and to provide an overview of the topic that will be continuously updated.</AbstractText>
+			<CopyrightInformation>Copyright © 2020, StatPearls Publishing LLC.</CopyrightInformation>
+		</Abstract>
+		<Sections>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s1">Introduction</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s2">Etiology</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s3">Epidemiology</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s4">Pathophysiology</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s5">Histopathology</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s6">History and Physical</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s7">Evaluation</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s8">Treatment / Management</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s9">Differential Diagnosis</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s10">Pertinent Studies and Ongoing Trials</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s11">Prognosis</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s12">Complications</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s13">Deterrence and Patient Education</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s14">Pearls and Other Issues</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s15">Enhancing Healthcare Team Outcomes </SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s16">Continuing Education / Review Questions</SectionTitle>
+			</Section>
+			<Section>
+				<SectionTitle book="statpearls" part="article-52171" sec="article-52171.s22">References</SectionTitle>
+			</Section>
+		</Sections>
+		<ContributionDate>
+			<Year>2020</Year>
+			<Month>10</Month>
+			<Day>4</Day>
+		</ContributionDate>
+	</BookDocument>
+	<PubmedBookData>
+		<History>
+			<PubMedPubDate PubStatus="pubmed">
+				<Year>2020</Year>
+				<Month>3</Month>
+				<Day>10</Day>
+				<Hour>6</Hour>
+				<Minute>1</Minute>
+			</PubMedPubDate>
+			<PubMedPubDate PubStatus="medline">
+				<Year>2020</Year>
+				<Month>3</Month>
+				<Day>10</Day>
+				<Hour>6</Hour>
+				<Minute>1</Minute>
+			</PubMedPubDate>
+			<PubMedPubDate PubStatus="entrez">
+				<Year>2020</Year>
+				<Month>3</Month>
+				<Day>10</Day>
+				<Hour>6</Hour>
+				<Minute>1</Minute>
+			</PubMedPubDate>
+		</History>
+		<PublicationStatus>ppublish</PublicationStatus>
+		<ArticleIdList>
+			<ArticleId IdType="pubmed">32150360</ArticleId>
+		</ArticleIdList>
+	</PubmedBookData>
+</PubmedBookArticle>
+
+</PubmedArticleSet>

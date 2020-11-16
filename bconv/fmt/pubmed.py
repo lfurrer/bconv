@@ -26,7 +26,7 @@ class _MedlineParser:
     Mixin for parsing PubMed abstracts in Medline's XML format.
     """
 
-    tag = 'MedlineCitation'
+    tag = ('MedlineCitation', 'BookDocument')
 
     def __init__(self, single_section=False,
                  include_mesh=False, mesh_as_entities=False):
@@ -45,10 +45,11 @@ class _MedlineParser:
         doc.metadata = dict(self._get_metadata(node))
 
         # Title.
-        title = ''.join(node.find('.//ArticleTitle').itertext())
-        doc.add_section('Title', title + '\n')
+        title = node.find('.//ArticleTitle')
+        if title is not None:  # title may be missing for BookDocument
+            doc.add_section('Title', ''.join(title.itertext()) + '\n')
 
-        # Abstract body migt contain multiple sections, incl. a MeSH list.
+        # Abstract body might contain multiple sections, incl. a MeSH list.
         sections = self._iter_sections(node)
 
         if self.single_section:
@@ -64,10 +65,16 @@ class _MedlineParser:
 
     @staticmethod
     def _get_metadata(root):
-        date = root.find('.//DateCompleted')
+        date = root.find('.//DateCompleted')  # MedlineCitation
         if date is not None:
             yield 'date', '-'.join(date.find(x).text
                                    for x in ('.//Year', './/Month', './/Day'))
+        else:
+            date = root.find('.//PubDate')  # BookDocument
+            if date is not None:
+                # PubDate can be year-month(-day), year-season, or free text.
+                yield 'date', '-'.join(elem.text for elem in date)
+
         # There may be multiple publication types -- the first one is enough.
         type_ = text_node(root, './/PublicationType')
         if type_:
