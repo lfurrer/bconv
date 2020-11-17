@@ -1,30 +1,32 @@
 # TODO
 
-## Version 1.0
-- [x] license
-- [x] setup.py
-- [x] documentation of all input/output formats in the wiki
-- [x] test suite
-- [x] wrapper functions load/fetch/dump
-- [ ] make room for v1.1/.2 additions
+## Loading/Formatting
+
+- [ ] loaders for stand-off format (BioNLP/brat)
+- [ ] loader for PubAnnotation
+- [ ] loader for EuropePMC
+- [ ] accept CoNLL without offsets
+- [ ] extend pubmed/pmc fetchers to include BioC API
+- [ ] fetcher for [PubTator Central](https://www.ncbi.nlm.nih.gov/research/pubtator/tutorial.html)
 
 
-## Version 1.1
+## Representation
 
-- [ ] loaders for stand-off format
+- [ ] support discontinuous spans
+- [ ] support relations (BioC and PubTator)
+
+
+## Usability
+
+- [ ] flattening strategies for overlapping entities (eg. for CoNLL output)
+- [ ] convenience wrappers for directory-wise loading and serialising of standoff+text
+- [ ] support the same range of sources for all input formats (path, url, file)
 - [ ] loaders and formatters indicate if the format represents text and/or annotations
 - [ ] iterator-compatible dump mechanism
-- [ ] optional removal of overlapping entities (eg. for conll output)
 
 
-## Version 1.2
+## Development
 
-- [ ] discontinuous spans
-- [ ] keep relations in BioC and PubTator
-- [ ] support the same range of sources for all input formats (path, url, file)
-
-
-## Anytime
-
+- [ ] add type hints
 - [ ] add a test file with non-ASCII characters to verify proper offsets
-- [ ] extend pubmed/pmc format to include BioC API
+- [ ] test format-specific parameters
