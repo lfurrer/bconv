@@ -149,7 +149,7 @@ class _MedlineParser:
             start = sent.start
             end = start + len(text)
             info = {'ui': ui, 'source': 'MeSH'}
-            sent.add_entities((Entity(id_, text, start, end, info),))
+            sent.add_entities((Entity(id_, text, [(start, end)], info),))
 
 
 class _PMCParser:

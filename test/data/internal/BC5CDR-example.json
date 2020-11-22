@@ -16,8 +16,9 @@
       [
         1,
         "Lidocaine",
-        0,
-        9,
+        [
+          [0, 9]
+        ],
         {
           "type": "Chemical",
           "cui": "D008012"
@@ -26,8 +27,9 @@
       [
         2,
         "cardiac asystole",
-        18,
-        34,
+        [
+          [18, 34]
+        ],
         {
           "type": "Disease",
           "cui": "D006323"
@@ -36,8 +38,9 @@
       [
         3,
         "lidocaine",
-        90,
-        99,
+        [
+          [90, 99]
+        ],
         {
           "type": "Chemical",
           "cui": "D008012"
@@ -46,8 +49,9 @@
       [
         4,
         "depression",
-        142,
-        152,
+        [
+          [142, 152]
+        ],
         {
           "type": "Disease",
           "cui": "D003866"
@@ -56,8 +60,9 @@
       [
         5,
         "bradyarrhythmias",
-        331,
-        347,
+        [
+          [331, 347]
+        ],
         {
           "type": "Disease",
           "cui": "D001919"
@@ -66,8 +71,9 @@
       [
         6,
         "lidocaine",
-        409,
-        418,
+        [
+          [409, 418]
+        ],
         {
           "type": "Chemical",
           "cui": "D008012"

@@ -118,18 +118,22 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         multiple contiguous annotations.
         """
         for anno in self._iterfind(node, 'annotation'):
-            for loc in self._iterfind(anno, 'location'):
-                start, length = (int(loc.get(n)) for n in ('offset', 'length'))
-                end = offset_mngr.character(start+length)
-                start = offset_mngr.character(start)
-                yield self._entity(anno, start, end)
+            offsets = list(self._get_offsets(anno, offset_mngr))
+            yield self._entity(anno, offsets)
 
-    def _entity(self, anno, start, end):
+    def _get_offsets(self, node, offset_mngr):
+        for loc in self._iterfind(node, 'location'):
+            start, length = (int(loc.get(n)) for n in ('offset', 'length'))
+            end = offset_mngr.character(start+length)
+            start = offset_mngr.character(start)
+            yield start, end
+
+    def _entity(self, node, offsets):
         """Create an Entity instance from a BioC annotation node."""
-        id_ = anno.get('id')
-        text = self._text(anno)
-        info = self.infon_dict(anno)
-        return Entity(id_, text, start, end, info)
+        id_ = node.get('id')
+        text = self._text(node)
+        info = self.infon_dict(node)
+        return Entity(id_, text, offsets, info)
 
     def _meta_dict(self, node):
         """Read metadata into a dictionary."""
@@ -340,8 +344,8 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
         for label, value in entity.info.items():
             self._infon(node, label, value)
 
-        start, length = offset_mngr.entity(entity)
-        node.append(E('location', offset=str(start), length=str(length)))
+        for start, length in offset_mngr.entity(entity):
+            node.append(E('location', offset=str(start), length=str(length)))
 
         node.append(E('text', entity.text))
 
@@ -435,12 +439,12 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
 
     @staticmethod
     def _entity(entity, offset_mngr):
-        start, length = offset_mngr.entity(entity)
         return {
             'id': str(entity.id),
             'infons': dict(entity.info),
             'text': entity.text,
-            'locations': [dict(offset=start, length=length)]
+            'locations': [dict(offset=start, length=length)
+                          for start, length in offset_mngr.entity(entity)]
         }
 
 
@@ -578,5 +582,6 @@ class ByteOffsetWriter(OffsetWriter, _OffsetConverter):
     _indexer = staticmethod(iter_codepoint_indices_utf8)
 
     def entity(self, entity):
-        start, end = (self.character(n) for n in (entity.start, entity.end))
-        return start, end-start
+        for start, end in entity.offsets:
+            start, end = (self.character(n) for n in (start, end))
+            yield start, end-start

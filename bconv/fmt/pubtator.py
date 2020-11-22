@@ -109,7 +109,7 @@ class PubTatorLoader(CollLoader):
         info = {self.type: type_}
         if cui is not None:
             info[self.cui] = cui
-        return Entity(next(ids), text, int(start), int(end), info)
+        return Entity(next(ids), text, [(int(start), int(end))], info)
 
 
 class PubTatorFBKLoader(PubTatorLoader):
@@ -127,7 +127,7 @@ class PubTatorFBKLoader(PubTatorLoader):
         except ValueError:
             pass
         info = {self.type: type_}
-        return Entity(id_, text, int(start), int(end), info)
+        return Entity(id_, text, [(int(start), int(end))], info)
 
 
 class PubTatorFormatter(StreamFormatter):
@@ -183,7 +183,7 @@ class PubTatorFormatter(StreamFormatter):
         return '|'.join((id_, t, text))
 
     def _annotations(self, docid, sec, offset):
-        for entity in sec.iter_entities():
+        for entity in sec.iter_entities(split_discontinuous=True):
             start, end = entity.start+offset, entity.end+offset
             yield self._select_anno_fields(docid, start, end, entity)
 

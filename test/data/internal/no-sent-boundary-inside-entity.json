@@ -12,8 +12,9 @@
       [
         1,
         "St. John's Wort",
-        19,
-        34,
+        [
+          [19, 34]
+        ],
         {
           "type": "Organism",
           "cui": "NCBITaxon:65561"

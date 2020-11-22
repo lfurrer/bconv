@@ -15,6 +15,10 @@ from collections import defaultdict
 from ._export import StreamFormatter
 
 
+T_LINE = 'T{}\t{} {}\t{}\n'
+A_LINE = 'A{}\t{} T{} {}\n'
+
+
 class BratFormatter(StreamFormatter):
     """
     Stand-off annotations for brat.
@@ -48,7 +52,7 @@ class BratFormatter(StreamFormatter):
         """
         mentions = self._get_mentions(document)
         for (loc_att, entities), t in zip(sorted(mentions.items()), c_t):
-            stream.write('T{0}\t{3} {1} {2}\t{4}\n'.format(t, *loc_att))
+            stream.write(T_LINE.format(t, *loc_att[2:]))
             for e in entities:
                 # Add all remaining information as attribute annotations.
                 self._write_attributes(stream, e, t, c_a)
@@ -56,13 +60,15 @@ class BratFormatter(StreamFormatter):
     def _write_attributes(self, stream, entity, t, c_a):
         for key in self.extra:
             value = entity.info[key]
-            stream.write('A{}\t{} T{} {}\n'.format(next(c_a), key, t, value))
+            stream.write(A_LINE.format(next(c_a), key, t, value))
 
     def _get_mentions(self, document):
         mentions = defaultdict(list)
         for e in document.iter_entities():
             att = self._valid_fieldname(e.info[self.att])
-            mentions[e.start, e.end, att, e.text_wn].append(e)
+            offsets = _format_offsets(e)
+            # Include start and end offset for sorting.
+            mentions[e.start, e.end, att, offsets, e.text_wn].append(e)
         return mentions
 
     @classmethod
@@ -83,7 +89,6 @@ class BioNLPFormatter(StreamFormatter):
     """
 
     ext = 'bionlp'
-    template = 'T{counter}\t{att} {e.start} {e.end}\t{e.text_wn}\n'
 
     def __init__(self, att='type'):
         super().__init__()
@@ -100,4 +105,9 @@ class BioNLPFormatter(StreamFormatter):
         """
         for entity, t in zip(document.iter_entities(), counter):
             att = entity.info[self.att]
-            stream.write(self.template.format(counter=t, e=entity, att=att))
+            offsets = _format_offsets(entity)
+            stream.write(T_LINE.format(t, att, offsets, entity.text_wn))
+
+
+def _format_offsets(entity):
+    return ';'.join(' '.join(map(str, span)) for span in entity.offsets)

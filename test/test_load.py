@@ -98,9 +98,17 @@ def _nested_sentences(docs, call):
 
 
 def _get_entities(content):
-    return [[[getattr(entity, att) for att in entity.__slots__]
+    return [[[_entity_attribute(entity, att) for att in entity.__slots__]
              for entity in doc.iter_entities()]
             for doc in content.units('document')]
+
+
+def _entity_attribute(entity, att):
+    value = getattr(entity, att)
+    # Cast offset tuples to list for compatibility with JSON.
+    if att == 'offsets':
+        value = [list(o) for o in value]
+    return value
 
 
 def _skip_cui(entities):
