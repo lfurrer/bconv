@@ -126,12 +126,15 @@ class Unit:
             for child in self._children:
                 yield from child.units(type_)
 
-    def iter_entities(self):
+    def iter_entities(self, split_discontinuous=False):
         """
         Iterate over all entities, sorted by start offset.
+
+        If split_discontinuous is True, entities with multiple
+        spans are split into multiple contiguous entities.
         """
         for sentence in self.units(Sentence):
-            yield from sentence.entities
+            yield from sentence.iter_entities(split_discontinuous)
 
     def add_entities(self, entities):
         """
@@ -188,9 +191,7 @@ class Sentence(Unit):
         """
         prev_len = len(self.entities)
         for entity in entities:
-            term = self.text[entity.start-self.start:entity.end-self.start]
-            assert entity.text == term, \
-                'entity mention mismatch: {} vs. {}'.format(entity.text, term)
+            self._validate_spans(entity)
             self.entities.append(entity)
 
         if prev_len and len(self.entities) > prev_len:
@@ -198,11 +199,57 @@ class Sentence(Unit):
             # to be sorted in.
             self.entities.sort(key=Entity.sort_key)
 
-    def iter_entities(self):
+    def _validate_spans(self, entity):
+        extracted = [self.text[start-self.start:end-self.start]
+                     for start, end in entity.offsets]
+        def _mismatch():
+            return 'entity mention mismatch: {} vs. {}'.format(
+                entity.text, extracted)
+
+        # Checking a contiguous annotation is stragith-forward.
+        if len(extracted) == 1:
+            assert extracted[0] == entity.text, _mismatch()
+            return
+
+        # For discontinuous annotations, make sure all extracted spans
+        # are part of the text attribute. Apart from that, only allow
+        # certain separator symbols that are commonly used to represent
+        # the gaps in the original text, such as:
+        # - " "
+        # - " ... "
+        # - " [...] "
+        # - " … "  (ellipsis, U+2026)
+        separators = ' .[]…'
+        text = entity.text
+        for span in extracted:
+            try:
+                start = text.index(span)
+            except ValueError:
+                raise AssertionError(_mismatch())
+            assert text[:start].strip(separators) == '', _mismatch()
+            text = text[start+len(span):]
+        assert text.strip(separators) == '', _mismatch()
+
+    def iter_entities(self, split_discontinuous=False):
+        if split_discontinuous:
+            return iter(sorted(self._split_discontinuous_entities(),
+                               key=Entity.sort_key))
+        else:
+            return iter(self.entities)
+
+    def _split_discontinuous_entities(self):
         """
-        Iterate over all entities, sorted by occurrence.
+        Iterate over entities, splitting discontinuous ones on the fly.
         """
-        yield from self.entities
+        for entity in self.entities:
+            for start, end in entity.offsets:
+                if (start, end) == (entity.start, entity.end):
+                    # Contiguous entity -- yield original.
+                    yield entity
+                else:
+                    # Discontinuous entity -- generate ad-hoc objects.
+                    text = self.text[start-self.start:end-self.end]
+                    yield Entity(entity.id, text, [(start, end)], entity.info)
 
     def get_section_type(self, default=None):
         """
@@ -422,19 +469,28 @@ class Entity(object):
     Link from textual evidence to an annotated entity.
     """
 
-    __slots__ = ('id', 'text', 'start', 'end', 'info')
+    __slots__ = ('id', 'text', 'offsets', 'info')
 
-    def __init__(self, id_, text, start, end, info):
+    def __init__(self, id_, text, offsets, info):
         self.id = id_
         self.text = text
-        self.start = start
-        self.end = end
+        self.offsets = offsets
         self.info = info  # type: Dict[str, str]
 
     @property
     def text_wn(self):
         """Whitespace normalised text: replace newlines and tabs."""
         return re.sub(r'\s', ' ', self.text)
+
+    @property
+    def start(self):
+        """Offset of the first character."""
+        return self.offsets[0][0]
+
+    @property
+    def end(self):
+        """Offset of the last character."""
+        return self.offsets[-1][1]
 
     @classmethod
     def sort(cls, entities):

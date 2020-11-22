@@ -132,8 +132,9 @@
       [
         1,
         "Wiskott-Aldrich syndrome",
-        111,
-        135,
+        [
+          [111, 135]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D014923"
@@ -142,8 +143,9 @@
       [
         2,
         "Wiskott-Aldrich syndrome",
-        141,
-        165,
+        [
+          [141, 165]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D014923"
@@ -152,8 +154,9 @@
       [
         3,
         "WAS",
-        167,
-        170,
+        [
+          [167, 170]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D014923"
@@ -162,8 +165,9 @@
       [
         4,
         "X-linked immunodeficiency disease",
-        176,
-        209,
+        [
+          [176, 209]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D007153+D040181"
@@ -172,8 +176,9 @@
       [
         5,
         "WAS",
-        268,
-        271,
+        [
+          [268, 271]
+        ],
         {
           "type": "Modifier",
           "cui": "D014923"
@@ -182,8 +187,9 @@
       [
         6,
         "WAS",
-        443,
-        446,
+        [
+          [443, 446]
+        ],
         {
           "type": "Modifier",
           "cui": "D014923"
@@ -192,8 +198,9 @@
       [
         7,
         "WAS",
-        608,
-        611,
+        [
+          [608, 611]
+        ],
         {
           "type": "Modifier",
           "cui": "D014923"
@@ -202,8 +209,9 @@
       [
         8,
         "WAS",
-        662,
-        665,
+        [
+          [662, 665]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D014923"
@@ -212,8 +220,9 @@
       [
         9,
         "isolated thrombocytopenia",
-        1291,
-        1316,
+        [
+          [1291, 1316]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D013921"
@@ -222,8 +231,9 @@
       [
         10,
         "WAS",
-        1381,
-        1384,
+        [
+          [1381, 1384]
+        ],
         {
           "type": "Modifier",
           "cui": "D014923"
@@ -232,8 +242,9 @@
       [
         11,
         "WAS",
-        1672,
-        1675,
+        [
+          [1672, 1675]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D014923"
@@ -244,8 +255,9 @@
       [
         12,
         "pancreatic cancer",
-        53,
-        70,
+        [
+          [53, 70]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -254,8 +266,9 @@
       [
         13,
         "solid tumors",
-        249,
-        261,
+        [
+          [249, 261]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -264,8 +277,9 @@
       [
         14,
         "pancreatic cancer",
-        279,
-        296,
+        [
+          [279, 296]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -274,8 +288,9 @@
       [
         15,
         "tumor types",
-        418,
-        429,
+        [
+          [418, 429]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -284,8 +299,9 @@
       [
         16,
         "pancreatic tumors",
-        542,
-        559,
+        [
+          [542, 559]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -294,8 +310,9 @@
       [
         17,
         "pancreatic tumors",
-        619,
-        636,
+        [
+          [619, 636]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -304,8 +321,9 @@
       [
         18,
         "tumors",
-        662,
-        668,
+        [
+          [662, 668]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -314,8 +332,9 @@
       [
         19,
         "pancreatic tumors",
-        781,
-        798,
+        [
+          [781, 798]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -324,8 +343,9 @@
       [
         20,
         "pancreatic cancer",
-        856,
-        873,
+        [
+          [856, 873]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010190"
@@ -334,8 +354,9 @@
       [
         21,
         "cancers",
-        897,
-        904,
+        [
+          [897, 904]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -346,8 +367,9 @@
       [
         22,
         "Pelizaeus-Merzbacher disease",
-        102,
-        130,
+        [
+          [102, 130]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312080"
@@ -356,8 +378,9 @@
       [
         23,
         "Pelizaeus-Merzbacher disease",
-        281,
-        309,
+        [
+          [281, 309]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312080"
@@ -366,8 +389,9 @@
       [
         24,
         "PMD",
-        311,
-        314,
+        [
+          [311, 314]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312080"
@@ -376,8 +400,9 @@
       [
         25,
         "X-linked spastic paraplegia",
-        464,
-        491,
+        [
+          [464, 491]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312920"
@@ -386,8 +411,9 @@
       [
         26,
         "SPG",
-        493,
-        496,
+        [
+          [493, 496]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312920"
@@ -396,8 +422,9 @@
       [
         27,
         "PMD",
-        565,
-        568,
+        [
+          [565, 568]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:312080"
@@ -406,8 +433,9 @@
       [
         28,
         "nystagmus",
-        645,
-        654,
+        [
+          [645, 654]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D020417"
@@ -416,8 +444,9 @@
       [
         29,
         "tremors",
-        666,
-        673,
+        [
+          [666, 673]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D014202"
@@ -426,8 +455,9 @@
       [
         30,
         "mental retardation",
-        689,
-        707,
+        [
+          [689, 707]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D008607"
@@ -436,8 +466,9 @@
       [
         31,
         "dementia",
-        742,
-        750,
+        [
+          [742, 750]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D003704"
@@ -446,8 +477,9 @@
       [
         32,
         "personality disorders",
-        754,
-        775,
+        [
+          [754, 775]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D010554"
@@ -456,8 +488,9 @@
       [
         33,
         "PLP-associated disease",
-        1045,
-        1067,
+        [
+          [1045, 1067]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "OMIM:312080+OMIM:312920"
@@ -468,8 +501,9 @@
       [
         34,
         "alveolar rhabdomyosarcoma",
-        39,
-        64,
+        [
+          [39, 64]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D018232"
@@ -478,8 +512,9 @@
       [
         35,
         "Pediatric alveolar rhabdomyosarcoma",
-        100,
-        135,
+        [
+          [100, 135]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D018232"
@@ -490,8 +525,9 @@
       [
         36,
         "ataxia-telangiectasia",
-        34,
-        55,
+        [
+          [34, 55]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -500,8 +536,9 @@
       [
         37,
         "ataxia-telangiectasia",
-        132,
-        153,
+        [
+          [132, 153]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -510,8 +547,9 @@
       [
         38,
         "AT",
-        155,
-        157,
+        [
+          [155, 157]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -520,8 +558,9 @@
       [
         39,
         "AT",
-        576,
-        578,
+        [
+          [576, 578]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -532,8 +571,9 @@
       [
         40,
         "phenylketonuria",
-        17,
-        32,
+        [
+          [17, 32]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010661"
@@ -542,8 +582,9 @@
       [
         41,
         "phenylketonuria",
-        44,
-        59,
+        [
+          [44, 59]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010661"
@@ -552,8 +593,9 @@
       [
         42,
         "PKU",
-        61,
-        64,
+        [
+          [61, 64]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010661"
@@ -562,8 +604,9 @@
       [
         43,
         "autosomal recessive disorder",
-        72,
-        100,
+        [
+          [72, 100]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D030342"
@@ -572,8 +615,9 @@
       [
         44,
         "deficiency of hepatic phenylalanine hydroxylase",
-        113,
-        160,
+        [
+          [113, 160]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:261600"
@@ -582,8 +626,9 @@
       [
         45,
         "PKU",
-        217,
-        220,
+        [
+          [217, 220]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010661"
@@ -592,8 +637,9 @@
       [
         46,
         "PAH-deficient",
-        471,
-        484,
+        [
+          [471, 484]
+        ],
         {
           "type": "Modifier",
           "cui": "OMIM:261600"
@@ -602,8 +648,9 @@
       [
         47,
         "PAH-deficient",
-        734,
-        747,
+        [
+          [734, 747]
+        ],
         {
           "type": "Modifier",
           "cui": "OMIM:261600"
@@ -612,8 +659,9 @@
       [
         48,
         "PKU",
-        1016,
-        1019,
+        [
+          [1016, 1019]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D010661"
@@ -624,8 +672,9 @@
       [
         49,
         "hereditary breast and ovarian cancer",
-        92,
-        128,
+        [
+          [92, 128]
+        ],
         {
           "type": "Modifier",
           "cui": "D061325"
@@ -634,8 +683,9 @@
       [
         50,
         "breast cancer",
-        714,
-        727,
+        [
+          [714, 727]
+        ],
         {
           "type": "Modifier",
           "cui": "D001943"
@@ -644,8 +694,9 @@
       [
         51,
         "tumour",
-        795,
-        801,
+        [
+          [795, 801]
+        ],
         {
           "type": "Modifier",
           "cui": "D009369"
@@ -656,8 +707,9 @@
       [
         52,
         "coronary heart disease",
-        10,
-        32,
+        [
+          [10, 32]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -666,8 +718,9 @@
       [
         53,
         "coronary heart disease",
-        275,
-        297,
+        [
+          [275, 297]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -676,8 +729,9 @@
       [
         54,
         "CHD",
-        299,
-        302,
+        [
+          [299, 302]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -686,8 +740,9 @@
       [
         55,
         "CHD",
-        837,
-        840,
+        [
+          [837, 840]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -696,8 +751,9 @@
       [
         56,
         "CHD",
-        931,
-        934,
+        [
+          [931, 934]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -706,8 +762,9 @@
       [
         57,
         "CHD",
-        998,
-        1001,
+        [
+          [998, 1001]
+        ],
         {
           "type": "Modifier",
           "cui": "D003327"
@@ -716,8 +773,9 @@
       [
         58,
         "CHD",
-        1187,
-        1190,
+        [
+          [1187, 1190]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -726,8 +784,9 @@
       [
         59,
         "CHD",
-        1325,
-        1328,
+        [
+          [1325, 1328]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -736,8 +795,9 @@
       [
         60,
         "CETP deficiency",
-        1355,
-        1370,
+        [
+          [1355, 1370]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "OMIM:143470"
@@ -746,8 +806,9 @@
       [
         61,
         "CHD",
-        1416,
-        1419,
+        [
+          [1416, 1419]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D003327"
@@ -756,8 +817,9 @@
       [
         62,
         "CHD",
-        1448,
-        1451,
+        [
+          [1448, 1451]
+        ],
         {
           "type": "Modifier",
           "cui": "D003327"
@@ -768,8 +830,9 @@
       [
         63,
         "Ataxia-telangiectasia",
-        0,
-        21,
+        [
+          [0, 21]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D001260"
@@ -778,8 +841,9 @@
       [
         64,
         "autosomal recessive disorder",
-        100,
-        128,
+        [
+          [100, 128]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D030342"
@@ -788,8 +852,9 @@
       [
         65,
         "ataxia-telangiectasia",
-        129,
-        150,
+        [
+          [129, 150]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D001260"
@@ -798,8 +863,9 @@
       [
         66,
         "A-T",
-        152,
-        155,
+        [
+          [152, 155]
+        ],
         {
           "type": "SpecificDisease",
           "cui": "D001260"
@@ -808,8 +874,9 @@
       [
         67,
         "cerebellar degeneration",
-        175,
-        198,
+        [
+          [175, 198]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D013132"
@@ -818,8 +885,9 @@
       [
         68,
         "immunodeficiency",
-        200,
-        216,
+        [
+          [200, 216]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D007153"
@@ -828,8 +896,9 @@
       [
         69,
         "cancer predisposition",
-        221,
-        242,
+        [
+          [221, 242]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -838,8 +907,9 @@
       [
         70,
         "A-T",
-        244,
-        247,
+        [
+          [244, 247]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -848,8 +918,9 @@
       [
         71,
         "cancer-prone",
-        288,
-        300,
+        [
+          [288, 300]
+        ],
         {
           "type": "DiseaseClass",
           "cui": "D009369"
@@ -858,8 +929,9 @@
       [
         72,
         "A-T",
-        320,
-        323,
+        [
+          [320, 323]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -868,8 +940,9 @@
       [
         73,
         "A-T",
-        563,
-        566,
+        [
+          [563, 566]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"
@@ -878,8 +951,9 @@
       [
         74,
         "A-T",
-        1093,
-        1096,
+        [
+          [1093, 1096]
+        ],
         {
           "type": "Modifier",
           "cui": "D001260"

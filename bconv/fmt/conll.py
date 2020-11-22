@@ -111,7 +111,7 @@ class CoNLLLoader(DocIterator):
             if len(annotation) > 1:
                 end = annotation[-1]
             term = text[start-offset:end-offset]
-            yield Entity(next(ids), term, start, end, {self.label: label})
+            yield Entity(next(ids), term, [(start, end)], {self.label: label})
 
 
 def fix_tag(tag, last):
@@ -201,7 +201,8 @@ class CoNLLFormatter(StreamFormatter):
                 yield self.tag(S, current)  # single
 
     def _tokenwise_labels(self, sentence):
-        with self._entities_by_pos(sentence.entities) as entities:
+        entities = sentence.iter_entities(split_discontinuous=True)
+        with self._entities_by_pos(entities) as entities:
             for token in sentence:
                 label = ';'.join(e.info[self.label] for e in entities.send(token))
                 yield label

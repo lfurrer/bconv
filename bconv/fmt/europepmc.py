@@ -46,7 +46,7 @@ class EuPMCFormatter(StreamFormatter):
             text = sent.text
             offset = sent.start
             section = self._section_name(sent.section, meta['src'])
-            locations = it.groupby(sent.entities,
+            locations = it.groupby(sent.iter_entities(split_discontinuous=True),
                                    key=lambda e: (e.start-offset, e.end-offset))
             for l, ((start, end), colocated) in enumerate(locations, start=1):
                 types = it.groupby(colocated, key=lambda e: e.info[self.type])

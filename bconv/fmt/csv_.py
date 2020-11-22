@@ -56,7 +56,7 @@ class CSVFormatter(StreamFormatter):
             loc = doc.id, section_type, sent_id
             last_end = 0  # offset history
 
-            for entity in sentence.iter_entities():
+            for entity in sentence.iter_entities(split_discontinuous=True):
                 # Add sparse lines for all tokens preceding the current entity.
                 yield from self._tok_rows(last_end, entity.start, toks, loc)
                 # Add a rich line for each entity (possibly multiple lines
@@ -145,7 +145,7 @@ class TextCSVFormatter(CSVFormatter):
                 yield (doc_id,
                        section_type,
                        sent_id,
-                       '',
+                       '',  # no entity ID
                        token.start,
                        token.end,
                        token.text,

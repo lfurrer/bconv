@@ -66,10 +66,19 @@ class PubAnnoJSONFormatter(Formatter):
         for id_, entity in enumerate(content.iter_entities(), start=1):
             yield {
                 'id' : 'T{}'.format(id_),
-                'span' : {'begin': entity.start-offset,
-                          'end': entity.end-offset},
+                'span' : self._spans(entity, offset),
                 'obj' : entity.info[self.obj]
             }
+
+    @staticmethod
+    def _spans(entity, offset):
+        # Use the bagging model to represent discontinuous annotations.
+        spans = [{'begin': start-offset, 'end': end-offset}
+                 for start, end in entity.offsets]
+        if len(spans) == 1:
+            # Avoid extended syntax if not necessary.
+            return spans[0]
+        return spans
 
 
 class PubAnnoTGZFormatter(StreamFormatter, PubAnnoJSONFormatter):
