@@ -144,7 +144,7 @@ def _guess_format(path, choices):
         # Try double suffices, eg. foo.bioc.json.
         suffix2 = path.with_suffix('').suffix.lstrip('.').lower()
         for joiner in ('_', '.'):
-            fmt = joiner.join((suffix, suffix2))
+            fmt = joiner.join((suffix2, suffix))
             if fmt in choices:
                 return fmt
     raise ValueError('cannot infer `fmt` from {}'.format(path))
