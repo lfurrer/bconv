@@ -21,8 +21,10 @@ TEXT_ONLY = 'text-only'
 STRIP_WS = 'strip-ws'
 SKIP_CUI = 'skip-cui'
 STR_IDS = 'str-ids'
+UNNEST = 'unnest'
 
 RESTRICTIONS = {
+    # Format-specific relaxations.
     'conll': {STRIP_WS, SKIP_CUI},
     'pubtator_fbk': {SKIP_CUI},
     'bioc_json': {STR_IDS},
@@ -33,6 +35,11 @@ RESTRICTIONS = {
     'nxml': {TEXT_ONLY},
     'pubmed': {TEXT_ONLY},
     'pmc': {TEXT_ONLY},
+
+    # Document-specific relaxations.
+
+    # Format- and document-specific relaxations.
+    ('txt', 'CRAFT-example'): {UNNEST},
 }
 
 
@@ -49,16 +56,16 @@ def expected():
 @pytest.mark.parametrize('fmt,path', get_cases(bconv.LOADERS), ids=path_id)
 def test_load(fmt, path, expected):
     """Test the load function."""
-    parsed = bconv.load(path, fmt)
-    _validate(parsed, fmt, expected[path.stem])
+    parsed = bconv.load(path, fmt, id_=path.stem)
+    _validate(parsed, fmt, expected)
 
 
 @pytest.mark.parametrize('fmt,path', get_cases(bconv.LOADERS), ids=path_id)
 def test_loads(fmt, path, expected):
     """Test the loads function."""
     with xopen(path, fmt) as f:
-        parsed = bconv.loads(f.read(), fmt)
-    _validate(parsed, fmt, expected[path.stem])
+        parsed = bconv.loads(f.read(), fmt, id_=path.stem)
+    _validate(parsed, fmt, expected)
 
 
 @pytest.mark.parametrize('fmt,path', get_cases(bconv.FETCHERS), ids=path_id)
@@ -67,17 +74,23 @@ def test_fetch(fmt, path, expected, monkeypatch):
     def _mock_response(_):
         return open(path, 'rb')
     monkeypatch.setattr(urllib.request, 'urlopen', _mock_response)
-    parsed = bconv.fetch('ignored', fmt)
-    _validate(parsed, fmt, expected[path.stem])
+    parsed = bconv.fetch('ignored', fmt, id_=path.stem)
+    _validate(parsed, fmt, expected)
 
 
-def _validate(parsed, fmt, exp):
-    restrictions = RESTRICTIONS.get(fmt, ())
+def _validate(parsed, fmt, expected):
+    restrictions = RESTRICTIONS.get(fmt, set())
+    restrictions.update(RESTRICTIONS.get(parsed.id, ()))
+    restrictions.update(RESTRICTIONS.get((fmt, parsed.id), ()))
     text = _get_text(parsed)
+    exp = expected[parsed.id]
     ref = exp['text']
     if STRIP_WS in restrictions:
         text = _nested_sentences(text, str.strip)
         ref = _nested_sentences(ref, str.strip)
+    if UNNEST:
+        text = _unnest(text)
+        ref = _unnest(ref)
     assert text == ref
 
     if TEXT_ONLY not in restrictions:
@@ -95,6 +108,10 @@ def _get_text(content):
 
 def _nested_sentences(docs, call):
     return [[[call(sent) for sent in sec] for sec in doc] for doc in docs]
+
+
+def _unnest(docs):
+    return [[sent for sec in doc for sent in sec] for doc in docs]
 
 
 def _get_entities(content):

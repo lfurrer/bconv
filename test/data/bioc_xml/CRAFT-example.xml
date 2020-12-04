@@ -1,0 +1,1130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source></source>
+  <date></date>
+  <key></key>
+<document>
+  <id>PMC116589</id>
+  <passage>
+    <infon key="type">Title</infon>
+    <offset>0</offset>
+    <sentence>
+      <offset>0</offset>
+      <text>Embryonic stem cells and mice expressing different GFP variants for multiple non-invasive reporter usage within a single animal
+
+</text>
+      <annotation id="1">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="0" length="20"/>
+        <text>Embryonic stem cells</text>
+      </annotation>
+    </sentence>
+  </passage>
+  <passage>
+    <infon key="type">Abstract</infon>
+    <offset>129</offset>
+    <sentence>
+      <offset>129</offset>
+      <text>Abstract
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>139</offset>
+      <text>Background
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>151</offset>
+      <text>Non-invasive autofluorescent reporters have revolutionized lineage labeling in an array of different organisms. </text>
+    </sentence>
+    <sentence>
+      <offset>263</offset>
+      <text>In recent years green fluorescent protein (GFP) from the bioluminescent jellyfish Aequoria Victoria has gained popularity in mouse transgenic and gene targeting regimes [1]. </text>
+    </sentence>
+    <sentence>
+      <offset>437</offset>
+      <text>It offers several advantages over conventional gene-based reporters, such as lacZ and alkaline phosphatase, in that its visualization does not require a chromogenic substrate and can be realized in vivo. </text>
+    </sentence>
+    <sentence>
+      <offset>641</offset>
+      <text>We have previously demonstrated the utility and developmental neutrality of enhanced green fluorescent protein (EGFP) in embryonic stem (ES) cells and mice [2].
+
+</text>
+      <annotation id="2">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="762" length="14"/>
+        <location offset="782" length="5"/>
+        <text>embryonic stem ... cells</text>
+      </annotation>
+      <annotation id="3">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="778" length="2"/>
+        <location offset="782" length="5"/>
+        <text>ES ... cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>803</offset>
+      <text>Results
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>812</offset>
+      <text>In this study we have used embryonic stem (ES) cell-mediated transgenesis to test the enhanced cyan fluorescent protein (ECFP) and enhanced yellow fluorescent protein (EYFP), two mutant and spectrally distinct color variants of wild type (wt) GFP. </text>
+      <annotation id="4">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="839" length="14"/>
+        <location offset="859" length="4"/>
+        <text>embryonic stem ... cell</text>
+      </annotation>
+      <annotation id="5">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="855" length="2"/>
+        <location offset="859" length="4"/>
+        <text>ES ... cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>1060</offset>
+      <text>We have also tested DsRed1, the novel red fluorescent protein reporter recently cloned from the Discostoma coral by virtue of its homology to GFP. </text>
+    </sentence>
+    <sentence>
+      <offset>1207</offset>
+      <text>To this end, we have established lines of ES cells together with viable and fertile mice having widespread expression of either the ECFP or EYFP GFP-variant reporters. </text>
+      <annotation id="6">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="1249" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>1375</offset>
+      <text>However, we were unable to generate equivalent DsRed1 lines, suggesting that DsRed1 is not developmentally neutral or that transgene expression cannot be sustained constitutively. </text>
+    </sentence>
+    <sentence>
+      <offset>1555</offset>
+      <text>Balanced (diploid &lt;-&gt; diploid) and polarized (tetraploid &lt;-&gt; diploid) chimeras comprising combinations of the ECFP and EYFP ES cells and/or embryos, demonstrate that populations of cells expressing each individual reporter can be distinguished within a single animal.
+
+</text>
+      <annotation id="7">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="1679" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>1824</offset>
+      <text>Conclusions
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>1837</offset>
+      <text>GFP variant reporters are unique in allowing non-invasive multi-spectral visualization in live samples. </text>
+    </sentence>
+    <sentence>
+      <offset>1941</offset>
+      <text>The ECFP and EYFP-expressing transgenic ES cells and mice that we have generated provide sources of cells and tissues for combinatorial, double-tagged recombination experiments, chimeras or transplantations.
+
+</text>
+      <annotation id="8">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="1981" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+  </passage>
+  <passage>
+    <infon key="type">Section</infon>
+    <offset>2150</offset>
+    <sentence>
+      <offset>2150</offset>
+      <text>Background
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>2162</offset>
+      <text>The ease of manipulating its genome has helped establish the mouse as the premier model organism for mammalian genetic studies. </text>
+    </sentence>
+    <sentence>
+      <offset>2290</offset>
+      <text>Both directed and random mutagenesis approaches, including the technologies of transgenesis and gene targeting in ES cells, have become commonplace. </text>
+      <annotation id="9">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="2404" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>2439</offset>
+      <text>Genetically manipulated mice, often incorporating gene-based reporters, are frequently being used to model and understand mammalian development and disease processes. </text>
+    </sentence>
+    <sentence>
+      <offset>2606</offset>
+      <text>Fluorescent protein reporters currently represent a superior alternative to other gene-based reporters such as the bacterial lacZ or human placental alkaline phosphatase in that their visualization is non-invasive, and as such does not require chromogenic substrates. </text>
+    </sentence>
+    <sentence>
+      <offset>2874</offset>
+      <text>Fluorescence can be monitored in real-time in vivo and in situ, and has the added advantage in that it can be quantified. </text>
+    </sentence>
+    <sentence>
+      <offset>2996</offset>
+      <text>The prototype fluorescent protein reporter is green fluorescent protein (GFP, reviewed in [3]), which is derived from the bioluminescent jellyfish Aequorea Victoria [1].
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>3167</offset>
+      <text>Green fluorescent variants of wild type GFP (wtGFP) with improved thermostability and fluorescence emission, including enhanced green fluorescent protein (EGFP, [4]), and mMGFP [5], have gained popularity for use in mice. </text>
+    </sentence>
+    <sentence>
+      <offset>3389</offset>
+      <text>Recently however, several additional mutants of wtGFP, with altered excitation and emission spectral profiles (i.e. </text>
+    </sentence>
+    <sentence>
+      <offset>3505</offset>
+      <text>fluoresce in colors other than green), as well as improved thermostability and fluorescence, have been described [4,6].
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>3626</offset>
+      <text>Dual color imaging of several GFP variant proteins is a very attractive prospect and has become a standard procedure in cell biology [7,8]. </text>
+    </sentence>
+    <sentence>
+      <offset>3766</offset>
+      <text>It has also recently been demonstrated in a subset of cells within the central nervous system (CNS) of mice using both transgenic and viral infection-based approaches [9,10]. </text>
+    </sentence>
+    <sentence>
+      <offset>3941</offset>
+      <text>We therefore wished to investigate the feasibility of non-invasive multiple reporter imaging in mice, and as a first step we wanted to ascertain whether we could establish viable and fertile mice with widespread expression of GFP variant reporters.
+
+</text>
+    </sentence>
+  </passage>
+  <passage>
+    <infon key="type">Section</infon>
+    <offset>4191</offset>
+    <sentence>
+      <offset>4191</offset>
+      <text>Results and discussion
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>4215</offset>
+      <text>We tested several of the available wtGFP variants for developmental neutrality and stability of widespread expression. </text>
+    </sentence>
+    <sentence>
+      <offset>4334</offset>
+      <text>An ES cell-mediated transgenic approach was used to evaluate the Enhanced Cyan Fluorescent Protein (ECFP) and Enhanced Yellow Fluorescent Protein (EYFP) wtGFP spectral variants [4,11]. </text>
+      <annotation id="10">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="4337" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>4519</offset>
+      <text>ECFP harbors six amino substitutions (Y66W, F64L, S65T, N146I, M153T, V163A) as compared to GFP, whereas EYFP harbors four (S65G, V68L, S72A and T203Y). </text>
+    </sentence>
+    <sentence>
+      <offset>4672</offset>
+      <text>In addition to increasing the quantum yield and solubility of the proteins these mutations shift the spectral profiles of the translation products [4,11].
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>4828</offset>
+      <text>A breakthrough in the availability of spectrally distinct autofluorescent proteins came with the cloning of six anthozoan fluorescent proteins all having 20–30% identity to wtGFP [12]. </text>
+    </sentence>
+    <sentence>
+      <offset>5015</offset>
+      <text>Of these, DsRed1 (referred to as drFP585 by Matz et al., [12]), a 28 kDa protein isolated from the IndoPacific sea anemone Discosoma sp, posseses the longest excitation (558 nm) and emission (583 nm) wavelength maxima known for a wild-type autofluorescent protein. </text>
+    </sentence>
+    <sentence>
+      <offset>5280</offset>
+      <text>The sequence of DsRed1 has recently been modified and optimized for high levels of expression in mammalian cells by the introduction of 144 silent base pair changes corresponding to human codon usage preferences. </text>
+    </sentence>
+    <sentence>
+      <offset>5493</offset>
+      <text>We therefore also tested this novel red fluorescent protein (RFP) in ES cells and mice.
+
+</text>
+      <annotation id="11">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="5562" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>5582</offset>
+      <text>Plasmids were constructed for driving widespread expression of each of the gene-based fluorescent protein (FP) reporters and were tested in ES cell-mediated transgenics as described previously [2]. </text>
+      <annotation id="12">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="5722" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>5780</offset>
+      <text>Transgenic ES cells exhibiting robust expression of ECFP or EYFP were obtained at the same frequency as we had previously obtained for EGFP. </text>
+      <annotation id="13">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="5791" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>5921</offset>
+      <text>Cells expressing one or other of the two GFP variant reporters were clearly distinguishable within a mixed population (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>6045</offset>
+      <text>1a,1b,1c,1d). </text>
+    </sentence>
+    <sentence>
+      <offset>6059</offset>
+      <text>Interestingly however we were unable to recover clones expressing DsRed1 at the same frequency as for the GFP variant reporters after electroporation and selection under identical conditions. </text>
+    </sentence>
+    <sentence>
+      <offset>6251</offset>
+      <text>Indeed the DsRed1 expressing clones that we were able to recover did not retain their characteristic ES cell morphology, usually appearing smaller and more spherical (Fig. </text>
+      <annotation id="14">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="6352" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>6423</offset>
+      <text>1e and 1f), or occasionally spindle shaped (data not shown). </text>
+    </sentence>
+    <sentence>
+      <offset>6484</offset>
+      <text>Unlike the fluorescence produced by the GFP variants which was evenly distributed throughout the cells, the DsRed signal was never homogenous. </text>
+    </sentence>
+    <sentence>
+      <offset>6627</offset>
+      <text>Red fluorescence was often aggregated in what appeared to be perinuclear regions of the cytoplasm. </text>
+    </sentence>
+    <sentence>
+      <offset>6726</offset>
+      <text>Similar observations have been made by Furuta and colleagues when they used recombinant sindbis virus for the labeling of dendrites and axons within the CNS of adult mice [10]. </text>
+    </sentence>
+    <sentence>
+      <offset>6903</offset>
+      <text>In order to generate a DsRed variant that may be amenable to use in ES cells and mice, we recently introduced various sequences that direct nuclear localization to the DsRed coding region. </text>
+      <annotation id="15">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="6971" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7092</offset>
+      <text>However, again we were unable to generate ES cells or mice exhibiting robust widespread reporter activity (A.-K.H. </text>
+      <annotation id="16">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7134" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7207</offset>
+      <text>and V.E. </text>
+    </sentence>
+    <sentence>
+      <offset>7216</offset>
+      <text>Papaioannou, unpublished observations).
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>7257</offset>
+      <text>Figure 1
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>7267</offset>
+      <text>Non-invasive multiple reporter visualization in ES cells. </text>
+      <annotation id="17">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7315" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7325</offset>
+      <text>(a-d) a mixture of CK6/ECFP (ECFP+) and YC5/EYFP (EYFP+) ES cells at low density. </text>
+      <annotation id="18">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7382" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7407</offset>
+      <text>(a) image taken under bright field with no epifluorescence. </text>
+    </sentence>
+    <sentence>
+      <offset>7467</offset>
+      <text>(b) dark field image taken through an EYFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>7518</offset>
+      <text>(c) dark field image taken through an ECFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>7569</offset>
+      <text>(d) dark field double exposure image acquired by consecutively using ECFP and EYFP filters. </text>
+    </sentence>
+    <sentence>
+      <offset>7661</offset>
+      <text>ECFP+ cells can clearly be discerned from EYFP+ cells. </text>
+    </sentence>
+    <sentence>
+      <offset>7716</offset>
+      <text>(e-f) culture of mixed populations of ES cells comprising ECFP+, EYFP+ and RFP+ cells. </text>
+      <annotation id="19">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7754" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7803</offset>
+      <text>Scale bars represent 100 μm.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>7834</offset>
+      <text>Two ECFP+ and two EYFP+ clones exhibiting robust fluorescence were used to generate chimeras through ES cell &lt;-&gt; morula stage embryo aggregation [13]. </text>
+      <annotation id="20">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7935" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>7985</offset>
+      <text>All four ES cell lines transmitted through the germline, leading to the establishment of, CK4/ECFP and CK6/ECFP, two strains of mice having cyan fluorescent protein expression and, YC5/EYFP and 2A4/EYFP, two strains having widespread yellow fluorescent protein expression. </text>
+      <annotation id="21">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="7994" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>8258</offset>
+      <text>In these mice the respective FP expression is constituitive, starting at preimplantation stages and continuing through postimplantation embryogenesis to adulthood (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>8427</offset>
+      <text>2). </text>
+    </sentence>
+    <sentence>
+      <offset>8431</offset>
+      <text>One line expressing each color was chosen for further analysis and breeding to homozygosity. </text>
+    </sentence>
+    <sentence>
+      <offset>8524</offset>
+      <text>The availability of homozygous animals demonstrated that both reporter gene expression and the site of transgene integration were developmentally neutral.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>8680</offset>
+      <text>Figure 2
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>8690</offset>
+      <text>Dual non-invasive reporter visualization in embryos and adult mice. </text>
+    </sentence>
+    <sentence>
+      <offset>8758</offset>
+      <text>Transgenic animals are hemizygous for either the CK6/ECFP or YC5/EYFP transgenes. </text>
+    </sentence>
+    <sentence>
+      <offset>8840</offset>
+      <text>(a-d) blastocyst stage (E3.5) embryos, that are either fluorescent or non-fluorescent. </text>
+    </sentence>
+    <sentence>
+      <offset>8927</offset>
+      <text>Fluorescent embryos are either blue/cyan or yellow/green, thereby being hemizygous for either the CK6/ECFP or YC5/EYFP transgenes respectively. </text>
+    </sentence>
+    <sentence>
+      <offset>9071</offset>
+      <text>Non-fluorescent embryos (marked with an asterix on panel a) are of the wild type outbred ICR strain. </text>
+    </sentence>
+    <sentence>
+      <offset>9172</offset>
+      <text>(a) image taken under bright field with no epifluorescence. </text>
+    </sentence>
+    <sentence>
+      <offset>9232</offset>
+      <text>(b) dark field image taken through an EYFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>9283</offset>
+      <text>(c) dark field image taken through an ECFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>9334</offset>
+      <text>(d) dark field double exposure image acquired by consecutively using ECFP and EYFP filters. </text>
+    </sentence>
+    <sentence>
+      <offset>9426</offset>
+      <text>(e-h) two transgenic (TG/+) E13.5 embryos dissected free of their extraembryonic membranes, one is blue/cyan fluorescent (CK6/ECFP transgenic, left) and the other is yellow/green fluorescent (7YC5/EYFP transgenic, right). </text>
+    </sentence>
+    <sentence>
+      <offset>9648</offset>
+      <text>(e) image taken under bright field with no epifluorescence. </text>
+    </sentence>
+    <sentence>
+      <offset>9708</offset>
+      <text>(f) dark field image taken through an EYFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>9759</offset>
+      <text>(g), dark field image taken through an ECFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>9811</offset>
+      <text>(h) double exposure acquired by consecutively using ECFP and EYFP filters. </text>
+    </sentence>
+    <sentence>
+      <offset>9886</offset>
+      <text>(i-k) two three week old transgenic mice each exclusively expressing either the ECFP or EYFP reporter. </text>
+    </sentence>
+    <sentence>
+      <offset>9989</offset>
+      <text>All images shown are double exposures taken by consecutively using ECFP and then the EYFP filters under epifluorescence. </text>
+    </sentence>
+    <sentence>
+      <offset>10110</offset>
+      <text>(i) CK6/ECFP (TG/+) transgenic mouse bottom, YC5/EYFP (TG/+) transgenic mouse bottom. </text>
+    </sentence>
+    <sentence>
+      <offset>10196</offset>
+      <text>(j) CK6/ECFP (TG/+) transgenic mouse left, YC5/EYFP (TG/+) transgenic mouse right. </text>
+    </sentence>
+    <sentence>
+      <offset>10279</offset>
+      <text>(k) higher maginification view of the tails of the mice in i and j.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>10348</offset>
+      <text>Zygotic expression of the FP transgenes is clearly evident by the blastocyst stage (Fig. </text>
+      <annotation id="22">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0000365</infon>
+        <location offset="10348" length="7"/>
+        <text>Zygotic</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>10437</offset>
+      <text>2a,2b,2c,2d) and remains widespread thereafter (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>10490</offset>
+      <text>2). </text>
+    </sentence>
+    <sentence>
+      <offset>10494</offset>
+      <text>Figure 2 demonstrates that ECFP+ embryos can easily be distinguished from EYFP+ embryos and from non-transgenic non-fluorescent embryos from preimplantation stages (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>10664</offset>
+      <text>2a,2b,2c,2d) to postimplantation stages (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>10710</offset>
+      <text>2e,2f,2g,2h). </text>
+    </sentence>
+    <sentence>
+      <offset>10724</offset>
+      <text>Additionally adult mice can also be discriminated on the basis of the color of their fluorescence (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>10828</offset>
+      <text>2i,2j,2k).
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>10840</offset>
+      <text>Even though our RFP transgenic ES cell lines failed to maintain strong uniform expression with in vitro passage, we selected three lines exhibiting the most robust expression for making chimeras, in order to ascertain whether we could achieve, or possibly recover, RFP expression in animals. </text>
+      <annotation id="23">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="10871" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>11132</offset>
+      <text>Cells were flow sorted prior to aggregation so as to enrich for RFP expression. </text>
+    </sentence>
+    <sentence>
+      <offset>11212</offset>
+      <text>Even though they had lost their characteristic ES cell morphology all three RFP+ ES cell lines went gemline as detected by coat color and PCR for the DsRed1 transgene (data not shown). </text>
+      <annotation id="24">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="11259" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+      <annotation id="25">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="11293" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>11397</offset>
+      <text>However expression of the RFP reporter could not be detected in any organ of adult mice nor in embryos (data not shown). </text>
+    </sentence>
+    <sentence>
+      <offset>11518</offset>
+      <text>This suggests that the DsRed1 RFP reporter was unable to recapitulate the expression profile of the promoter/enhancer combination employed. </text>
+    </sentence>
+    <sentence>
+      <offset>11658</offset>
+      <text>Therefore it appears that GFP variant reporters are more versatile with respect to their application in mice.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>11769</offset>
+      <text>We produced double FP-tagged chimeras in order to assess whether the ECFP and EYFP reporters could be co-visualized within the same animal. </text>
+    </sentence>
+    <sentence>
+      <offset>11909</offset>
+      <text>The first series of chimeras were generated through the aggregation of tetraploid embryos with FP+ ES cells (or embryos) of the complementary color. </text>
+      <annotation id="26">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="12008" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>12058</offset>
+      <text>The procedure is schematized in Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>12095</offset>
+      <text>3a. </text>
+    </sentence>
+    <sentence>
+      <offset>12099</offset>
+      <text>It is evident that the expression of the two FPs can easily be discerned in these double transgenic embryos where the diploid, embryo-proper compartment is ECFP+ and the tetraploid extraembryonic compartment is EYFP+ (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>12322</offset>
+      <text>3b,3c,3d,3e,3f). </text>
+    </sentence>
+    <sentence>
+      <offset>12339</offset>
+      <text>Secondly we investigated reporter co-visualization in balanced adult chimeras comprised of both ECFP+ and EYFP+ compartments. </text>
+    </sentence>
+    <sentence>
+      <offset>12465</offset>
+      <text>These were generated through the aggregation of diploid embryos with diploid embryos (or ES cells) of the complementary color. </text>
+      <annotation id="27">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="12554" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>12592</offset>
+      <text>The aggregated components of the chimera from which each organ originated is schematized in the top right of each panel in Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>12720</offset>
+      <text>4. </text>
+    </sentence>
+    <sentence>
+      <offset>12723</offset>
+      <text>These chimeric adult organs demonstrate that the ECFP+ and EYFP+ cells comprising these chimeras can easily be discerned (Fig. </text>
+    </sentence>
+    <sentence>
+      <offset>12850</offset>
+      <text>4). </text>
+    </sentence>
+    <sentence>
+      <offset>12854</offset>
+      <text>It can therefore be envisaged that two different FP colors could be used in the construction of chimeras so as to tag both mutant and wild type lineages.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>13009</offset>
+      <text>Figure 3
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>13019</offset>
+      <text>Dual non-invasive reporter visualization in chimeric embryos generated by tetraploid &lt;-&gt; diploid aggregation. </text>
+    </sentence>
+    <sentence>
+      <offset>13129</offset>
+      <text>In all panels the tetraploid compartment is yellow/green fluorescent (EYFP+) and the diploid is blue/cyan fluorescent (ECFP+). </text>
+    </sentence>
+    <sentence>
+      <offset>13256</offset>
+      <text>(a) schematic representation of the tetraploid procedure. </text>
+    </sentence>
+    <sentence>
+      <offset>13314</offset>
+      <text>Electrofusion of E1.5 embryos to render the blastomeres tetraploid, in vitro culture, and subsequent aggregation schemes using double-tagged compartments. </text>
+      <annotation id="28">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0000353</infon>
+        <location offset="13358" length="11"/>
+        <text>blastomeres</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>13469</offset>
+      <text>Sandwich aggregations were made using either ECFP+ (diploid) morulae or ES cells. </text>
+      <annotation id="29">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="13541" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>13551</offset>
+      <text>(b-d) anterior view of an E7.5 double-tagged polarized chimera dissected free of its deciduum and therefore missing primary giant cells and parietal endoderm. </text>
+      <annotation id="30">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002497</infon>
+        <location offset="13667" length="19"/>
+        <text>primary giant cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>13710</offset>
+      <text>Here the epiblast (lower half of embryo) and its derivatives are ECFP+ whereas the extraembryonic ectoderm, the visceral endoderm and trophoblast are EYFP+ (upper half or embryo). </text>
+    </sentence>
+    <sentence>
+      <offset>13890</offset>
+      <text>(b) dark field image taken through an EYFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>13941</offset>
+      <text>(c) dark field image taken through an ECFP filter. </text>
+    </sentence>
+    <sentence>
+      <offset>13992</offset>
+      <text>(d) dark field double exposure image acquired by consecutively using ECFP and EYFP filters. </text>
+    </sentence>
+    <sentence>
+      <offset>14084</offset>
+      <text>(e) dark field double filter exposure of an E9 chimera dissected free of all extraembryonic membranes except for a small piece of yolk sac (lower left). </text>
+    </sentence>
+    <sentence>
+      <offset>14237</offset>
+      <text>The embryo itself is ECFP+ whereas the yolk sac both ECFP+ and EYFP+ in the mesoderm and endoderm respectively. </text>
+    </sentence>
+    <sentence>
+      <offset>14349</offset>
+      <text>A small number of EYFP+ cells are also observed in the ventral midline of the embryo (arrowhead). </text>
+    </sentence>
+    <sentence>
+      <offset>14447</offset>
+      <text>This observation has been noted previously in tetraploid chimeras, and is presumed to represent a small population of visceral endoderm cells that fail to be displaced by the definitive endoderm at earlier stages. </text>
+      <annotation id="31">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0000223</infon>
+        <location offset="14574" length="14"/>
+        <text>endoderm cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>14661</offset>
+      <text>(f) dark field double filter exposure of an E10 chimera. </text>
+    </sentence>
+    <sentence>
+      <offset>14718</offset>
+      <text>The embryo is exclusively ECFP+ whereas its placenta (to the left of the embryo) is predominantly EYFP+. </text>
+    </sentence>
+    <sentence>
+      <offset>14823</offset>
+      <text>The labyrinthine trophoblast layer of the placenta comprises both ECFP+ and EYFP+ cells.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>14913</offset>
+      <text>Figure 4
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>14923</offset>
+      <text>Dual non-invasive reporter visualization in the organs of adult chimeras. </text>
+    </sentence>
+    <sentence>
+      <offset>14997</offset>
+      <text>All images depict dark field double exposures acquired by consecutively using ECFP and EYFP filters under dark field epifluorescence. </text>
+    </sentence>
+    <sentence>
+      <offset>15131</offset>
+      <text>Details of aggregates are schematized at the top right of each panel. </text>
+    </sentence>
+    <sentence>
+      <offset>15201</offset>
+      <text>(a-c) heart and pancreas from double-tagged double-compartment adult chimeras. </text>
+    </sentence>
+    <sentence>
+      <offset>15280</offset>
+      <text>(a) view of the surface of an adult heart. </text>
+    </sentence>
+    <sentence>
+      <offset>15323</offset>
+      <text>(b) close-up surface view of ventricle of a chimeric heart generated by aggregation of two diploid morulae, one hemizygous for the CK6/ECFP (ECFP+) transgene and the other hemizygous for the YC5/EYFP (EYFP+) transgene. </text>
+    </sentence>
+    <sentence>
+      <offset>15542</offset>
+      <text>The regions of yellow/green and cyan fluorescence are clearly mutually exclusive. </text>
+    </sentence>
+    <sentence>
+      <offset>15624</offset>
+      <text>The striations in the fields of fluorescence represent the proliferative zones present within the ventricle. </text>
+    </sentence>
+    <sentence>
+      <offset>15733</offset>
+      <text>(c) chimeric pancreas generated by aggregation of a morula hemizygous for the YC5/EYFP transgene with CK6/ECFP ES cells. </text>
+      <annotation id="32">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="15844" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>15854</offset>
+      <text>The restricted fields of fluorescence represent the proliferative zones present within the pancreas. </text>
+    </sentence>
+    <sentence>
+      <offset>15955</offset>
+      <text>(d) liver from a double-tagged triple-compartment adult chimera. </text>
+    </sentence>
+    <sentence>
+      <offset>16020</offset>
+      <text>A non-fluorescent morula was aggregated with two clumps of ES cells, one carrying the CK6/ECFP transgene (ECFP+) and the other carrying the YC5/EYFP transgene (EYFP+). </text>
+      <annotation id="33">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="16079" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>16188</offset>
+      <text>An ECFP+ vessel has clonally proliferated and infiltrated the liver lobe (top). </text>
+    </sentence>
+    <sentence>
+      <offset>16268</offset>
+      <text>Note that unlike in heart and pancreas there appears to be more interspersed blue/cyan vs green/yellow fluorescence present in the liver, possibly reflecting greater cell intermingling during the genesis of this organ.
+
+</text>
+    </sentence>
+  </passage>
+  <passage>
+    <infon key="type">Section</infon>
+    <offset>16488</offset>
+    <sentence>
+      <offset>16488</offset>
+      <text>Conclusions
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>16501</offset>
+      <text>From these observations we conclude that the blue-shifted ECFP, and the red-shifted EYFP variants of wtGFP are both amenable to use in mice. </text>
+    </sentence>
+    <sentence>
+      <offset>16642</offset>
+      <text>Also since we have established lines of viable and fertile mice having widespread FP expression we have demonstrated that ECFP and EYFP represent developmentally neutral reporters. </text>
+    </sentence>
+    <sentence>
+      <offset>16823</offset>
+      <text>Since we were unable to obtain ES cells, embryos or mice with widespread expression of a RFP (DsRed1) we conclude that this reporter is not developmentally neutral or that its expression cannot be sustained at levels high enough for detection, and as such is not as versatile as other gene-based fluorescent reporters.
+
+</text>
+      <annotation id="34">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="16854" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>17143</offset>
+      <text>ECFP and EYFP can be distinguished on the basis of their unique non-overlapping spectral profiles, and chimeras comprised of ECFP and EYFP tagged compartments demonstrate that the two reporters can be simultaneously non-invasively visualized within the same embryo or adult organ. </text>
+    </sentence>
+    <sentence>
+      <offset>17424</offset>
+      <text>Therefore it should be possible to use flow cytometry to isolate cells expressing either or both of the reporters from embryos or adult organs [14].
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>17574</offset>
+      <text>These two reporters can also be used to create pairs of donors and acceptors for in vivo fluorescence energy transfer (FRET) [15]. </text>
+    </sentence>
+    <sentence>
+      <offset>17705</offset>
+      <text>Since the emission profiles of ECFP and EYFP are the least overlapping of all the usable GFP variants, these ECFP and EYFP currently represent the best combination for co-visualization and for use in multi-spectral double-tagged transgenic, chimeric and/or in vivo FRET experiments (reviewed in [16]).
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>18008</offset>
+      <text>These experiments have demonstrated the feasibility of monitoring multiple FP reporters non-invasively within a single animal, and have shown the developmental neutrality of the FP reporters employed. </text>
+    </sentence>
+    <sentence>
+      <offset>18209</offset>
+      <text>This should pave the way for novel strategies designed to incorporate the use of compound transgenics or tissue recombination or chimeric analyses where several compartments are to be tagged. </text>
+    </sentence>
+    <sentence>
+      <offset>18401</offset>
+      <text>This technology should provide new possibilities in manipulating the mouse genome, and non-invasively studying the consequences.
+
+</text>
+    </sentence>
+  </passage>
+  <passage>
+    <infon key="type">Section</infon>
+    <offset>18531</offset>
+    <sentence>
+      <offset>18531</offset>
+      <text>Materials and methods
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>18554</offset>
+      <text>Vector construction
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>18575</offset>
+      <text>cDNAs encoding ECFP, EYFP and DsRed were amplified from plasmids pECFP, pEYFP and pDsRed1-N1 (Clontech, Inc.) </text>
+    </sentence>
+    <sentence>
+      <offset>18685</offset>
+      <text>by PCR using HiFi Taq Polymerase (Invitrogen). </text>
+    </sentence>
+    <sentence>
+      <offset>18732</offset>
+      <text>For ECFP and EYFP primers used were GFP-L (5'-TTG AAT TCG CCA CCA TGG TGA GC) and GFP-R (5'-TTG AAT TCT TAC TTG TAC AGC TCG TCC), for dsRed primers were red-L (5'-TTG AAT TCG CCA CCA TGG TGC GCT C) and red-R (5'-TTG AAT TCT TAC GCT ACA GCT ACA GGA ACA GGT G). </text>
+    </sentence>
+    <sentence>
+      <offset>18992</offset>
+      <text>All 5' primers contain a Kozak consensus translation initiation site upstream of the ATG for increased translation efficiency in eukaryotic cells [17]. </text>
+      <annotation id="35">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0000255</infon>
+        <location offset="19121" length="16"/>
+        <text>eukaryotic cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>19144</offset>
+      <text>To construct vectors driving ubiquitous transgene expression in ES cells and mice, the PCR amplified cDNAs were digested with EcoRI and inserted into the EcoRI sites of pCAGGS [18] to generate pCX-ECFP, pCX-EYFP and pCX-DsRed. </text>
+      <annotation id="36">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="19208" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>19371</offset>
+      <text>pCAGGS contains the chicken beta-actin promoter and first intron coupled to the CMV immediate early enhancer, and rabbit beta-globin polyadenylation signal. </text>
+    </sentence>
+    <sentence>
+      <offset>19528</offset>
+      <text>This promoter/enhancer combination has previously been shown to drive strong and widespread transgene expression in ES cells, embryos and adult mice [18,19].
+
+</text>
+      <annotation id="37">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="19644" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>19687</offset>
+      <text>Tissue culture
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>19703</offset>
+      <text>R1 ES cells [20] were maintained under standard culture conditions in the presence of LIF, as described previously [21]. </text>
+      <annotation id="38">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="19706" length="8"/>
+        <text>ES cells</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>19824</offset>
+      <text>20 μg of SalI linearized pCX-ECFP, pCX-EYFP or pCX-DsRed1 was co-electroporated into 2 × 107 cells with 5–10 μg of circular pPGKPuro [22]. </text>
+    </sentence>
+    <sentence>
+      <offset>19968</offset>
+      <text>This provided transient drug resistance which could be used as a selection for obtaining individual colonies. </text>
+    </sentence>
+    <sentence>
+      <offset>20078</offset>
+      <text>Selection was applied 24 hours after electroporation and maintained for 5 days, thereafter cells were propagated in in the absence of selection. </text>
+    </sentence>
+    <sentence>
+      <offset>20223</offset>
+      <text>Fluorescent colonies were picked into 96-well plates, expanded and archived as described previously ([2]. </text>
+    </sentence>
+    <sentence>
+      <offset>20329</offset>
+      <text>Clones were screened for strong, stable, and homogenous transgene expression during culture in the absence of drug selection.
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>20456</offset>
+      <text>Chimera production and germline transmission
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>20502</offset>
+      <text>ES cell lines exhibiting robust transgene expression in vitro were assessed in vivo for the spatiotemporal extent of transgene expression and their developmental potential in chimeras produced by aggregation with wild type tetraploid ICR embryos so as to produce completely ES cell-derived embryos, as described previously [20,23]. </text>
+      <annotation id="39">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="20502" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+      <annotation id="40">
+        <infon key="type">Cell</infon>
+        <infon key="cui">CL:0002322</infon>
+        <location offset="20776" length="7"/>
+        <text>ES cell</text>
+      </annotation>
+    </sentence>
+    <sentence>
+      <offset>20834</offset>
+      <text>A detailed protocol can be found on the world wide web at . </text>
+    </sentence>
+    <sentence>
+      <offset>20894</offset>
+      <text>Clones giving fluorescent E12.5 embryos having no readily identifiable malformations were used to generate germline transmitting chimeras by aggregation with diploid wild type ICR embryos as described previously [21,23]. </text>
+    </sentence>
+    <sentence>
+      <offset>21115</offset>
+      <text>After germline transmission transgenes were bred to homozygosity. </text>
+    </sentence>
+    <sentence>
+      <offset>21181</offset>
+      <text>Transgenes were maintained on both mixedbred ICR and inbred 129/SvJ genetic backgrounds [24].
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>21276</offset>
+      <text>Imaging
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>21285</offset>
+      <text>Photographs of live samples, freshly dissected in PBS ([24] were taken on a Leica MZFLIII stereo dissecting microscope equipped with epifluorescence optics. </text>
+    </sentence>
+    <sentence>
+      <offset>21442</offset>
+      <text>Filter sets used were: excitation 436/20 nm, dichroic mirror 455 nm, barrier 480/40 nm for ECFP, excitation 500/20 nm, dichroic mirror 515 nm, barrier 535/30 nm for EYFP and excitation 540/25 nm, dichroic mirror 565 nm, barrier 605/55 for DsRed. </text>
+    </sentence>
+    <sentence>
+      <offset>21688</offset>
+      <text>Adult mice were anaesthetized with avertin. </text>
+    </sentence>
+    <sentence>
+      <offset>21732</offset>
+      <text>They were then placed on the stage of a stereo dissecting microscope (Leica MZFLIII) from which the objective had been removed, such that they were illuminated using the epifluorescence optics (lamp and excitation filters). </text>
+    </sentence>
+    <sentence>
+      <offset>21956</offset>
+      <text>Photographs were taken using a Nikon FE10 35 mm SLR camera fitted with individual emission filters. </text>
+    </sentence>
+    <sentence>
+      <offset>22056</offset>
+      <text>Images were processed using Photoshop software (Adobe Systems).
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>22121</offset>
+      <text>Footnote
+
+</text>
+    </sentence>
+    <sentence>
+      <offset>22131</offset>
+      <text>The cyan and yellow fluorescent protein-expressing mice described here have been acquired by, and are available from, the Jackson Laboratory Induced Mutant Resource . </text>
+    </sentence>
+    <sentence>
+      <offset>22298</offset>
+      <text>They are referred to therein as 003373 Stock TgN(ActbECFP) 1Nagy (CK6/ECFP) and 003772 Stock TgN(ActbEYFP)1Nagy (YC5/EYFP).
+
+</text>
+    </sentence>
+  </passage>
+</document>
+</collection>

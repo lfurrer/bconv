@@ -16,7 +16,7 @@ The examples used in the test cases are taken from the NCBI disease corpus, the 
   *Proceedings of the BioCreative V workshop*, 154–166.
   [2]: https://biocreative.bioinformatics.udel.edu/media/store/files/2015/BC5CDRoverview.pdf
 
-* CRAFT corpus: 1 text-only full-text article from the training set.
+* CRAFT corpus: 1 full-text article from the training set.
 
   Michael Bada, Miriam Eckert, Donald Evans, Kristin Garcia, Krista Shipley, Dmitry Sitnikov, William A. Baumgartner Jr, K. Bretonnel Cohen, Karin Verspoor, Judith A. Blake, Lawrence E. Hunter. (2012).
   [**Concept annotation in the CRAFT corpus.**][3]

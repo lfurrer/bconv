@@ -10,6 +10,7 @@ import io
 import json
 import tarfile
 import zipfile
+import itertools as it
 from pathlib import Path
 from collections import namedtuple
 
@@ -31,6 +32,11 @@ OPTIONS = {
 
     # Document-specific options.
     'sentence-level': dict(sentence_level=True),
+
+    # Both format- and document-specific options.
+    ('bionlp', 'CRAFT-example'): dict(att='cui'),
+    ('bioc_json', 'CRAFT-example'): dict(sentence_level=True),
+    ('bioc_xml', 'CRAFT-example'): dict(sentence_level=True),
 }
 
 
@@ -47,8 +53,8 @@ def _build_internal(path):
     docs = zip(data['ids'], data['text'], data['entities'])
     for id_, text, entities in docs:
         doc = document.Document(id_)
-        for i, sec in enumerate(text):
-            tp = 'Abstract' if i else 'Title'
+        for sec, tp in zip(text, it.chain(['Title', 'Abstract'],
+                                          it.repeat('Section'))):
             doc.add_section(tp, sec)
         doc.add_entities(document.Entity(*e) for e in entities)
         coll.add_document(doc)
@@ -62,6 +68,7 @@ def case(request, internal):
     coll = internal[path.stem]
     options = OPTIONS.get(fmt, {})
     options.update(OPTIONS.get(path.stem, {}))
+    options.update(OPTIONS.get((fmt, path.stem), {}))
     return Case(fmt, path, coll, options)
 
 
