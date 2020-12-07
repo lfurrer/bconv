@@ -12,7 +12,7 @@
 
 ## Representation
 
-- [ ] support discontinuous spans
+- [x] support discontinuous spans
 - [ ] support relations (BioC and PubTator)
 
 

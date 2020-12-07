@@ -113,9 +113,6 @@ class _BioCLoader(CollLoader, _OffsetMixin):
     def _get_annotations(self, node, offset_mngr):
         """
         Iterate over annotations.
-
-        Any non-contiguous annotation is split up into
-        multiple contiguous annotations.
         """
         for anno in self._iterfind(node, 'annotation'):
             offsets = list(self._get_offsets(anno, offset_mngr))
