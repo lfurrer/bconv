@@ -8,7 +8,7 @@
           "begin": 111,
           "end": 135
         },
-        "obj": "D014923"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -16,7 +16,7 @@
           "begin": 141,
           "end": 165
         },
-        "obj": "D014923"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T3",
@@ -24,7 +24,7 @@
           "begin": 167,
           "end": 170
         },
-        "obj": "D014923"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -32,7 +32,7 @@
           "begin": 176,
           "end": 209
         },
-        "obj": "D007153+D040181"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T5",
@@ -40,7 +40,7 @@
           "begin": 268,
           "end": 271
         },
-        "obj": "D014923"
+        "obj": "Modifier"
       },
       {
         "id": "T6",
@@ -48,7 +48,7 @@
           "begin": 443,
           "end": 446
         },
-        "obj": "D014923"
+        "obj": "Modifier"
       },
       {
         "id": "T7",
@@ -56,7 +56,7 @@
           "begin": 608,
           "end": 611
         },
-        "obj": "D014923"
+        "obj": "Modifier"
       },
       {
         "id": "T8",
@@ -64,7 +64,7 @@
           "begin": 662,
           "end": 665
         },
-        "obj": "D014923"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T9",
@@ -72,7 +72,7 @@
           "begin": 1291,
           "end": 1316
         },
-        "obj": "D013921"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T10",
@@ -80,7 +80,7 @@
           "begin": 1381,
           "end": 1384
         },
-        "obj": "D014923"
+        "obj": "Modifier"
       },
       {
         "id": "T11",
@@ -88,6 +88,74 @@
           "begin": 1672,
           "end": 1675
         },
+        "obj": "SpecificDisease"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D007153+D040181"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
+        "obj": "D013921"
+      },
+      {
+        "id": "A10",
+        "subj": "T10",
+        "pred": "cui",
+        "obj": "D014923"
+      },
+      {
+        "id": "A11",
+        "subj": "T11",
+        "pred": "cui",
         "obj": "D014923"
       }
     ],
@@ -104,7 +172,7 @@
           "begin": 53,
           "end": 70
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -112,7 +180,7 @@
           "begin": 249,
           "end": 261
         },
-        "obj": "D009369"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T3",
@@ -120,7 +188,7 @@
           "begin": 279,
           "end": 296
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -128,7 +196,7 @@
           "begin": 418,
           "end": 429
         },
-        "obj": "D009369"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T5",
@@ -136,7 +204,7 @@
           "begin": 542,
           "end": 559
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T6",
@@ -144,7 +212,7 @@
           "begin": 619,
           "end": 636
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T7",
@@ -152,7 +220,7 @@
           "begin": 662,
           "end": 668
         },
-        "obj": "D009369"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T8",
@@ -160,7 +228,7 @@
           "begin": 781,
           "end": 798
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T9",
@@ -168,7 +236,7 @@
           "begin": 856,
           "end": 873
         },
-        "obj": "D010190"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T10",
@@ -176,6 +244,68 @@
           "begin": 897,
           "end": 904
         },
+        "obj": "DiseaseClass"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D009369"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D009369"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "D009369"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
+        "obj": "D010190"
+      },
+      {
+        "id": "A10",
+        "subj": "T10",
+        "pred": "cui",
         "obj": "D009369"
       }
     ],
@@ -192,7 +322,7 @@
           "begin": 102,
           "end": 130
         },
-        "obj": "OMIM:312080"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -200,7 +330,7 @@
           "begin": 281,
           "end": 309
         },
-        "obj": "OMIM:312080"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T3",
@@ -208,7 +338,7 @@
           "begin": 311,
           "end": 314
         },
-        "obj": "OMIM:312080"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -216,7 +346,7 @@
           "begin": 464,
           "end": 491
         },
-        "obj": "OMIM:312920"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T5",
@@ -224,7 +354,7 @@
           "begin": 493,
           "end": 496
         },
-        "obj": "OMIM:312920"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T6",
@@ -232,7 +362,7 @@
           "begin": 565,
           "end": 568
         },
-        "obj": "OMIM:312080"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T7",
@@ -240,7 +370,7 @@
           "begin": 645,
           "end": 654
         },
-        "obj": "D020417"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T8",
@@ -248,7 +378,7 @@
           "begin": 666,
           "end": 673
         },
-        "obj": "D014202"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T9",
@@ -256,7 +386,7 @@
           "begin": 689,
           "end": 707
         },
-        "obj": "D008607"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T10",
@@ -264,7 +394,7 @@
           "begin": 742,
           "end": 750
         },
-        "obj": "D003704"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T11",
@@ -272,7 +402,7 @@
           "begin": 754,
           "end": 775
         },
-        "obj": "D010554"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T12",
@@ -280,6 +410,80 @@
           "begin": 1045,
           "end": 1067
         },
+        "obj": "DiseaseClass"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "OMIM:312080"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "OMIM:312080"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "OMIM:312080"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "OMIM:312920"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "OMIM:312920"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "OMIM:312080"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "D020417"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D014202"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
+        "obj": "D008607"
+      },
+      {
+        "id": "A10",
+        "subj": "T10",
+        "pred": "cui",
+        "obj": "D003704"
+      },
+      {
+        "id": "A11",
+        "subj": "T11",
+        "pred": "cui",
+        "obj": "D010554"
+      },
+      {
+        "id": "A12",
+        "subj": "T12",
+        "pred": "cui",
         "obj": "OMIM:312080+OMIM:312920"
       }
     ],
@@ -296,7 +500,7 @@
           "begin": 39,
           "end": 64
         },
-        "obj": "D018232"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -304,6 +508,20 @@
           "begin": 100,
           "end": 135
         },
+        "obj": "SpecificDisease"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D018232"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
         "obj": "D018232"
       }
     ],
@@ -320,7 +538,7 @@
           "begin": 34,
           "end": 55
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T2",
@@ -328,7 +546,7 @@
           "begin": 132,
           "end": 153
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T3",
@@ -336,7 +554,7 @@
           "begin": 155,
           "end": 157
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T4",
@@ -344,6 +562,32 @@
           "begin": 576,
           "end": 578
         },
+        "obj": "Modifier"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
         "obj": "D001260"
       }
     ],
@@ -360,7 +604,7 @@
           "begin": 17,
           "end": 32
         },
-        "obj": "D010661"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -368,7 +612,7 @@
           "begin": 44,
           "end": 59
         },
-        "obj": "D010661"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T3",
@@ -376,7 +620,7 @@
           "begin": 61,
           "end": 64
         },
-        "obj": "D010661"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -384,7 +628,7 @@
           "begin": 72,
           "end": 100
         },
-        "obj": "D030342"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T5",
@@ -392,7 +636,7 @@
           "begin": 113,
           "end": 160
         },
-        "obj": "OMIM:261600"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T6",
@@ -400,7 +644,7 @@
           "begin": 217,
           "end": 220
         },
-        "obj": "D010661"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T7",
@@ -408,7 +652,7 @@
           "begin": 471,
           "end": 484
         },
-        "obj": "OMIM:261600"
+        "obj": "Modifier"
       },
       {
         "id": "T8",
@@ -416,7 +660,7 @@
           "begin": 734,
           "end": 747
         },
-        "obj": "OMIM:261600"
+        "obj": "Modifier"
       },
       {
         "id": "T9",
@@ -424,6 +668,62 @@
           "begin": 1016,
           "end": 1019
         },
+        "obj": "SpecificDisease"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D010661"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D010661"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D010661"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D030342"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "OMIM:261600"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D010661"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "OMIM:261600"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "OMIM:261600"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
         "obj": "D010661"
       }
     ],
@@ -440,7 +740,7 @@
           "begin": 92,
           "end": 128
         },
-        "obj": "D061325"
+        "obj": "Modifier"
       },
       {
         "id": "T2",
@@ -448,7 +748,7 @@
           "begin": 714,
           "end": 727
         },
-        "obj": "D001943"
+        "obj": "Modifier"
       },
       {
         "id": "T3",
@@ -456,6 +756,26 @@
           "begin": 795,
           "end": 801
         },
+        "obj": "Modifier"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D061325"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D001943"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
         "obj": "D009369"
       }
     ],
@@ -472,7 +792,7 @@
           "begin": 10,
           "end": 32
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -480,7 +800,7 @@
           "begin": 275,
           "end": 297
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T3",
@@ -488,7 +808,7 @@
           "begin": 299,
           "end": 302
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -496,7 +816,7 @@
           "begin": 837,
           "end": 840
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T5",
@@ -504,7 +824,7 @@
           "begin": 931,
           "end": 934
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T6",
@@ -512,7 +832,7 @@
           "begin": 998,
           "end": 1001
         },
-        "obj": "D003327"
+        "obj": "Modifier"
       },
       {
         "id": "T7",
@@ -520,7 +840,7 @@
           "begin": 1187,
           "end": 1190
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T8",
@@ -528,7 +848,7 @@
           "begin": 1325,
           "end": 1328
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T9",
@@ -536,7 +856,7 @@
           "begin": 1355,
           "end": 1370
         },
-        "obj": "OMIM:143470"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T10",
@@ -544,7 +864,7 @@
           "begin": 1416,
           "end": 1419
         },
-        "obj": "D003327"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T11",
@@ -552,6 +872,74 @@
           "begin": 1448,
           "end": 1451
         },
+        "obj": "Modifier"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
+        "obj": "OMIM:143470"
+      },
+      {
+        "id": "A10",
+        "subj": "T10",
+        "pred": "cui",
+        "obj": "D003327"
+      },
+      {
+        "id": "A11",
+        "subj": "T11",
+        "pred": "cui",
         "obj": "D003327"
       }
     ],
@@ -568,7 +956,7 @@
           "begin": 0,
           "end": 21
         },
-        "obj": "D001260"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T2",
@@ -576,7 +964,7 @@
           "begin": 100,
           "end": 128
         },
-        "obj": "D030342"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T3",
@@ -584,7 +972,7 @@
           "begin": 129,
           "end": 150
         },
-        "obj": "D001260"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T4",
@@ -592,7 +980,7 @@
           "begin": 152,
           "end": 155
         },
-        "obj": "D001260"
+        "obj": "SpecificDisease"
       },
       {
         "id": "T5",
@@ -600,7 +988,7 @@
           "begin": 175,
           "end": 198
         },
-        "obj": "D013132"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T6",
@@ -608,7 +996,7 @@
           "begin": 200,
           "end": 216
         },
-        "obj": "D007153"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T7",
@@ -616,7 +1004,7 @@
           "begin": 221,
           "end": 242
         },
-        "obj": "D009369"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T8",
@@ -624,7 +1012,7 @@
           "begin": 244,
           "end": 247
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T9",
@@ -632,7 +1020,7 @@
           "begin": 288,
           "end": 300
         },
-        "obj": "D009369"
+        "obj": "DiseaseClass"
       },
       {
         "id": "T10",
@@ -640,7 +1028,7 @@
           "begin": 320,
           "end": 323
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T11",
@@ -648,7 +1036,7 @@
           "begin": 563,
           "end": 566
         },
-        "obj": "D001260"
+        "obj": "Modifier"
       },
       {
         "id": "T12",
@@ -656,6 +1044,80 @@
           "begin": 1093,
           "end": 1096
         },
+        "obj": "Modifier"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D030342"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D013132"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D007153"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "D009369"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
+        "obj": "D009369"
+      },
+      {
+        "id": "A10",
+        "subj": "T10",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A11",
+        "subj": "T11",
+        "pred": "cui",
+        "obj": "D001260"
+      },
+      {
+        "id": "A12",
+        "subj": "T12",
+        "pred": "cui",
         "obj": "D001260"
       }
     ],

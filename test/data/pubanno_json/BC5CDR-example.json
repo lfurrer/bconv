@@ -8,7 +8,7 @@
           "begin": 0,
           "end": 9
         },
-        "obj": "D008012"
+        "obj": "Chemical"
       },
       {
         "id": "T2",
@@ -16,7 +16,7 @@
           "begin": 18,
           "end": 34
         },
-        "obj": "D006323"
+        "obj": "Disease"
       },
       {
         "id": "T3",
@@ -24,7 +24,7 @@
           "begin": 90,
           "end": 99
         },
-        "obj": "D008012"
+        "obj": "Chemical"
       },
       {
         "id": "T4",
@@ -32,7 +32,7 @@
           "begin": 142,
           "end": 152
         },
-        "obj": "D003866"
+        "obj": "Disease"
       },
       {
         "id": "T5",
@@ -40,7 +40,7 @@
           "begin": 331,
           "end": 347
         },
-        "obj": "D001919"
+        "obj": "Disease"
       },
       {
         "id": "T6",
@@ -48,6 +48,44 @@
           "begin": 409,
           "end": 418
         },
+        "obj": "Chemical"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "D008012"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D006323"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "D008012"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "D003866"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D001919"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
         "obj": "D008012"
       }
     ],
