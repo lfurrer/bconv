@@ -58,6 +58,7 @@ class PubAnnoJSONFormatter(Formatter):
         return {
             'text': content.text,
             'denotations': list(self._entities(content, offset)),
+            'relations': list(self._relations(content)),
             **meta,
             **self.meta,
         }
@@ -91,6 +92,28 @@ class PubAnnoJSONFormatter(Formatter):
             return spans[0]
         return spans
 
+    @staticmethod
+    def _relations(content):
+        refs = {
+            a.id: '{}{}'.format(prefix, i)
+            for annos, prefix in ((content.iter_entities(), 'T'),
+                                  (content.iter_relations(), 'R'))
+            for i, a in enumerate(annos, start=1)
+        }
+        for id_, relation in enumerate(content.iter_relations(), start=1):
+            try:
+                subj, obj = relation
+            except ValueError:
+                raise ValueError(
+                    'PubAnnotation format supports binary relations only; '
+                    'found relation with arity {}.'.format(len(relation)))
+            yield {
+                'id': 'R{}'.format(id_),
+                'subj': refs[subj.refid],
+                'pred': relation.type,
+                'obj': refs[obj.refid],
+            }
+
 
 class PubAnnoTGZFormatter(StreamFormatter, PubAnnoJSONFormatter):
     """
@@ -103,11 +126,22 @@ class PubAnnoTGZFormatter(StreamFormatter, PubAnnoJSONFormatter):
     def write(self, content, stream):
         with tarfile.open(fileobj=stream, mode='w:gz') as tar:
             for doc in content.units(Document):
-                for divid, sec in enumerate(doc, start=1):
-                    div = self._division(sec, divid=divid)
-                    name = '{}-{}.json'.format(div['sourceid'], divid)
+                for name, div in self._iter_divs(doc):
                     blob = json.dumps(div, indent=2).encode('utf8')
                     info = tarfile.TarInfo(name)
                     info.size = len(blob)
                     info.mtime = time.time()
                     tar.addfile(info, io.BytesIO(blob))
+
+    def _iter_divs(self, doc):
+        if doc.relations:
+            # If there are document-level annotations, all sections need to be
+            # in the same file (archive member).
+            div = self._document(doc)
+            name = '{}.json'.format(div['sourceid'])
+            yield name, div
+        else:
+            for divid, sec in enumerate(doc, start=1):
+                div = self._division(sec, divid=divid)
+                name = '{}-{}.json'.format(div['sourceid'], divid)
+                yield name, div
