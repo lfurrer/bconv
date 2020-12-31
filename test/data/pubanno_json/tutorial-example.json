@@ -8,7 +8,7 @@
           "begin": 28,
           "end": 47
         },
-        "obj": "2099"
+        "obj": "Gene"
       },
       {
         "id": "T2",
@@ -16,7 +16,7 @@
           "begin": 71,
           "end": 89
         },
-        "obj": "D009103"
+        "obj": "Disease"
       },
       {
         "id": "T3",
@@ -24,7 +24,7 @@
           "begin": 119,
           "end": 138
         },
-        "obj": "2099"
+        "obj": "Gene"
       },
       {
         "id": "T4",
@@ -32,7 +32,7 @@
           "begin": 159,
           "end": 163
         },
-        "obj": "2099"
+        "obj": "Gene"
       },
       {
         "id": "T5",
@@ -40,7 +40,7 @@
           "begin": 203,
           "end": 221
         },
-        "obj": "D009103"
+        "obj": "Disease"
       },
       {
         "id": "T6",
@@ -48,7 +48,7 @@
           "begin": 223,
           "end": 225
         },
-        "obj": "D009103"
+        "obj": "Disease"
       },
       {
         "id": "T7",
@@ -56,7 +56,7 @@
           "begin": 309,
           "end": 313
         },
-        "obj": "2099"
+        "obj": "Gene"
       },
       {
         "id": "T8",
@@ -64,7 +64,7 @@
           "begin": 349,
           "end": 351
         },
-        "obj": "D009103"
+        "obj": "Disease"
       },
       {
         "id": "T9",
@@ -72,6 +72,62 @@
           "begin": 514,
           "end": 516
         },
+        "obj": "Disease"
+      }
+    ],
+    "attributes": [
+      {
+        "id": "A1",
+        "subj": "T1",
+        "pred": "cui",
+        "obj": "2099"
+      },
+      {
+        "id": "A2",
+        "subj": "T2",
+        "pred": "cui",
+        "obj": "D009103"
+      },
+      {
+        "id": "A3",
+        "subj": "T3",
+        "pred": "cui",
+        "obj": "2099"
+      },
+      {
+        "id": "A4",
+        "subj": "T4",
+        "pred": "cui",
+        "obj": "2099"
+      },
+      {
+        "id": "A5",
+        "subj": "T5",
+        "pred": "cui",
+        "obj": "D009103"
+      },
+      {
+        "id": "A6",
+        "subj": "T6",
+        "pred": "cui",
+        "obj": "D009103"
+      },
+      {
+        "id": "A7",
+        "subj": "T7",
+        "pred": "cui",
+        "obj": "2099"
+      },
+      {
+        "id": "A8",
+        "subj": "T8",
+        "pred": "cui",
+        "obj": "D009103"
+      },
+      {
+        "id": "A9",
+        "subj": "T9",
+        "pred": "cui",
         "obj": "D009103"
       }
     ],

@@ -14,6 +14,7 @@ import io
 import json
 import time
 import tarfile
+import itertools as it
 
 from ._export import Formatter, StreamFormatter
 from ..doc.document import Collection, Document, Section
@@ -26,7 +27,7 @@ class PubAnnoJSONFormatter(Formatter):
 
     ext = 'json'
 
-    def __init__(self, obj='cui', sourcedb=None, **meta):
+    def __init__(self, obj='type', sourcedb=None, **meta):
         self.obj = obj
         self.meta = {'sourcedb': sourcedb, **meta}
 
@@ -58,6 +59,7 @@ class PubAnnoJSONFormatter(Formatter):
         return {
             'text': content.text,
             'denotations': list(self._entities(content, offset)),
+            'attributes': list(self._attributes(content)),
             'relations': list(self._relations(content)),
             **meta,
             **self.meta,
@@ -91,6 +93,20 @@ class PubAnnoJSONFormatter(Formatter):
             # Avoid extended syntax if not necessary.
             return spans[0]
         return spans
+
+    def _attributes(self, content):
+        att_counter = it.count(1)
+        for i, entity in enumerate(content.iter_entities(), start=1):
+            tid = 'T{}'.format(i)
+            for key, value in entity.info.items():
+                if key != self.obj:
+                    aid = 'A{}'.format(next(att_counter))
+                    yield {
+                        'id': aid,
+                        'subj': tid,
+                        'pred': key,
+                        'obj': value,
+                    }
 
     @staticmethod
     def _relations(content):
