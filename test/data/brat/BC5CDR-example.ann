@@ -1,7 +1,13 @@
 T1	Chemical 0 9	Lidocaine
+N1	Reference T1 D008012	Lidocaine
 T2	Disease 18 34	cardiac asystole
+N2	Reference T2 D006323	cardiac asystole
 T3	Chemical 90 99	lidocaine
+N3	Reference T3 D008012	lidocaine
 T4	Disease 142 152	depression
+N4	Reference T4 D003866	depression
 T5	Disease 331 347	bradyarrhythmias
+N5	Reference T5 D001919	bradyarrhythmias
 T6	Chemical 409 418	lidocaine
+N6	Reference T6 D008012	lidocaine
 R1	CID Chemical:T1 Disease:T2

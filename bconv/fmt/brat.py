@@ -21,6 +21,7 @@ class _BaseBratFormatter(StreamFormatter):
     """
 
     T_LINE = '{}\t{} {}\t{}\n'
+    N_LINE = '{}\tReference {} {}\t{}\n'
     A_LINE = '{}\t{} {} {}\n'
     R_LINE = '{}\t{} {}\n'
     E_LINE = '{}\t{}\n'
@@ -30,7 +31,7 @@ class _BaseBratFormatter(StreamFormatter):
         self.att = att
 
     def write(self, content, stream):
-        counters = [pids(prefix) for prefix in 'TARE']
+        counters = [pids(prefix) for prefix in 'TNARE']
         for doc in content.units('document'):
             self._write_anno(stream, doc, counters)
 
@@ -38,11 +39,11 @@ class _BaseBratFormatter(StreamFormatter):
         """
         Write document-level annotations with continuous IDs.
         """
-        c_t, c_a, c_r, c_e = counters
-        entity_refs = dict(self._write_entities(stream, document, c_t, c_a))
+        c_t, c_n, c_a, c_r, c_e = counters
+        entity_refs = dict(self._write_entities(stream, document, c_t, c_n, c_a))
         self._write_relations(stream, document, entity_refs, c_r, c_e)
 
-    def _write_entities(self, stream, document, c_t, c_a):
+    def _write_entities(self, stream, document, c_t, c_n, c_a):
         raise NotImplementedError
 
     def _write_relations(self, stream, document, entity_refs, c_r, c_e):
@@ -61,7 +62,7 @@ class _BaseBratFormatter(StreamFormatter):
                                for m in relation)
             stream.write(line.format(members))
 
-    def _get_att(self, entity, key=None):
+    def _get_att(self, entity, key=None, option_name='att'):
         if key is None:
             key = self.att
         try:
@@ -71,7 +72,7 @@ class _BaseBratFormatter(StreamFormatter):
                 raise ValueError(
                     'Need entity attribute: {!r} not found in Entity.info. '
                     'Please check the `{}` option.'
-                    .format(key, 'att' if key == self.att else 'extra'))
+                    .format(key, option_name))
             raise
 
     @staticmethod
@@ -89,30 +90,40 @@ class BratFormatter(_BaseBratFormatter):
     ext = 'ann'
     _fieldname_pattern = re.compile(r'\W+')
 
-    def __init__(self, att='type', extra=()):
+    def __init__(self, att='type', cui=None, extra=()):
         """
         Args:
             att: info key of the attribute value
                  (used in the "type" slot of a T line)
+            cui: info key of the concept ID
+                 (used in a separate N line)
             extra: info keys for additional attributes
                    (used in a separate A line)
         """
         super().__init__(att=att)
+        self.cui = cui
         self.extra = extra
 
-    def _write_entities(self, stream, document, c_t, c_a):
+    def _write_entities(self, stream, document, c_t, c_n, c_a):
         mentions = self._get_mentions(document)
         for (loc_att, entities), t in zip(sorted(mentions.items()), c_t):
             stream.write(self.T_LINE.format(t, *loc_att[2:]))
             for e in entities:
+                # Add concept IDs (normalisation/linking) if specified.
+                self._write_normalisation(stream, e, t, c_n)
                 # Add all remaining information as attribute annotations.
                 self._write_attributes(stream, e, t, c_a)
                 # Keep track of the entity counter for references in relations.
                 yield e.id, t
 
+    def _write_normalisation(self, stream, entity, t, c_n):
+        if self.cui is not None:
+            value = self._get_att(entity, self.cui, 'cui')
+            stream.write(self.N_LINE.format(next(c_n), t, value, entity.text_wn))
+
     def _write_attributes(self, stream, entity, t, c_a):
         for key, a in zip(self.extra, c_a):
-            value = self._get_att(entity, key)
+            value = self._get_att(entity, key, 'extra')
             stream.write(self.A_LINE.format(a, key, t, value))
 
     def _get_mentions(self, document):
@@ -143,7 +154,7 @@ class BioNLPFormatter(_BaseBratFormatter):
 
     ext = 'bionlp'
 
-    def _write_entities(self, stream, document, c_t, _):
+    def _write_entities(self, stream, document, c_t, *_):
         for entity, t in zip(document.iter_entities(), c_t):
             att = self._get_att(entity)
             offsets = self._format_offsets(entity)
