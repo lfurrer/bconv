@@ -22,21 +22,44 @@ class _BaseBratFormatter(StreamFormatter):
 
     T_LINE = 'T{}\t{} {}\t{}\n'
     A_LINE = 'A{}\t{} T{} {}\n'
+    E_LINE = 'E{}\t{}\n'
+    R_LINE = 'R{}\t{} {}\n'
 
     def __init__(self, att='type'):
         super().__init__()
         self.att = att
 
     def write(self, content, stream):
-        counters = [it.count(1) for _ in range(2)]
+        counters = [it.count(1) for _ in range(3)]
         for doc in content.units('document'):
-            self._write_anno(stream, doc, *counters)
+            self._write_anno(stream, doc, counters)
 
-    def _write_anno(self, stream, document, c_t, c_a):
+    def _write_anno(self, stream, document, counters):
         """
         Write document-level annotations with continuous IDs.
         """
+        c_t, c_a, c_r = counters
+        entity_refs = dict(self._write_entities(stream, document, c_t, c_a))
+        self._write_relations(stream, document, entity_refs, c_r)
+
+    def _write_entities(self, stream, document, c_t, c_a):
         raise NotImplementedError
+
+    def _write_relations(self, stream, document, entity_refs, counter):
+        relations = []
+        for relation, r in zip(document.iter_relations(), counter):
+            if len(relation) == 2 and relation.type is not None:
+                id_ = 'R{}'.format(r)
+                line = self.R_LINE.format(r, relation.type, '{}')
+            else:
+                id_ = 'E{}'.format(r)
+                line = self.E_LINE.format(r, '{}')
+            entity_refs[relation.id] = id_
+            relations.append((relation, line))
+        for relation, line in relations:
+            members = ' '.join('{}:{}'.format(m.role, entity_refs[m.refid])
+                               for m in relation)
+            stream.write(line.format(members))
 
     def _get_att(self, entity, key=None):
         if key is None:
@@ -77,13 +100,15 @@ class BratFormatter(_BaseBratFormatter):
         super().__init__(att=att)
         self.extra = extra
 
-    def _write_anno(self, stream, document, c_t, c_a):
+    def _write_entities(self, stream, document, c_t, c_a):
         mentions = self._get_mentions(document)
         for (loc_att, entities), t in zip(sorted(mentions.items()), c_t):
             stream.write(self.T_LINE.format(t, *loc_att[2:]))
             for e in entities:
                 # Add all remaining information as attribute annotations.
                 self._write_attributes(stream, e, t, c_a)
+                # Keep track of the entity counter for references in relations.
+                yield e.id, 'T{}'.format(t)
 
     def _write_attributes(self, stream, entity, t, c_a):
         for key, a in zip(self.extra, c_a):
@@ -118,8 +143,10 @@ class BioNLPFormatter(_BaseBratFormatter):
 
     ext = 'bionlp'
 
-    def _write_anno(self, stream, document, c_t, _):
+    def _write_entities(self, stream, document, c_t, _):
         for entity, t in zip(document.iter_entities(), c_t):
             att = self._get_att(entity)
             offsets = self._format_offsets(entity)
             stream.write(self.T_LINE.format(t, att, offsets, entity.text_wn))
+            # Keep track of the entity counter for references in relations.
+            yield entity.id, 'T{}'.format(t)

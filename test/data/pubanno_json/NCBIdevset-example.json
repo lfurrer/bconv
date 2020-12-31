@@ -91,6 +91,7 @@
         "obj": "D014923"
       }
     ],
+    "relations": [],
     "sourceid": "8931701",
     "sourcedb": null
   },
@@ -178,6 +179,7 @@
         "obj": "D009369"
       }
     ],
+    "relations": [],
     "sourceid": "9174057",
     "sourcedb": null
   },
@@ -281,6 +283,7 @@
         "obj": "OMIM:312080+OMIM:312920"
       }
     ],
+    "relations": [],
     "sourceid": "9056547",
     "sourcedb": null
   },
@@ -304,6 +307,7 @@
         "obj": "D018232"
       }
     ],
+    "relations": [],
     "sourceid": "8790412",
     "sourcedb": null
   },
@@ -343,6 +347,7 @@
         "obj": "D001260"
       }
     ],
+    "relations": [],
     "sourceid": "8786135",
     "sourcedb": null
   },
@@ -422,6 +427,7 @@
         "obj": "D010661"
       }
     ],
+    "relations": [],
     "sourceid": "8828602",
     "sourcedb": null
   },
@@ -453,6 +459,7 @@
         "obj": "D009369"
       }
     ],
+    "relations": [],
     "sourceid": "8944023",
     "sourcedb": null
   },
@@ -548,6 +555,7 @@
         "obj": "D003327"
       }
     ],
+    "relations": [],
     "sourceid": "8675707",
     "sourcedb": null
   },
@@ -651,6 +659,7 @@
         "obj": "D001260"
       }
     ],
+    "relations": [],
     "sourceid": "8968760",
     "sourcedb": null
   }

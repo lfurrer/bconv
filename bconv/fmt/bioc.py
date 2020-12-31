@@ -16,7 +16,7 @@ from collections import OrderedDict
 from lxml import etree
 from lxml.builder import E
 
-from ..doc.document import Collection, Document, Entity
+from ..doc.document import Collection, Document, Entity, Relation
 from ._load import CollLoader, text_node, wrap_in_collection
 from ._export import Formatter, XMLMemoryFormatter, StreamFormatter
 from ..util.iterate import peek, json_iterencode
@@ -71,6 +71,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         """
         doc = Document(self._text(node, 'id', ifnone=None))
         doc.metadata = self.infon_dict(node)
+        doc.relations = self._get_relations(node)
 
         offset_mngr = self._offset_mngr()
         for passage in self._iterfind(node, 'passage'):
@@ -79,10 +80,12 @@ class _BioCLoader(CollLoader, _OffsetMixin):
             doc.add_section(sec_type, text, offset, anno)
             section = doc[-1]
             section.metadata = infon
-            # Get infon elements on sentence level.
+            section.relations = self._get_relations(passage)
+            # Get infon elements and relations at sentence level.
             for sent, sent_node in zip(section,
                                        self._iterfind(passage, 'sentence')):
                 sent.metadata = self.infon_dict(sent_node)
+                sent.relations = self._get_relations(sent_node)
 
         return doc
 
@@ -112,7 +115,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
 
     def _get_annotations(self, node, offset_mngr):
         """
-        Iterate over annotations.
+        Iterate over entity annotations.
         """
         for anno in self._iterfind(node, 'annotation'):
             offsets = list(self._get_offsets(anno, offset_mngr))
@@ -131,6 +134,18 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         text = self._text(node)
         info = self.infon_dict(node)
         return Entity(id_, text, offsets, info)
+
+    def _get_relations(self, node):
+        for relation in self._iterfind(node, 'relation'):
+            yield self._relation(relation)
+
+    def _relation(self, node):
+        id_ = node.get('id')
+        members = ((m.get('refid'), m.get('role', ''))
+                   for m in self._iterfind(node, 'node'))
+        relation = Relation(id_, members)
+        relation.metadata = self.infon_dict(node)
+        return relation
 
     def _meta_dict(self, node):
         """Read metadata into a dictionary."""
@@ -301,6 +316,8 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
         for section in doc:
             node.append(self._passage(section, offset_mngr))
 
+        self._add_relations(node, doc.relations)
+
         return node
 
     def _passage(self, section, offset_mngr):
@@ -319,6 +336,8 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
                 offset_mngr.sentence(sent)  # synchronise without direct usage
                 self._add_entities(node, sent, offset_mngr)
 
+        self._add_relations(node, section.relations)
+
         return node
 
     def _sentence(self, sent, offset_mngr):
@@ -328,6 +347,7 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
         node.append(E('text', sent.text))
 
         self._add_entities(node, sent, offset_mngr)
+        self._add_relations(node, sent.relations)
 
         return node
 
@@ -346,6 +366,17 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
 
         node.append(E('text', entity.text))
 
+        return node
+
+    def _add_relations(self, node, relations):
+        for relation in relations:
+            node.append(self._relation(relation))
+
+    def _relation(self, relation):
+        node = E('relation', id=str(relation.id))
+        self._add_meta(node, relation.metadata)
+        for member in relation:
+            node.append(E('node', refid=str(member.refid), role=member.role))
         return node
 
     def _add_meta(self, node, meta):
@@ -393,7 +424,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             'id': str(doc.id),
             'infons': dict(doc.metadata),
             'passages': [self._passage(s, offset_mngr) for s in doc],
-            'relations': (),
+            'relations': list(map(self._relation, doc.relations)),
         }
 
     def _passage(self, section, offset_mngr):
@@ -421,7 +452,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             'text': text,
             'sentences': sentences,
             'annotations': annotations,
-            'relations': (),
+            'relations': list(map(self._relation, section.relations)),
         }
 
     def _sentence(self, sent, offset_mngr):
@@ -431,7 +462,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             'text': sent.text,
             'annotations': [self._entity(e, offset_mngr)
                             for e in sent.iter_entities()],
-            'relations': (),
+            'relations': list(map(self._relation, sent.relations)),
         }
 
     @staticmethod
@@ -442,6 +473,14 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             'text': entity.text,
             'locations': [dict(offset=start, length=length)
                           for start, length in offset_mngr.entity(entity)]
+        }
+
+    @staticmethod
+    def _relation(relation):
+        return {
+            'id': str(relation.id),
+            'infons': dict(relation.metadata),
+            'nodes': [dict(refid=str(m.refid), role=m.role) for m in relation],
         }
 
 

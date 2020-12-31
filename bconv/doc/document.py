@@ -26,9 +26,9 @@ from ..util.iterate import peek
 from ..nlp.tokenize import TOKENIZER
 
 
-class Unit:
+class SequenceUnit:
     """
-    Base class for all levels of representation.
+    Base class for all non-leaf levels of the document hierarchy.
     """
 
     _child_type = None  # type: type
@@ -81,6 +81,29 @@ class Unit:
         assert isinstance(child, self._child_type)
         self._children.append(child)
 
+
+class TextUnit(SequenceUnit):
+    """
+    Base class for units containing text.
+    """
+
+    def __init__(self):
+        super().__init__()
+        self._relations = None
+
+    @property
+    def relations(self):
+        """Relations anchored at this unit."""
+        if self._relations is None:
+            self._relations = []
+        return self._relations
+
+    @relations.setter
+    def relations(self, value):
+        relations = list(value)
+        assert all(isinstance(r, Relation) for r in relations)
+        self._relations = relations
+
     def units(self, type_):
         """
         Iterate over units at any level.
@@ -102,7 +125,6 @@ class Unit:
                     section=Section,
                     sentence=Sentence,
                     token=Token,
-                    # entity=Entity,
                 )[type_.lower()]
             except KeyError:
                 raise ValueError('unknown unit type: {}'
@@ -111,11 +133,6 @@ class Unit:
         if isinstance(self, type_):
             # The root level matches.
             yield self
-
-        # elif type_ is Entity:
-        #     # Special case: annotations aren't in self._children.
-        #     for sentence in self.units(Sentence):
-        #         yield from sentence.entities
 
         elif type_ is self._child_type:
             # Optimisation: avoid recursion for simple iteration
@@ -155,12 +172,23 @@ class Unit:
         except StopIteration:
             logging.warning('annotations outside character range')
 
+    def iter_relations(self):
+        """
+        Iterate over all relations from this unit and below.
+        """
+        yield from self.relations
+        try:
+            for child in self:
+                yield from child.iter_relations()
+        except AttributeError:
+            return
+
 
 # The token-level unit really has no functionality.
 Token = namedtuple('Token', 'text start end')
 
 
-class Sentence(Unit):
+class Sentence(TextUnit):
     """Central annotation unit. """
 
     _child_type = Token
@@ -261,7 +289,7 @@ class Sentence(Unit):
             return default
 
 
-class Section(Unit):
+class Section(TextUnit):
     """Any unit of text between document and sentence level."""
 
     _child_type = Sentence
@@ -371,7 +399,7 @@ class Section(Unit):
             self.end = self._children[-1].end
 
 
-class Exportable(Unit):
+class Exportable(TextUnit):
     """
     Base class for exportable units (Collection and Document).
     """
@@ -464,7 +492,7 @@ class Collection(Exportable):
     add_entities = None
 
 
-class Entity(object):
+class Entity:
     """
     Link from textual evidence to an annotated entity.
     """
@@ -505,3 +533,20 @@ class Entity(object):
         Sort entities by offset.
         """
         return entity.start, entity.end
+
+
+RelationMember = namedtuple('RelationMember', 'refid role')
+
+
+class Relation(SequenceUnit):
+    """
+    Link between multiple entities and/or other relations.
+    """
+
+    _child_type = RelationMember
+
+    def __init__(self, id_, members):
+        super().__init__()
+        self.id = id_
+        for refid, role in members:
+            self._add_child(RelationMember(refid, role))
