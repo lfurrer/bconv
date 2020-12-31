@@ -35,6 +35,7 @@ OPTIONS = {
 
     # Both format- and document-specific options.
     ('bionlp', 'CRAFT-example'): dict(att='cui'),
+    ('brat', 'BC5CDR-example'): dict(cui='cui'),
     ('bioc_json', 'CRAFT-example'): dict(sentence_level=True),
     ('bioc_xml', 'CRAFT-example'): dict(sentence_level=True),
 }
