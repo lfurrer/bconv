@@ -49,10 +49,9 @@ class EuPMCFormatter(StreamFormatter):
             locations = it.groupby(sent.iter_entities(split_discontinuous=True),
                                    key=lambda e: (e.start-offset, e.end-offset))
             for l, ((start, end), colocated) in enumerate(locations, start=1):
-                types = it.groupby(colocated, key=lambda e: e.info[self.type])
+                types = it.groupby(colocated, key=self._entity_type)
                 for type_, entities in types:
-                    entities = set((e.info[self.pref], e.info[self.uri])
-                                   for e in entities)
+                    entities = set(map(self._entity_name_uri, entities))
                     ann = {
                         'position': '{}.{}'.format(s, l),
                         'prefix': text[max(start-20, 0):start],
@@ -64,6 +63,24 @@ class EuPMCFormatter(StreamFormatter):
                     }
                     doc['anns'].append(ann)
         return doc
+
+    def _entity_type(self, entity):
+        return self._entity_info(entity, self.type)
+
+    def _entity_name_uri(self, entity):
+        return tuple(self._entity_info(entity, k) for k in (self.pref, self.uri))
+
+    @staticmethod
+    def _entity_info(entity, key):
+        try:
+            return entity.info[key]
+        except KeyError as e:
+            if e.args == (key,):
+                raise ValueError(
+                    'Need entity attribute: {!r} not found in Entity.info. '
+                    'Please check the `info` option.'
+                    .format(key))
+            raise
 
     def _section_name(self, section, src):
         name = section.type

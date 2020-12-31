@@ -38,6 +38,19 @@ class _BaseBratFormatter(StreamFormatter):
         """
         raise NotImplementedError
 
+    def _get_att(self, entity, key=None):
+        if key is None:
+            key = self.att
+        try:
+            return entity.info[key]
+        except KeyError as e:
+            if e.args == (key,):
+                raise ValueError(
+                    'Need entity attribute: {!r} not found in Entity.info. '
+                    'Please check the `{}` option.'
+                    .format(key, 'att' if key == self.att else 'extra'))
+            raise
+
     @staticmethod
     def _format_offsets(entity):
         return ';'.join(' '.join(map(str, span)) for span in entity.offsets)
@@ -74,13 +87,13 @@ class BratFormatter(_BaseBratFormatter):
 
     def _write_attributes(self, stream, entity, t, c_a):
         for key, a in zip(self.extra, c_a):
-            value = entity.info[key]
+            value = self._get_att(entity, key)
             stream.write(self.A_LINE.format(a, key, t, value))
 
     def _get_mentions(self, document):
         mentions = defaultdict(list)
         for e in document.iter_entities():
-            att = self._valid_fieldname(e.info[self.att])
+            att = self._valid_fieldname(self._get_att(e))
             offsets = self._format_offsets(e)
             # Include start and end offset for sorting.
             mentions[e.start, e.end, att, offsets, e.text_wn].append(e)
@@ -107,6 +120,6 @@ class BioNLPFormatter(_BaseBratFormatter):
 
     def _write_anno(self, stream, document, c_t, _):
         for entity, t in zip(document.iter_entities(), c_t):
-            att = entity.info[self.att]
+            att = self._get_att(entity)
             offsets = self._format_offsets(entity)
             stream.write(self.T_LINE.format(t, att, offsets, entity.text_wn))
