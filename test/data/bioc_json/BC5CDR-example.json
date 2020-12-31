@@ -115,7 +115,24 @@
           "relations": []
         }
       ],
-      "relations": []
+      "relations": [
+        {
+          "id": "7",
+          "infons": {
+            "type": "CID"
+          },
+          "nodes": [
+            {
+              "refid": "1",
+              "role": "Chemical"
+            },
+            {
+              "refid": "2",
+              "role": "Disease"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

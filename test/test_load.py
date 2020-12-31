@@ -18,6 +18,7 @@ from .utils import DATA, get_cases, path_id, xopen
 
 
 TEXT_ONLY = 'text-only'
+NO_RELS = 'no-rels'
 STRIP_WS = 'strip-ws'
 SKIP_CUI = 'skip-cui'
 STR_IDS = 'str-ids'
@@ -25,8 +26,9 @@ UNNEST = 'unnest'
 
 RESTRICTIONS = {
     # Format-specific relaxations.
-    'conll': {STRIP_WS, SKIP_CUI},
-    'pubtator_fbk': {SKIP_CUI},
+    'conll': {STRIP_WS, NO_RELS, SKIP_CUI},
+    'pubtator': {NO_RELS},
+    'pubtator_fbk': {NO_RELS, SKIP_CUI},
     'bioc_json': {STR_IDS},
     'bioc_xml': {STR_IDS},
     'txt': {TEXT_ONLY, STRIP_WS},
@@ -93,13 +95,21 @@ def _validate(parsed, fmt, expected):
         ref = _unnest(ref)
     assert text == ref
 
-    if TEXT_ONLY not in restrictions:
-        ref = exp['entities']
-        if SKIP_CUI in restrictions:
-            ref = [list(_skip_cui(doc)) for doc in ref]
-        if STR_IDS in restrictions:
-            ref = [list(_str_ids(doc)) for doc in ref]
-        assert _get_entities(parsed) == ref
+    if TEXT_ONLY in restrictions:
+        return
+    ref = exp['entities']
+    if SKIP_CUI in restrictions:
+        ref = [list(_skip_cui(doc)) for doc in ref]
+    if STR_IDS in restrictions:
+        ref = [list(_entity_str_ids(doc)) for doc in ref]
+    assert _get_entities(parsed) == ref
+
+    if NO_RELS in restrictions:
+        return
+    ref = exp.get('relations') or [[] for _ in exp['text']]
+    if STR_IDS in restrictions:
+        ref = [list(_rel_str_ids(doc)) for doc in ref]
+    assert _get_relations(parsed) == ref
 
 
 def _get_text(content):
@@ -128,12 +138,27 @@ def _entity_attribute(entity, att):
     return value
 
 
+def _get_relations(content):
+    return [[{'id': rel.id, 'meta': rel.metadata, 'members': list(map(list, rel))}
+             for rel in doc.iter_relations()]
+            for doc in content.units('document')]
+
+
 def _skip_cui(entities):
     for *entity, info in entities:
         info = {k: v for k, v in info.items() if k != 'cui'}
         yield [*entity, info]
 
 
-def _str_ids(entities):
+def _entity_str_ids(entities):
     for id_, *entity in entities:
         yield [str(id_), *entity]
+
+
+def _rel_str_ids(relations):
+    for rel in relations:
+        yield dict(
+            rel,
+            id=str(rel['id']),
+            members=[[str(refid), role] for refid, role in rel['members']]
+        )

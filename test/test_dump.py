@@ -50,13 +50,18 @@ def _build_internal(path):
     with open(path, encoding='utf8') as f:
         data = json.load(f)
     coll = document.Collection(path.stem, path.stem)
-    docs = zip(data['ids'], data['text'], data['entities'])
-    for id_, text, entities in docs:
+    docs = zip(data['ids'], data['text'], data['entities'],
+               data.get('relations', [()]*len(data['ids'])))
+    for id_, text, entities, relations in docs:
         doc = document.Document(id_)
         for sec, tp in zip(text, it.chain(['Title', 'Abstract'],
                                           it.repeat('Section'))):
             doc.add_section(tp, sec)
         doc.add_entities(document.Entity(*e) for e in entities)
+        for rel in relations:
+            relation = document.Relation(rel['id'], rel['members'])
+            relation.metadata = rel['meta']
+            doc.relations.append(relation)
         coll.add_document(doc)
     return coll
 

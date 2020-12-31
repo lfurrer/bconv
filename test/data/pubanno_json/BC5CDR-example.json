@@ -51,7 +51,9 @@
         "obj": "D008012"
       }
     ],
-    "relations": [],
+    "relations": [
+      {"id": "R1", "subj": "T1", "pred": "CID", "obj": "T2"}
+    ],
     "sourceid": "354896",
     "sourcedb": null
   }

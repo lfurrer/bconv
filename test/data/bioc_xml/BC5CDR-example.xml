@@ -54,5 +54,10 @@
       <text>lidocaine</text>
     </annotation>
   </passage>
+  <relation id="7">
+    <infon key="type">CID</infon>
+    <node refid="1" role="Chemical"/>
+    <node refid="2" role="Disease"/>
+  </relation>
 </document>
 </collection>
