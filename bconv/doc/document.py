@@ -455,6 +455,21 @@ class Document(Exportable):
         self._add_child(section)
         self._char_cursor = section.end
 
+    def sanitize_relations(self):
+        """
+        Check reference IDs in relations.
+
+        Raise ValueError if a relation references a non-existent ID.
+        """
+        ids = {rel.id for rel in self.iter_relations()}
+        if not ids:
+            return  # short-circuit if there are no relations
+        ids.update(entity.id for entity in self.iter_entities())
+        ref_ids = {m.refid for rel in self.iter_relations() for m in rel}
+        if not ref_ids.issubset(ids):
+            raise ValueError('Unknown references in relations: {}'
+                             .format(ref_ids.difference(ids)))
+
 
 class Collection(Exportable):
     """A collection of multiple documents."""

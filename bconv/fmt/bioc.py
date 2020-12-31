@@ -87,6 +87,8 @@ class _BioCLoader(CollLoader, _OffsetMixin):
                 sent.metadata = self.infon_dict(sent_node)
                 sent.relations = self._get_relations(sent_node)
 
+        doc.sanitize_relations()
+
         return doc
 
     def _section(self, node, offset_mngr):
