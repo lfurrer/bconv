@@ -14,10 +14,10 @@ import io
 import json
 import time
 import tarfile
-import itertools as it
 
 from ._export import Formatter, StreamFormatter
 from ..doc.document import Collection, Document, Section
+from ..util.iterate import pids
 
 
 class PubAnnoJSONFormatter(Formatter):
@@ -66,9 +66,9 @@ class PubAnnoJSONFormatter(Formatter):
         }
 
     def _entities(self, content, offset):
-        for id_, entity in enumerate(content.iter_entities(), start=1):
+        for entity, tid in zip(content.iter_entities(), pids('T')):
             yield {
-                'id' : 'T{}'.format(id_),
+                'id' : tid,
                 'span' : self._spans(entity, offset),
                 'obj' : self._concept(entity),
             }
@@ -95,14 +95,12 @@ class PubAnnoJSONFormatter(Formatter):
         return spans
 
     def _attributes(self, content):
-        att_counter = it.count(1)
-        for i, entity in enumerate(content.iter_entities(), start=1):
-            tid = 'T{}'.format(i)
+        att_ids = pids('A')
+        for entity, tid in zip(content.iter_entities(), pids('T')):
             for key, value in entity.info.items():
                 if key != self.obj:
-                    aid = 'A{}'.format(next(att_counter))
                     yield {
-                        'id': aid,
+                        'id': next(att_ids),
                         'subj': tid,
                         'pred': key,
                         'obj': value,
@@ -111,12 +109,12 @@ class PubAnnoJSONFormatter(Formatter):
     @staticmethod
     def _relations(content):
         refs = {
-            a.id: '{}{}'.format(prefix, i)
+            a.id: pid
             for annos, prefix in ((content.iter_entities(), 'T'),
                                   (content.iter_relations(), 'R'))
-            for i, a in enumerate(annos, start=1)
+            for a, pid in zip(annos, pids(prefix))
         }
-        for id_, relation in enumerate(content.iter_relations(), start=1):
+        for relation, rid in zip(content.iter_relations(), pids('R')):
             try:
                 subj, obj = relation
             except ValueError:
@@ -124,7 +122,7 @@ class PubAnnoJSONFormatter(Formatter):
                     'PubAnnotation format supports binary relations only; '
                     'found relation with arity {}.'.format(len(relation)))
             yield {
-                'id': 'R{}'.format(id_),
+                'id': rid,
                 'subj': refs[subj.refid],
                 'pred': relation.type,
                 'obj': refs[obj.refid],

@@ -28,6 +28,14 @@ def ngrams(iterable, n, pad_left=False, pad_right=False,
             yield tuple(window)
 
 
+def pids(prefix, start=1):
+    """
+    Iterate over successive IDs with an arbitrary prefix.
+    """
+    for i in it.count(start):
+        yield '{}{}'.format(prefix, i)
+
+
 def peek(iterable):
     """
     Get the first element, then restore the iterator.
