@@ -78,7 +78,15 @@ class CSVFormatter(StreamFormatter):
         return entity.text
 
     def _extra_info(self, entity):
-        return tuple(entity.info[f] for f in self.extra_fields)
+        try:
+            return tuple(entity.info[f] for f in self.extra_fields)
+        except KeyError as e:
+            if e.args[0] in self.extra_fields:
+                raise ValueError(
+                    'Need extra field: {} not found in Entity.info. '
+                    'Please check the `extra_fields` option.'
+                    .format(e))
+            raise
 
     @staticmethod
     def _tok_rows(start, end, tokens, loc):

@@ -205,7 +205,7 @@ class CoNLLFormatter(StreamFormatter):
         with self._entities_by_pos(entities) as entities:
             for token in sentence:
                 try:
-                    label = ';'.join(e.info[self.label]
+                    label = ';'.join(self._entity_label(e)
                                      for e in entities.send(token))
                 except KeyError as e:
                     if e.args == (self.label,):
@@ -215,6 +215,17 @@ class CoNLLFormatter(StreamFormatter):
                             .format(self.label))
                     raise
                 yield label
+
+    def _entity_label(self, entity):
+        try:
+            return entity.info[self.label]
+        except KeyError as e:
+            if e.args == (self.label,):
+                raise ValueError(
+                    'Need entity label: {!r} not found in Entity.info. '
+                    'Please check the `label` option.'
+                    .format(self.label))
+            raise
 
     @context_coroutine
     def _entities_by_pos(self, entities):

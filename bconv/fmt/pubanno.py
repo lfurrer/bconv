@@ -67,8 +67,19 @@ class PubAnnoJSONFormatter(Formatter):
             yield {
                 'id' : 'T{}'.format(id_),
                 'span' : self._spans(entity, offset),
-                'obj' : entity.info[self.obj]
+                'obj' : self._concept(entity),
             }
+
+    def _concept(self, entity):
+        try:
+            return entity.info[self.obj]
+        except KeyError as e:
+            if e.args == (self.obj,):
+                raise ValueError(
+                    'Need concept object: {!r} not found in Entity.info. '
+                    'Please check the `obj` option.'
+                    .format(self.obj))
+            raise
 
     @staticmethod
     def _spans(entity, offset):

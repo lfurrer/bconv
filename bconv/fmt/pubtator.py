@@ -188,8 +188,21 @@ class PubTatorFormatter(StreamFormatter):
             yield self._select_anno_fields(docid, start, end, entity)
 
     def _select_anno_fields(self, docid, start, end, entity):
-        return (docid, start, end, entity.text_wn,
-                entity.info[self.type], entity.info[self.cui])
+        return (docid, start, end, entity.text_wn, *self._entity_info(entity))
+
+    def _entity_info(self, entity):
+        for key in (self.type, self.cui):
+            try:
+                yield entity.info[key]
+            except KeyError as e:
+                if e.args == (self.cui,):
+                    return  # CUI is optional; ignore silently.
+                if e.args == (key,):
+                    raise ValueError(
+                        'Need entity attribute: {!r} not found in Entity.info. '
+                        'Please check the `info` option.'
+                        .format(key))
+                raise
 
 
 class PubTatorFBKFormatter(PubTatorFormatter):
@@ -199,7 +212,6 @@ class PubTatorFBKFormatter(PubTatorFormatter):
 
     def __init__(self, info='type'):
         super().__init__([info, None])
-        del self.cui
 
     def _select_anno_fields(self, docid, start, end, entity):
         try:
@@ -208,4 +220,8 @@ class PubTatorFBKFormatter(PubTatorFormatter):
             id_ = entity.id
         else:
             id_ = 'T{}'.format(id_)
-        return (docid, id_, entity.info[self.type], start, end, entity.text)
+        return (docid, id_, self._entity_type(entity), start, end, entity.text)
+
+    def _entity_type(self, entity):
+        type_, *_ = self._entity_info(entity)
+        return type_
