@@ -13,7 +13,7 @@
 ## Representation
 
 - [x] support discontinuous spans
-- [ ] support relations (BioC and PubTator)
+- [x] support relations (BioC and PubTator)
 
 
 ## Usability
