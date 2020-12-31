@@ -80,5 +80,25 @@
         }
       ]
     ]
+  ],
+  "relations": [
+    [
+      {
+        "id": 7,
+        "meta": {
+          "type": "CID"
+        },
+        "members": [
+          [
+            1,
+            "Chemical"
+          ],
+          [
+            2,
+            "Disease"
+          ]
+        ]
+      }
+    ]
   ]
 }
