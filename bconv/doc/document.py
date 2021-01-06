@@ -211,7 +211,16 @@ class Sentence(TextUnit):
         """
         if self.text and (not self._children or not cache):
             toks = TOKENIZER.span_tokenize_words(self.text, self.start)
-            self._children = [Token(t, s, e) for t, s, e in toks]
+            self.set_tokens(toks)
+
+    def set_tokens(self, tokens):
+        """
+        Set tokens from a sequence of <token, start, end> triples.
+
+        No validation takes place wrt. offset ranges or text substring.
+        The tokens can be cleared with a subsequent call to self.tokenize().
+        """
+        self._children = [Token(tok, start, end) for tok, start, end in tokens]
 
     def add_entities(self, entities):
         """

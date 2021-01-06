@@ -69,8 +69,9 @@ class CoNLLLoader(DocIterator):
     def _add_section(doc, type_, sentences):
         doc.add_section(type_, ())
         section = doc[-1]
-        for sentence, entities in sentences:
+        for sentence, tokens, entities in sentences:
             section.add_sentences((sentence,))
+            section[-1].set_tokens(tokens)
             section[-1].add_entities(entities)
 
     def _iter_sentences(self, rows, ids):
@@ -79,7 +80,7 @@ class CoNLLLoader(DocIterator):
                 yield self._sentence(sent_rows, ids)
 
     def _sentence(self, rows, ids):
-        text, labels = [], []
+        text, tokens, labels = [], [], []
         first_start, last_end = None, None
         last_tag = OUTSIDE[0], None
         for token, start, end, tag, *_ in rows:
@@ -87,6 +88,7 @@ class CoNLLLoader(DocIterator):
             if len(token) != end-start:
                 raise ValueError(
                     'length mismatch: {} ({}..{})'.format(token, start, end))
+            tokens.append((token, start, end))
 
             if first_start is None:
                 first_start = start
@@ -103,7 +105,7 @@ class CoNLLLoader(DocIterator):
 
         sentence = (''.join(text), first_start, last_end)
         entities = self._make_entities(labels, sentence[0], first_start, ids)
-        return sentence, entities
+        return sentence, tokens, entities
 
     def _make_entities(self, labels, text, offset, ids):
         for annotation in labels:
