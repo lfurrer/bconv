@@ -77,7 +77,7 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         for passage in self._iterfind(node, 'passage'):
             sec_type, text, offset, infon, anno = self._section(passage,
                                                                 offset_mngr)
-            doc.add_section(sec_type, text, offset, anno)
+            doc.add_section(sec_type, text, offset, anno, entity_offset=0)
             section = doc[-1]
             section.metadata = infon
             section.relations = self._get_relations(passage)

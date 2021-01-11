@@ -72,7 +72,7 @@ class CoNLLLoader(DocIterator):
         for sentence, tokens, entities in sentences:
             section.add_sentences((sentence,))
             section[-1].set_tokens(tokens)
-            section[-1].add_entities(entities)
+            section[-1].add_entities(entities, offset=0)
 
     def _iter_sentences(self, rows, ids):
         for non_blank, sent_rows in it.groupby(rows, key=any):
