@@ -240,10 +240,15 @@ class Sentence(TextUnit):
         extracted = [self.text[start-self.start:end-self.start]
                      for start, end in entity.offsets]
         def _mismatch():
-            return 'entity mention mismatch: {} vs. {}'.format(
-                entity.text, extracted)
+            try:
+                docid = self.section.document.id
+            except AttributeError:
+                docid = None
+            ext = extracted[0] if len(extracted) == 1 else extracted
+            return ('entity mention mismatch in document {}: {!r} vs. {!r}'
+                    .format(docid, entity.text, ext))
 
-        # Checking a contiguous annotation is stragith-forward.
+        # Checking a contiguous annotation is straight-forward.
         if len(extracted) == 1:
             assert extracted[0] == entity.text, _mismatch()
             return
