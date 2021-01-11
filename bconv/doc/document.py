@@ -238,7 +238,7 @@ class Sentence(TextUnit):
 
     def _validate_spans(self, entity):
         extracted = [self.text[start-self.start:end-self.start]
-                     for start, end in entity.offsets]
+                     for start, end in entity.spans]
         def _mismatch():
             try:
                 docid = self.section.document.id
@@ -284,7 +284,7 @@ class Sentence(TextUnit):
         Iterate over entities, splitting discontinuous ones on the fly.
         """
         for entity in self.entities:
-            for start, end in entity.offsets:
+            for start, end in entity.spans:
                 if (start, end) == (entity.start, entity.end):
                     # Contiguous entity -- yield original.
                     yield entity
@@ -526,12 +526,12 @@ class Entity:
     Link from textual evidence to an annotated entity.
     """
 
-    __slots__ = ('id', 'text', 'offsets', 'info')
+    __slots__ = ('id', 'text', 'spans', 'info')
 
-    def __init__(self, id_, text, offsets, info):
+    def __init__(self, id_, text, spans, info):
         self.id = id_
         self.text = text
-        self.offsets = offsets
+        self.spans = spans
         self.info = info  # type: Dict[str, str]
 
     @property
@@ -542,12 +542,12 @@ class Entity:
     @property
     def start(self):
         """Offset of the first character."""
-        return self.offsets[0][0]
+        return self.spans[0][0]
 
     @property
     def end(self):
         """Offset of the last character."""
-        return self.offsets[-1][1]
+        return self.spans[-1][1]
 
     @classmethod
     def sort(cls, entities):

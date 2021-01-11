@@ -133,7 +133,7 @@ def _get_entities(content):
 def _entity_attribute(entity, att):
     value = getattr(entity, att)
     # Cast offset tuples to list for compatibility with JSON.
-    if att == 'offsets':
+    if att == 'spans':
         value = [list(o) for o in value]
     return value
 
