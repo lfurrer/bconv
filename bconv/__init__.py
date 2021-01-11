@@ -9,3 +9,4 @@ __version__ = '0.6.0'
 
 
 from .fmt import load, loads, fetch, dump, dumps, LOADERS, FETCHERS, EXPORTERS
+from .doc.document import Collection, Document, Entity, Relation
