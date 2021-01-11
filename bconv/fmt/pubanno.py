@@ -88,7 +88,7 @@ class PubAnnoJSONFormatter(Formatter):
     def _spans(entity, offset):
         # Use the bagging model to represent discontinuous annotations.
         spans = [{'begin': start-offset, 'end': end-offset}
-                 for start, end in entity.offsets]
+                 for start, end in entity.spans]
         if len(spans) == 1:
             # Avoid extended syntax if not necessary.
             return spans[0]

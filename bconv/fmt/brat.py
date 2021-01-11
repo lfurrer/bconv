@@ -77,7 +77,7 @@ class _BaseBratFormatter(StreamFormatter):
 
     @staticmethod
     def _format_offsets(entity):
-        return ';'.join(' '.join(map(str, span)) for span in entity.offsets)
+        return ';'.join(' '.join(map(str, span)) for span in entity.spans)
 
 
 class BratFormatter(_BaseBratFormatter):

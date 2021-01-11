@@ -620,6 +620,6 @@ class ByteOffsetWriter(OffsetWriter, _OffsetConverter):
     _indexer = staticmethod(iter_codepoint_indices_utf8)
 
     def entity(self, entity):
-        for start, end in entity.offsets:
+        for start, end in entity.spans:
             start, end = (self.character(n) for n in (start, end))
             yield start, end-start
