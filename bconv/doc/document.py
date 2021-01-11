@@ -153,10 +153,11 @@ class TextUnit(SequenceUnit):
         for sentence in self.units(Sentence):
             yield from sentence.iter_entities(split_discontinuous)
 
-    def add_entities(self, entities):
+    def add_entities(self, entities, offset=None):
         """
         Locate the right sentences to anchor entities.
         """
+        entities = self._adjust_entity_spans(entities, offset)
         entities = sorted(entities, key=Entity.sort_key)
         if not entities:
             # Short circuit if possible.
@@ -168,9 +169,22 @@ class TextUnit(SequenceUnit):
             for entity in entities:
                 while entity.start >= sent.end:
                     sent = next(sentences)
-                sent.add_entities((entity,))
+                sent.add_entities((entity,), offset=0)
         except StopIteration:
             logging.warning('annotations outside character range')
+
+    def _adjust_entity_spans(self, entities, offset):
+        """Add offset to all entity spans, if necessary."""
+        if offset is None:
+            offset = getattr(self, 'start', 0)  # Document has no start member
+        if offset:
+            return (Entity(e.id,
+                           e.text,
+                           [(start+offset, end+offset)
+                            for start, end in e.spans],
+                           e.info)
+                    for e in entities)
+        return entities
 
     def iter_relations(self):
         """
@@ -222,10 +236,12 @@ class Sentence(TextUnit):
         """
         self._children = [Token(tok, start, end) for tok, start, end in tokens]
 
-    def add_entities(self, entities):
+    def add_entities(self, entities, offset=None):
         """
         Add entities and sort the results by offsets.
         """
+        entities = self._adjust_entity_spans(entities, offset)
+
         prev_len = len(self.entities)
         for entity in entities:
             self._validate_spans(entity)
@@ -334,7 +350,7 @@ class Section(TextUnit):
             sentences = self._guess_offsets(text, start)
 
         self.add_sentences(sentences)
-        self.add_entities(entities)
+        self.add_entities(entities, offset=0)
 
     @property
     def text(self):
@@ -457,7 +473,8 @@ class Document(Exportable):
         if type_ is not None:
             self.type = type_
 
-    def add_section(self, section_type, text, offset=None, entities=()):
+    def add_section(self, section_type, text, offset=None,
+                    entities=(), entity_offset=None):
         """
         Append a section to the end.
 
@@ -465,6 +482,11 @@ class Document(Exportable):
         """
         if offset is None:
             offset = self._char_cursor
+        if entities:
+            if entity_offset is None:
+                entity_offset = offset
+            entities = self._adjust_entity_spans(entities, entity_offset)
+
         section = Section(section_type, text, self, offset, entities)
         self._add_child(section)
         self._char_cursor = section.end

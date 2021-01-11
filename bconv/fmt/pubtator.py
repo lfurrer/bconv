@@ -61,7 +61,11 @@ class PubTatorLoader(CollLoader):
         docid, sections, anno = self._parse(lines, entity_counter)
         doc = Document(docid)
         for label, text in sections:
-            doc.add_section(label, text, entities=iter(anno))
+            # Provide entities of the entire document in an iterator.
+            # Like this, they will be used for preventing sentence boundaries
+            # within annotations, but won't be added to the sentences yet
+            # (which would cause out-of-range exceptions).
+            doc.add_section(label, text, entities=iter(anno), entity_offset=0)
         doc.add_entities(anno)
         return doc
 
