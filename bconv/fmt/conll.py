@@ -180,7 +180,6 @@ class CoNLLFormatter(StreamFormatter):
             yield ()  # blank line separating sentences
 
     def _sentence(self, sentence):
-        sentence.tokenize(cache=True)
         labels = self._sequence_labels(sentence)
         for token, label in zip(sentence, labels):
             if self.include_offsets:

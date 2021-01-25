@@ -192,7 +192,7 @@ class TextUnit(SequenceUnit):
         """
         yield from self.relations
         try:
-            for child in self:
+            for child in self._children:
                 yield from child.iter_relations()
         except AttributeError:
             return
@@ -237,6 +237,18 @@ class Sentence(OffsetUnit):
         if end is None:
             end = start + len(text)
         super().__init__(start, end)
+
+    def __iter__(self):
+        self.tokenize(cache=True)
+        return super().__iter__()
+
+    def __getitem__(self, index):
+        self.tokenize(cache=True)
+        return super().__getitem__(index)
+
+    def __len__(self):
+        self.tokenize(cache=True)
+        return super().__len__()
 
     def tokenize(self, cache=False):
         """
