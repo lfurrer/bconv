@@ -88,14 +88,17 @@ class TextUnit(SequenceUnit):
     Base class for units containing text.
     """
 
-    def __init__(self):
+    def __init__(self, text=None):
         super().__init__()
+        self._text = text
         self._relations = None
 
     @property
     def text(self):
         """Plain-text representation."""
-        raise NotImplementedError
+        if self._text is None:
+            self._text = ''.join(self.iter_text())
+        return self._text
 
     @property
     def relations(self):
@@ -148,6 +151,15 @@ class TextUnit(SequenceUnit):
             # Recursively descend into sub-subelements.
             for child in self._children:
                 yield from child.units(type_)
+
+    def iter_text(self):
+        r"""
+        Iterate over all text segments, including separators.
+
+        Separator whitespace is reconstructed from offsets,
+        using "\n" between sections and " " between sentences.
+        """
+        raise NotImplementedError
 
     def iter_entities(self, split_discontinuous=False):
         """
@@ -211,8 +223,8 @@ Token = namedtuple('Token', 'text start end')
 class OffsetUnit(TextUnit):
     """A unit with start and end offsets."""
 
-    def __init__(self, start, end):
-        super().__init__()
+    def __init__(self, text, start, end):
+        super().__init__(text)
         self._start = start
         self._end = end
 
@@ -237,16 +249,18 @@ class Sentence(OffsetUnit):
     _child_type = Token
 
     def __init__(self, text, section=None, start=0, end=None):
-        self._text = text
         self.section = section
         self.entities = []
         if end is None:
             end = start + len(text)
-        super().__init__(start, end)
+        super().__init__(text, start, end)
 
     @property
     def text(self):
         return self._text
+
+    def iter_text(self):
+        yield self._text
 
     def __iter__(self):
         self.tokenize(cache=True)
@@ -375,11 +389,10 @@ class Section(OffsetUnit):
         The text can be a single string or a list of
         strings (sentences).
         """
-        super().__init__(start, start)  # adjust later in add_sentences()
+        super().__init__(text=None, start=start, end=start)  # adjust later
 
         self.type = section_type
         self.document = document
-        self._text = None
 
         if isinstance(text, str):
             # Single string element.
@@ -393,16 +406,7 @@ class Section(OffsetUnit):
         self.add_sentences(sentences)
         self.add_entities(entities, offset=0)
 
-    @property
-    def text(self):
-        if self._text is None:
-            self._text = ''.join(self.iter_text())
-        return self._text
-
     def iter_text(self):
-        """
-        Iterate over sentence text and blanks.
-        """
         offset = self.start
         for sent in self._children:
             if offset < sent.start:
@@ -477,17 +481,7 @@ class Exportable(TextUnit):
         self.id = id_
         self.filename = filename
 
-    @property
-    def text(self):
-        return ''.join(self.iter_text())
-
     def iter_text(self):
-        r"""
-        Iterate over all text segments, including separators.
-
-        Separator whitespace is reconstructed from offsets,
-        using "\n" between sections and " " between sentences.
-        """
         offset = 0
         for section in self.units(Section):
             if offset < section.start:
