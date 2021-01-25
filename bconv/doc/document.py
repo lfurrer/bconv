@@ -202,19 +202,41 @@ class TextUnit(SequenceUnit):
 Token = namedtuple('Token', 'text start end')
 
 
-class Sentence(TextUnit):
+class OffsetUnit(TextUnit):
+    """A unit with start and end offsets."""
+
+    def __init__(self, start, end):
+        super().__init__()
+        self._start = start
+        self._end = end
+
+    @property
+    def start(self):
+        """
+        Offset in characters relative to the document start.
+        """
+        return self._start
+
+    @property
+    def end(self):
+        """
+        End offset in characters relative to the document start.
+        """
+        return self._end
+
+
+class Sentence(OffsetUnit):
     """Central annotation unit. """
 
     _child_type = Token
 
     def __init__(self, text, section=None, start=0, end=None):
-        super().__init__()
         self.text = text
         self.section = section
         self.entities = []
-        # Character offsets:
-        self.start = start
-        self.end = end if end is not None else start + len(text)
+        if end is None:
+            end = start + len(text)
+        super().__init__(start, end)
 
     def tokenize(self, cache=False):
         """
@@ -319,7 +341,7 @@ class Sentence(TextUnit):
             return default
 
 
-class Section(TextUnit):
+class Section(OffsetUnit):
     """Any unit of text between document and sentence level."""
 
     _child_type = Sentence
@@ -331,14 +353,11 @@ class Section(TextUnit):
         The text can be a single string or a list of
         strings (sentences).
         """
-        super().__init__()
+        super().__init__(start, start)  # adjust later in add_sentences()
 
         self.type = section_type
         self.document = document
         self._text = None
-        # Character offsets -- adjusted later through add_sentences().
-        self.start = start
-        self.end = start
 
         if isinstance(text, str):
             # Single string element.
@@ -425,8 +444,8 @@ class Section(TextUnit):
             self._add_child(Sentence(sent, self, *span))
         if self._children:
             # Adjust the section-level offsets based on the sentences.
-            self.start = self._children[0].start
-            self.end = self._children[-1].end
+            self._start = self._children[0].start
+            self._end = self._children[-1].end
 
 
 class Exportable(TextUnit):
