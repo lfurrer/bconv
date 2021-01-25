@@ -57,12 +57,12 @@ Load an annotated collection in BioC XML format:
 >>> import bconv
 >>> coll = bconv.load('path/to/example.xml', fmt='bioc_xml')
 >>> coll
-<Collection with 37 subelements at 0x7f1966e4b3c8>
+<Collection with 37 documents at 0x7f1966e4b3c8>
 ```
 A Collection is a sequence of Document objects:
 ```pycon
 >>> coll[0]
-<Document with 12 subelements at 0x7f1966e2f6d8>
+<Document with 12 sections at 0x7f1966e2f6d8>
 ```
 Documents contain Sections, which contain Sentences:
 ```pycon

@@ -59,11 +59,12 @@ class SequenceUnit:
 
     def __repr__(self):
         name = self.__class__.__name__
-        elems = len(self._children)
+        elems = len(self)
+        child_name = self._child_type.__name__.lower()
         plural = '' if elems == 1 else 's'
         address = hex(id(self))
-        return ('<{} with {} subelement{} at {}>'
-                .format(name, elems, plural, address))
+        return ('<{} with {} {}{} at {}>'
+                .format(name, elems, child_name, plural, address))
 
     def __iter__(self):
         return iter(self._children)
@@ -632,3 +633,6 @@ class Relation(SequenceUnit):
         self.id = id_
         for refid, role in members:
             self._add_child(RelationMember(refid, role))
+
+    def __repr__(self):
+        return super().__repr__().replace('relationmember', 'member')
