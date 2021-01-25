@@ -93,6 +93,11 @@ class TextUnit(SequenceUnit):
         self._relations = None
 
     @property
+    def text(self):
+        """Plain-text representation."""
+        raise NotImplementedError
+
+    @property
     def relations(self):
         """Relations anchored at this unit."""
         if self._relations is None:
@@ -232,12 +237,16 @@ class Sentence(OffsetUnit):
     _child_type = Token
 
     def __init__(self, text, section=None, start=0, end=None):
-        self.text = text
+        self._text = text
         self.section = section
         self.entities = []
         if end is None:
             end = start + len(text)
         super().__init__(start, end)
+
+    @property
+    def text(self):
+        return self._text
 
     def __iter__(self):
         self.tokenize(cache=True)
@@ -258,7 +267,7 @@ class Sentence(OffsetUnit):
         If `cache` is True and this method has been called
         earlier, it will be skipped this time.
         """
-        if self.text and (not self._children or not cache):
+        if self._text and (not self._children or not cache):
             toks = TOKENIZER.span_tokenize_words(self.text, self.start)
             self.set_tokens(toks)
 
@@ -288,7 +297,7 @@ class Sentence(OffsetUnit):
             self.entities.sort(key=Entity.sort_key)
 
     def _validate_spans(self, entity):
-        extracted = [self.text[start-self.start:end-self.start]
+        extracted = [self._text[start-self._start:end-self._start]
                      for start, end in entity.spans]
         def _mismatch():
             try:
@@ -341,7 +350,7 @@ class Sentence(OffsetUnit):
                     yield entity
                 else:
                     # Discontinuous entity -- generate ad-hoc objects.
-                    text = self.text[start-self.start:end-self.end]
+                    text = self._text[start-self._start:end-self._end]
                     yield Entity(entity.id, text, [(start, end)], entity.info)
 
     def get_section_type(self, default=None):
@@ -386,9 +395,6 @@ class Section(OffsetUnit):
 
     @property
     def text(self):
-        """
-        Plain text form for inspection and Brat output.
-        """
         if self._text is None:
             self._text = ''.join(self.iter_text())
         return self._text
@@ -473,9 +479,6 @@ class Exportable(TextUnit):
 
     @property
     def text(self):
-        """
-        Plain text form for inspection and Brat output.
-        """
         return ''.join(self.iter_text())
 
     def iter_text(self):
