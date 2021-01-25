@@ -51,7 +51,7 @@ class CSVFormatter(StreamFormatter):
         # Write a fully-fledged TSV line for each entity.
         # In the text-tsv subclass, also add sparse lines for non-entity tokens.
         for sent_id, sentence in enumerate(doc.units('sentence'), 1):
-            toks = CacheOneIter(sentence)
+            toks = self._get_tokens(sentence)
             section_type = sentence.get_section_type(default='')
             loc = doc.id, section_type, sent_id
             last_end = 0  # offset history
@@ -87,6 +87,11 @@ class CSVFormatter(StreamFormatter):
                     'Please check the `extra_fields` option.'
                     .format(e))
             raise
+
+    @staticmethod
+    def _get_tokens(sentence):
+        # Subclass hook.
+        return sentence
 
     @staticmethod
     def _tok_rows(start, end, tokens, loc):
@@ -128,11 +133,9 @@ class TextCSVFormatter(CSVFormatter):
         super().__init__(fields, include_header, **fmtparams)
         self.extra_dummy = ('',) * len(self.extra_fields)
 
-    def _document(self, doc):
-        # Make sure all sentences are tokenized.
-        for sentence in doc.units('sentence'):
-            sentence.tokenize(cache=True)
-        return super()._document(doc)
+    @staticmethod
+    def _get_tokens(sentence):
+        return CacheOneIter(sentence)  # implicitly calls tokenize
 
     def _tok_rows(self, start, end, tokens, loc):
         """
