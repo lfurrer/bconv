@@ -34,6 +34,7 @@ class SequenceUnit:
     _child_type = None  # type: type
 
     def __init__(self):
+        super().__init__()
         self._children = []
         self._metadata = None
 
@@ -91,7 +92,6 @@ class TextUnit(SequenceUnit):
     def __init__(self, text=None):
         super().__init__()
         self._text = text
-        self._relations = None
 
     @property
     def text(self):
@@ -99,19 +99,6 @@ class TextUnit(SequenceUnit):
         if self._text is None:
             self._text = ''.join(self.iter_text())
         return self._text
-
-    @property
-    def relations(self):
-        """Relations anchored at this unit."""
-        if self._relations is None:
-            self._relations = []
-        return self._relations
-
-    @relations.setter
-    def relations(self, value):
-        relations = list(value)
-        assert all(isinstance(r, Relation) for r in relations)
-        self._relations = relations
 
     def units(self, type_):
         """
@@ -204,6 +191,29 @@ class TextUnit(SequenceUnit):
                     for e in entities)
         return entities
 
+
+class RelationUnit:
+    """
+    Mix-in for units that can hold relations.
+    """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._relations = None
+
+    @property
+    def relations(self):
+        """Relations anchored at this unit."""
+        if self._relations is None:
+            self._relations = []
+        return self._relations
+
+    @relations.setter
+    def relations(self, value):
+        relations = list(value)
+        assert all(isinstance(r, Relation) for r in relations)
+        self._relations = relations
+
     def iter_relations(self):
         """
         Iterate over all relations from this unit and below.
@@ -220,7 +230,7 @@ class TextUnit(SequenceUnit):
 Token = namedtuple('Token', 'text start end')
 
 
-class OffsetUnit(TextUnit):
+class OffsetUnit(TextUnit, RelationUnit):
     """A unit with start and end offsets."""
 
     def __init__(self, text, start, end):
@@ -491,7 +501,7 @@ class Exportable(TextUnit):
             offset = section.end
 
 
-class Document(Exportable):
+class Document(Exportable, RelationUnit):
     """A document with text, metadata and annotations."""
 
     _child_type = Section
@@ -567,6 +577,13 @@ class Collection(Exportable):
         Access a document by its ID.
         """
         return self._by_ids[id_]
+
+    def iter_relations(self):
+        """
+        Iterate over all relations from this unit and below.
+        """
+        for doc in self._children:
+            yield from doc.iter_relations()
 
     # Disabled: can't determine correct location across documents
     add_entities = None
