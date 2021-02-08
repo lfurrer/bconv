@@ -44,7 +44,7 @@ class Tokenizer:
     def sentence_splitter(self, tokenizer):
         self._sentence_splitter = tokenizer
 
-    def span_tokenize_sentences(self, text, offset=0):
+    def split_sentences(self, text, offset=0):
         """Iterate over sentence triples <text, start, end>."""
         # Use a trick to get spans that always include trailing whitespace.
         # Iterate over bigrams of spans, ie.
@@ -57,19 +57,10 @@ class Tokenizer:
         for (start, _), (end, _) in spans:
             yield text[start:end], start+offset, end+offset
 
-    def tokenize_sentences(self, text):
-        """Iterate over sentences, including trailing whitespace."""
-        for sent, _, _ in self.span_tokenize_sentences(text):
-            yield sent
-
-    def span_tokenize_words(self, text, offset=0):
+    def tokenize(self, text, offset=0):
         """Iterate over token triples <text, start, end>."""
         for start, end in self.word_tokenizer.span_tokenize(text):
             yield text[start:end], start+offset, end+offset
-
-    def tokenize_words(self, text):
-        """Iterate over word tokens."""
-        return self.word_tokenizer.tokenize(text)
 
 
 # Global default instance.

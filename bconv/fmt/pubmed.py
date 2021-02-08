@@ -120,8 +120,8 @@ class _MedlineParser:
             if label not in ('UNLABELLED', 'Abstract'):
                 flat.append((label + ': ', None))
             if isinstance(text, str):
-                sents = TOKENIZER.tokenize_sentences(text)
-                flat.extend((sent, None) for sent in sents)
+                sents = TOKENIZER.split_sentences(text)
+                flat.extend((sent, None) for sent, _, _ in sents)
             else:
                 # List of MeSH headings.
                 flat.extend(zip(text, anno))
@@ -217,7 +217,8 @@ class _PMCParser:
     @staticmethod
     def _sentence_split(texts):
         for text in texts:
-            yield from TOKENIZER.tokenize_sentences(text)
+            for sent, _, _ in TOKENIZER.split_sentences(text):
+                yield sent
 
     def _itertext(self, node):
         return ''.join(node.itertext()).strip() + self.NL

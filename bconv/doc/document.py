@@ -292,7 +292,7 @@ class Sentence(OffsetUnit):
         earlier, it will be skipped this time.
         """
         if self._text and (not self._children or not cache):
-            toks = TOKENIZER.span_tokenize_words(self.text, self.start)
+            toks = TOKENIZER.tokenize(self.text, self.start)
             self.set_tokens(toks)
 
     def set_tokens(self, tokens):
@@ -407,7 +407,7 @@ class Section(OffsetUnit):
         if isinstance(text, str):
             # Single string element.
             self._text = text
-            sentences = TOKENIZER.span_tokenize_sentences(text, start)
+            sentences = TOKENIZER.split_sentences(text, start)
             sentences = self._merge_sentences_at_entity(sentences, entities)
         else:
             # Iterable of strings or <string, offset...> tuples.
