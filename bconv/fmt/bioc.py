@@ -54,9 +54,9 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         super().__init__()
         self.byte_offsets = byte_offsets
 
-    def collection(self, source, id_):
+    def collection(self, source, id):
         coll_node, docs = self._parse_collection(source)
-        collection = Collection(id_, basename(source))
+        collection = Collection(id, basename(source))
         collection.metadata = self._meta_dict(coll_node)
         for doc in docs:
             collection.add_document(self._document(doc))

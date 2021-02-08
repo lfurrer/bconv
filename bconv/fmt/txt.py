@@ -103,12 +103,12 @@ class TXTLoader(DocLoader, _TXTLoaderMixin):
     Loader for single plain-text documents.
     """
 
-    def document(self, source, id_):
+    def document(self, source, id):
         """
         Get a very simply structured document.
         """
         with text_stream(source) as f:
-            return self._document(f, id_)
+            return self._document(f, id)
 
 
 class TXTJSONLoader(DocIterator, _TXTLoaderMixin):
