@@ -599,7 +599,7 @@ class Entity:
     def __init__(self, id_, text, spans, info):
         self.id = id_
         self.text = text
-        self.spans = spans
+        self.spans = sorted((start, end) for start, end in spans)
         self.info = info  # type: Dict[str, str]
 
     @property
