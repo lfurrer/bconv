@@ -8,10 +8,17 @@ The structural units are organised into a hierarchy:
         Section
           Sentence
             Token  (optional)
-            Entity (optional)
 
-Entities are anchored at the sentence level, but not
-as child nodes.
+There are two types of annotation units:
+
+    Entity
+    Relation
+      RelationMember
+
+Entities are anchored at the sentence level.
+Relations can be anchored at the document, section,
+or sentence level, and they have RelationMember units
+as their child nodes.
 """
 
 
@@ -650,3 +657,9 @@ class Relation(SequenceUnit):
 
     def __repr__(self):
         return super().__repr__().replace('relationmember', 'member')
+
+    def add_member(self, refid, role):
+        """
+        Add a member to this relation.
+        """
+        self._add_child(RelationMember(refid, role))
