@@ -17,7 +17,7 @@ class Loader:
     Subclasses must implement load_one().
     """
 
-    def load_one(self, source, id_):
+    def load_one(self, source, id):
         """
         Load a single content (Document or Collection).
         """
@@ -31,10 +31,10 @@ class DocLoader(Loader):
     Subclasses must implement document().
     """
 
-    def load_one(self, source, id_):
-        return self.document(source, id_)
+    def load_one(self, source, id):
+        return self.document(source, id)
 
-    def document(self, source, id_):
+    def document(self, source, id):
         """
         Load a single document.
         """
@@ -48,10 +48,10 @@ class CollLoader(Loader):
     Subclasses must implement collection().
     """
 
-    def load_one(self, source, id_):
-        return self.collection(source, id_)
+    def load_one(self, source, id):
+        return self.collection(source, id)
 
-    def collection(self, source, id_):
+    def collection(self, source, id):
         """
         Load a complete collection.
         """
@@ -61,7 +61,7 @@ class CollLoader(Loader):
         """
         Iterate over the documents of a collection.
         """
-        yield from self.collection(source, id_=None)
+        yield from self.collection(source, id=None)
 
 
 class DocIterator(Loader):
@@ -71,9 +71,9 @@ class DocIterator(Loader):
     Subclasses must implement iter_documents().
     """
 
-    def load_one(self, source, id_):
+    def load_one(self, source, id):
         docs = self.iter_documents(source)
-        return Collection.from_iterable(docs, id_, basename(source))
+        return Collection.from_iterable(docs, id, basename(source))
 
     def iter_documents(self, source):
         """

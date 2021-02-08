@@ -261,9 +261,9 @@ class _NCBIFetcher(_IterparseLoader):
             for k, v in [('tool', tool), ('email', email), ('api_key', api_key)]
             if v is not None}
 
-    def load_one(self, source, id_):
+    def load_one(self, source, id):
         # Filename makes no sense for a fetched collection -- delete it.
-        coll = super().load_one(source, id_)
+        coll = super().load_one(source, id)
         coll.filename = None
         return coll
 

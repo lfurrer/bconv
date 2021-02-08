@@ -30,10 +30,10 @@ class PubTatorLoader(CollLoader):
         (self.type,
          self.cui) = info
 
-    def collection(self, source, id_):
+    def collection(self, source, id):
         entity_counter = it.count(1)
         docs = self._iter_documents(source, entity_counter)
-        return Collection.from_iterable(docs, id_, basename(source))
+        return Collection.from_iterable(docs, id, basename(source))
 
     def iter_documents(self, source):
         return self._iter_documents(source)

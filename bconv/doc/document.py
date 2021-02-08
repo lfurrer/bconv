@@ -107,44 +107,44 @@ class TextUnit(SequenceUnit):
             self._text = ''.join(self.iter_text())
         return self._text
 
-    def units(self, type_):
+    def units(self, level):
         """
         Iterate over units at any level.
 
-        `type_` can be a subtype of Unit, or a case-insensitive
-        string of the type name.
+        `level` can be a subtype of Unit, or a case-insensitive
+        string of the level name.
 
-        If `type_` matches self's type, self is yielded.
+        If `level` matches self's level, self is yielded.
 
         Example:
             my_doc.units("sentence")
         returns a flat iterator over all sentences of a document.
         """
-        if isinstance(type_, str):
+        if isinstance(level, str):
             try:
-                type_ = dict(
+                level = dict(
                     collection=Collection,
                     document=Document,
                     section=Section,
                     sentence=Sentence,
                     token=Token,
-                )[type_.lower()]
+                )[level.lower()]
             except KeyError:
-                raise ValueError('unknown unit type: {}'
-                                 .format(type_))
+                raise ValueError('unknown unit level: {}'
+                                 .format(level))
 
-        if isinstance(self, type_):
+        if isinstance(self, level):
             # The root level matches.
             yield self
 
-        elif type_ is self._child_type:
+        elif level is self._child_type:
             # Optimisation: avoid recursion for simple iteration
             yield from self._children
 
         else:
             # Recursively descend into sub-subelements.
             for child in self._children:
-                yield from child.units(type_)
+                yield from child.units(level)
 
     def iter_text(self):
         r"""
@@ -493,9 +493,9 @@ class Exportable(TextUnit):
     Base class for exportable units (Collection and Document).
     """
 
-    def __init__(self, id_, filename=None):
+    def __init__(self, id, filename=None):
         super().__init__()
-        self.id = id_
+        self.id = id
         self.filename = filename
 
     def iter_text(self):
@@ -513,11 +513,11 @@ class Document(Exportable, RelationUnit):
 
     _child_type = Section
 
-    def __init__(self, id_, filename=None, type_=None):
-        super().__init__(id_, filename)
+    def __init__(self, id, filename=None, type=None):
+        super().__init__(id, filename)
         self._char_cursor = 0
-        if type_ is not None:
-            self.type = type_
+        if type is not None:
+            self.type = type
 
     def add_section(self, section_type, text, offset=None,
                     entities=(), entity_offset=None):
@@ -558,16 +558,16 @@ class Collection(Exportable):
 
     _child_type = Document
 
-    def __init__(self, id_, filename):
-        super().__init__(id_, filename)
+    def __init__(self, id, filename):
+        super().__init__(id, filename)
         self._by_ids = {}
 
     @classmethod
-    def from_iterable(cls, documents, id_, filename=None):
+    def from_iterable(cls, documents, id, filename=None):
         """
         Construct a collection from an iterable of documents.
         """
-        coll = cls(id_, filename)
+        coll = cls(id, filename)
         for doc in documents:
             coll.add_document(doc)
         return coll
@@ -579,11 +579,11 @@ class Collection(Exportable):
         self._add_child(document)
         self._by_ids[document.id] = document
 
-    def get_document(self, id_):
+    def get_document(self, id):
         """
         Access a document by its ID.
         """
-        return self._by_ids[id_]
+        return self._by_ids[id]
 
     def iter_relations(self):
         """
@@ -603,8 +603,8 @@ class Entity:
 
     __slots__ = ('id', 'text', 'spans', 'info')
 
-    def __init__(self, id_, text, spans, info):
-        self.id = id_
+    def __init__(self, id, text, spans, info):
+        self.id = id
         self.text = text
         self.spans = sorted((start, end) for start, end in spans)
         self.info = info  # type: Dict[str, str]
@@ -649,9 +649,9 @@ class Relation(SequenceUnit):
 
     _child_type = RelationMember
 
-    def __init__(self, id_, members):
+    def __init__(self, id, members):
         super().__init__()
-        self.id = id_
+        self.id = id
         for refid, role in members:
             self._add_child(RelationMember(refid, role))
 
