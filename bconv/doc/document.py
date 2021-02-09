@@ -40,21 +40,10 @@ class SequenceUnit:
 
     _child_type = None  # type: type
 
-    def __init__(self):
+    def __init__(self, **metadata):
         super().__init__()
         self._children = []
-        self._metadata = None
-
-    @property
-    def metadata(self):
-        """Metadata imported from input documents."""
-        if self._metadata is None:
-            self._metadata = {}
-        return self._metadata
-
-    @metadata.setter
-    def metadata(self, value):
-        self._metadata = value
+        self.metadata = metadata
 
     @property
     def type(self):
@@ -96,8 +85,8 @@ class TextUnit(SequenceUnit):
     Base class for units containing text.
     """
 
-    def __init__(self, text=None):
-        super().__init__()
+    def __init__(self, text=None, **metadata):
+        super().__init__(**metadata)
         self._text = text
 
     @property
@@ -240,8 +229,8 @@ Token = namedtuple('Token', 'text start end')
 class OffsetUnit(TextUnit, RelationUnit):
     """A unit with start and end offsets."""
 
-    def __init__(self, text, start, end):
-        super().__init__(text)
+    def __init__(self, text, start, end, **metadata):
+        super().__init__(text, **metadata)
         self._start = start
         self._end = end
 
@@ -265,12 +254,12 @@ class Sentence(OffsetUnit):
 
     _child_type = Token
 
-    def __init__(self, text, section=None, start=0, end=None):
+    def __init__(self, text, section=None, start=0, end=None, **metadata):
         self.section = section
         self.entities = []
         if end is None:
             end = start + len(text)
-        super().__init__(text, start, end)
+        super().__init__(text, start, end, **metadata)
 
     @property
     def text(self):
@@ -399,14 +388,16 @@ class Section(OffsetUnit):
 
     _child_type = Sentence
 
-    def __init__(self, section_type, text, document, start=0, entities=()):
+    def __init__(self, section_type, text, document, start=0, entities=(),
+                 **metadata):
         """
         A section (eg. title, abstract, mesh list).
 
         The text can be a single string or a list of
         strings (sentences).
         """
-        super().__init__(text=None, start=start, end=start)  # adjust later
+        # Adjust text/start/end later.
+        super().__init__(text=None, start=start, end=start, **metadata)
 
         self.type = section_type
         self.document = document
@@ -493,8 +484,8 @@ class Exportable(TextUnit):
     Base class for exportable units (Collection and Document).
     """
 
-    def __init__(self, id, filename=None):
-        super().__init__()
+    def __init__(self, id, filename=None, **metadata):
+        super().__init__(**metadata)
         self.id = id
         self.filename = filename
 
@@ -513,14 +504,12 @@ class Document(Exportable, RelationUnit):
 
     _child_type = Section
 
-    def __init__(self, id, filename=None, type=None):
-        super().__init__(id, filename)
+    def __init__(self, id, filename=None, **metadata):
+        super().__init__(id, filename, **metadata)
         self._char_cursor = 0
-        if type is not None:
-            self.type = type
 
     def add_section(self, section_type, text, offset=None,
-                    entities=(), entity_offset=None):
+                    entities=(), entity_offset=None, **metadata):
         """
         Append a section to the end.
 
@@ -533,7 +522,7 @@ class Document(Exportable, RelationUnit):
                 entity_offset = offset
             entities = self._adjust_entity_spans(entities, entity_offset)
 
-        section = Section(section_type, text, self, offset, entities)
+        section = Section(section_type, text, self, offset, entities, **metadata)
         self._add_child(section)
         self._char_cursor = section.end
 
@@ -558,8 +547,8 @@ class Collection(Exportable):
 
     _child_type = Document
 
-    def __init__(self, id, filename):
-        super().__init__(id, filename)
+    def __init__(self, id, filename, **metadata):
+        super().__init__(id, filename, **metadata)
         self._by_ids = {}
 
     @classmethod
@@ -649,8 +638,8 @@ class Relation(SequenceUnit):
 
     _child_type = RelationMember
 
-    def __init__(self, id, members):
-        super().__init__()
+    def __init__(self, id, members, **metadata):
+        super().__init__(**metadata)
         self.id = id
         for refid, role in members:
             self._add_child(RelationMember(refid, role))
