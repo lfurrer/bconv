@@ -145,9 +145,9 @@ def _get_relations(content):
 
 
 def _skip_cui(entities):
-    for *entity, info in entities:
-        info = {k: v for k, v in info.items() if k != 'cui'}
-        yield [*entity, info]
+    for *entity, meta in entities:
+        meta = {k: v for k, v in meta.items() if k != 'cui'}
+        yield [*entity, meta]
 
 
 def _entity_str_ids(entities):

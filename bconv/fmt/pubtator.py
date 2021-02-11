@@ -26,9 +26,9 @@ class PubTatorLoader(CollLoader):
 
     _section_labels = {'t': 'Title', 'a': 'Abstract'}
 
-    def __init__(self, info=('type', 'cui')):
+    def __init__(self, meta=('type', 'cui')):
         (self.type,
-         self.cui) = info
+         self.cui) = meta
 
     def collection(self, source, id):
         entity_counter = it.count(1)
@@ -110,10 +110,10 @@ class PubTatorLoader(CollLoader):
         return label, text
 
     def _entity(self, ids, start, end, text, type_, cui=None):
-        info = {self.type: type_}
+        meta = {self.type: type_}
         if cui is not None:
-            info[self.cui] = cui
-        return Entity(next(ids), text, [(int(start), int(end))], info)
+            meta[self.cui] = cui
+        return Entity(next(ids), text, [(int(start), int(end))], meta)
 
 
 class PubTatorFBKLoader(PubTatorLoader):
@@ -121,8 +121,8 @@ class PubTatorFBKLoader(PubTatorLoader):
     Load FBK-flavored PubTator documents.
     """
 
-    def __init__(self, info='type'):
-        super().__init__([info, None])
+    def __init__(self, meta='type'):
+        super().__init__([meta, None])
         del self.cui
 
     def _entity(self, _, id_, type_, start, end, text):
@@ -130,8 +130,8 @@ class PubTatorFBKLoader(PubTatorLoader):
             id_ = int(id_.lstrip('T'))
         except ValueError:
             pass
-        info = {self.type: type_}
-        return Entity(id_, text, [(int(start), int(end))], info)
+        meta = {self.type: type_}
+        return Entity(id_, text, [(int(start), int(end))], meta)
 
 
 class PubTatorFormatter(StreamFormatter):
@@ -141,9 +141,9 @@ class PubTatorFormatter(StreamFormatter):
 
     ext = 'txt'
 
-    def __init__(self, info=('type', 'cui')):
+    def __init__(self, meta=('type', 'cui')):
         (self.type,
-         self.cui) = info
+         self.cui) = meta
 
     def write(self, content, stream):
         tsv = csv.writer(stream, **tsv_format)
@@ -192,19 +192,20 @@ class PubTatorFormatter(StreamFormatter):
             yield self._select_anno_fields(docid, start, end, entity)
 
     def _select_anno_fields(self, docid, start, end, entity):
-        return (docid, start, end, entity.text_wn, *self._entity_info(entity))
+        return (docid, start, end, entity.text_wn, *self._entity_meta(entity))
 
-    def _entity_info(self, entity):
+    def _entity_meta(self, entity):
         for key in (self.type, self.cui):
             try:
-                yield entity.info[key]
+                yield entity.metadata[key]
             except KeyError as e:
                 if e.args == (self.cui,):
                     return  # CUI is optional; ignore silently.
                 if e.args == (key,):
                     raise ValueError(
-                        'Need entity attribute: {!r} not found in Entity.info. '
-                        'Please check the `info` option.'
+                        'Need entity attribute: '
+                        '{!r} not found in Entity.metadata. '
+                        'Please check the `meta` option.'
                         .format(key))
                 raise
 
@@ -214,8 +215,8 @@ class PubTatorFBKFormatter(PubTatorFormatter):
     FBK flavor of the PubTator format.
     """
 
-    def __init__(self, info='type'):
-        super().__init__([info, None])
+    def __init__(self, meta='type'):
+        super().__init__([meta, None])
 
     def _select_anno_fields(self, docid, start, end, entity):
         try:
@@ -227,5 +228,5 @@ class PubTatorFBKFormatter(PubTatorFormatter):
         return (docid, id_, self._entity_type(entity), start, end, entity.text)
 
     def _entity_type(self, entity):
-        type_, *_ = self._entity_info(entity)
+        type_, *_ = self._entity_meta(entity)
         return type_

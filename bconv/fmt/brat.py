@@ -66,11 +66,11 @@ class _BaseBratFormatter(StreamFormatter):
         if key is None:
             key = self.att
         try:
-            return entity.info[key]
+            return entity.metadata[key]
         except KeyError as e:
             if e.args == (key,):
                 raise ValueError(
-                    'Need entity attribute: {!r} not found in Entity.info. '
+                    'Need entity attribute: {!r} not found in Entity.metadata. '
                     'Please check the `{}` option.'
                     .format(key, option_name))
             raise
@@ -93,11 +93,11 @@ class BratFormatter(_BaseBratFormatter):
     def __init__(self, att='type', cui=None, extra=()):
         """
         Args:
-            att: info key of the attribute value
+            att: metadata key of the attribute value
                  (used in the "type" slot of a T line)
-            cui: info key of the concept ID
+            cui: metadata key of the concept ID
                  (used in a separate N line)
-            extra: info keys for additional attributes
+            extra: metadata keys for additional attributes
                    (used in a separate A line)
         """
         super().__init__(att=att)

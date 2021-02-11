@@ -134,8 +134,9 @@ class _BioCLoader(CollLoader, _OffsetMixin):
         """Create an Entity instance from a BioC annotation node."""
         id_ = node.get('id')
         text = self._text(node)
-        info = self.infon_dict(node)
-        return Entity(id_, text, offsets, info)
+        entity = Entity(id_, text, offsets)  # don't provide meta as kwargs
+        entity.metadata = self.infon_dict(node)
+        return entity
 
     def _get_relations(self, node):
         for relation in self._iterfind(node, 'relation'):
@@ -360,7 +361,7 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
     def _entity(self, entity, offset_mngr):
         node = E('annotation', id=str(entity.id))
 
-        for label, value in entity.info.items():
+        for label, value in entity.metadata.items():
             self._infon(node, label, value)
 
         for start, length in offset_mngr.entity(entity):
@@ -471,7 +472,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
     def _entity(entity, offset_mngr):
         return {
             'id': str(entity.id),
-            'infons': dict(entity.info),
+            'infons': dict(entity.metadata),
             'text': entity.text,
             'locations': [dict(offset=start, length=length)
                           for start, length in offset_mngr.entity(entity)]

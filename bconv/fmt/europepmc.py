@@ -23,11 +23,11 @@ class EuPMCFormatter(StreamFormatter):
 
     ext = 'jsonl'
 
-    def __init__(self, provider, src='MED', info=('type', 'pref', 'uri')):
+    def __init__(self, provider, src='MED', meta=('type', 'pref', 'uri')):
         self.metadata = {'provider': provider, 'src': src}
         (self.type,
          self.pref,
-         self.uri) = info
+         self.uri) = meta
 
     def write(self, content, stream):
         documents = content.units('document')
@@ -65,20 +65,20 @@ class EuPMCFormatter(StreamFormatter):
         return doc
 
     def _entity_type(self, entity):
-        return self._entity_info(entity, self.type)
+        return self._entity_meta(entity, self.type)
 
     def _entity_name_uri(self, entity):
-        return tuple(self._entity_info(entity, k) for k in (self.pref, self.uri))
+        return tuple(self._entity_meta(entity, k) for k in (self.pref, self.uri))
 
     @staticmethod
-    def _entity_info(entity, key):
+    def _entity_meta(entity, key):
         try:
-            return entity.info[key]
+            return entity.metadata[key]
         except KeyError as e:
             if e.args == (key,):
                 raise ValueError(
-                    'Need entity attribute: {!r} not found in Entity.info. '
-                    'Please check the `info` option.'
+                    'Need entity attribute: {!r} not found in Entity.metadata. '
+                    'Please check the `meta` option.'
                     .format(key))
             raise
 

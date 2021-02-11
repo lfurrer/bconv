@@ -68,7 +68,7 @@ class CSVFormatter(StreamFormatter):
                        entity.start,
                        entity.end,
                        self._entity_text(entity),
-                       *self._extra_info(entity))
+                       *self._extra_meta(entity))
                 last_end = max(last_end, entity.end)
             # Add sparse lines for the remaining tokens.
             yield from self._tok_rows(last_end, float('inf'), toks, loc)
@@ -77,14 +77,14 @@ class CSVFormatter(StreamFormatter):
     def _entity_text(entity):
         return entity.text
 
-    def _extra_info(self, entity):
+    def _extra_meta(self, entity):
         try:
-            return tuple(entity.info[f] for f in self.extra_fields)
+            return tuple(entity.metadata[f] for f in self.extra_fields)
         except KeyError as e:
             if e.args[0] in self.extra_fields:
                 raise ValueError(
-                    'Need extra field: {} not found in Entity.info. '
-                    'Please check the `extra_fields` option.'
+                    'Need extra field: {} not found in Entity.metadata. '
+                    'Please check the `fields` option.'
                     .format(e))
             raise
 

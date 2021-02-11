@@ -75,7 +75,7 @@ Find the first annotation for this sentence:
 >>> e = next(sent.iter_entities())
 >>> e.start, e.end, e.text
 (571, 578, 'KSHV‐TK')
->>> e.info
+>>> e.metadata
 {'type': 'gene/protein', 'ui': 'Uniprot:F5HB62'}
 ```
 Write the whole collection to a new file in CoNLL format:
