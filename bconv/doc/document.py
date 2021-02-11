@@ -183,7 +183,7 @@ class TextUnit(SequenceUnit):
                            e.text,
                            [(start+offset, end+offset)
                             for start, end in e.spans],
-                           e.info)
+                           e.metadata)
                     for e in entities)
         return entities
 
@@ -371,7 +371,8 @@ class Sentence(OffsetUnit):
                 else:
                     # Discontinuous entity -- generate ad-hoc objects.
                     text = self._text[start-self._start:end-self._end]
-                    yield Entity(entity.id, text, [(start, end)], entity.info)
+                    spans = [(start, end)]
+                    yield Entity(entity.id, text, spans, entity.metadata)
 
     def get_section_type(self, default=None):
         """
@@ -590,13 +591,13 @@ class Entity:
     Link from textual evidence to an annotated entity.
     """
 
-    __slots__ = ('id', 'text', 'spans', 'info')
+    __slots__ = ('id', 'text', 'spans', 'metadata')
 
-    def __init__(self, id, text, spans, info):
+    def __init__(self, id, text, spans, meta=None, **_meta):
         self.id = id
         self.text = text
         self.spans = sorted((start, end) for start, end in spans)
-        self.info = info  # type: Dict[str, str]
+        self.metadata = _meta if meta is None else {**meta, **_meta}
 
     @property
     def text_wn(self):

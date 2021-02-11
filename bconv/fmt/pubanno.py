@@ -75,11 +75,11 @@ class PubAnnoJSONFormatter(Formatter):
 
     def _concept(self, entity):
         try:
-            return entity.info[self.obj]
+            return entity.metadata[self.obj]
         except KeyError as e:
             if e.args == (self.obj,):
                 raise ValueError(
-                    'Need concept object: {!r} not found in Entity.info. '
+                    'Need concept object: {!r} not found in Entity.metadata. '
                     'Please check the `obj` option.'
                     .format(self.obj))
             raise
@@ -97,7 +97,7 @@ class PubAnnoJSONFormatter(Formatter):
     def _attributes(self, content):
         att_ids = pids('A')
         for entity, tid in zip(content.iter_entities(), pids('T')):
-            for key, value in entity.info.items():
+            for key, value in entity.metadata.items():
                 if key != self.obj:
                     yield {
                         'id': next(att_ids),
