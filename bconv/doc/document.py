@@ -389,8 +389,7 @@ class Section(OffsetUnit):
 
     _child_type = Sentence
 
-    def __init__(self, section_type, text, document, start=0, entities=(),
-                 **metadata):
+    def __init__(self, type, text, document, start=0, entities=(), **metadata):
         """
         A section (eg. title, abstract, mesh list).
 
@@ -400,7 +399,7 @@ class Section(OffsetUnit):
         # Adjust text/start/end later.
         super().__init__(text=None, start=start, end=start, **metadata)
 
-        self.type = section_type
+        self.type = type
         self.document = document
 
         if isinstance(text, str):
@@ -509,7 +508,7 @@ class Document(Exportable, RelationUnit):
         super().__init__(id, filename, **metadata)
         self._char_cursor = 0
 
-    def add_section(self, section_type, text, offset=None,
+    def add_section(self, type, text, offset=None,
                     entities=(), entity_offset=None, **metadata):
         """
         Append a section to the end.
@@ -523,7 +522,7 @@ class Document(Exportable, RelationUnit):
                 entity_offset = offset
             entities = self._adjust_entity_spans(entities, entity_offset)
 
-        section = Section(section_type, text, self, offset, entities, **metadata)
+        section = Section(type, text, self, offset, entities, **metadata)
         self._add_child(section)
         self._char_cursor = section.end
 
