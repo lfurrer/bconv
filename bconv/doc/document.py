@@ -93,7 +93,7 @@ class TextUnit(SequenceUnit):
     def text(self):
         """Plain-text representation."""
         if self._text is None:
-            self._text = ''.join(self.iter_text())
+            return ''.join(self.iter_text())
         return self._text
 
     def units(self, level):
