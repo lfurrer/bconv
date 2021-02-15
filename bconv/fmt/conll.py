@@ -70,7 +70,7 @@ class CoNLLLoader(DocIterator):
         doc.add_section(type_, ())
         section = doc[-1]
         for sentence, tokens, entities in sentences:
-            section.add_sentences((sentence,))
+            section.add_sentence(sentence)
             section[-1].set_tokens(tokens)
             section[-1].add_entities(entities, offset=0)
 

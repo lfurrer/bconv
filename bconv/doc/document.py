@@ -411,7 +411,7 @@ class Section(OffsetUnit):
             # Iterable of strings or <string, offset...> tuples.
             sentences = self._guess_offsets(text, start)
 
-        self.add_sentences(sentences)
+        self._add_sentences(sentences)
         self.add_entities(entities, offset=0)
 
     def iter_text(self):
@@ -467,7 +467,7 @@ class Section(OffsetUnit):
             # Propagate the sentence/offset tuples.
             yield from sentences
 
-    def add_sentences(self, sentences):
+    def _add_sentences(self, sentences):
         """
         Add a sequence of sentences with start offsets.
         """
@@ -477,6 +477,16 @@ class Section(OffsetUnit):
             # Adjust the section-level offsets based on the sentences.
             self._start = self._children[0].start
             self._end = self._children[-1].end
+
+    def add_sentence(self, text, offset=None):
+        """
+        Add a single sentence.
+        """
+        if offset is None:
+            offset = self.end
+        sentence = self._guess_offsets((text,), offset)
+        self._add_sentences(sentence)
+        self._text = None  # no longer valid
 
 
 class Exportable(TextUnit):
