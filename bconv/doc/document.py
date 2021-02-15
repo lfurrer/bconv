@@ -504,10 +504,6 @@ class Document(Exportable, RelationUnit):
 
     _child_type = Section
 
-    def __init__(self, id, filename=None, **metadata):
-        super().__init__(id, filename, **metadata)
-        self._char_cursor = 0
-
     def add_section(self, type, text, offset=None,
                     entities=(), entity_offset=None, **metadata):
         """
@@ -516,7 +512,7 @@ class Document(Exportable, RelationUnit):
         The text can be either a str or an iterable of str.
         """
         if offset is None:
-            offset = self._char_cursor
+            offset = self[-1].end if self else 0
         if entities:
             if entity_offset is None:
                 entity_offset = offset
@@ -524,7 +520,6 @@ class Document(Exportable, RelationUnit):
 
         section = Section(type, text, self, offset, entities, **metadata)
         self._add_child(section)
-        self._char_cursor = section.end
 
     def sanitize_relations(self):
         """
