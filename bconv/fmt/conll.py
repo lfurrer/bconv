@@ -67,12 +67,11 @@ class CoNLLLoader(DocIterator):
 
     @staticmethod
     def _add_section(doc, type_, sentences):
-        doc.add_section(type_, ())
-        section = doc[-1]
+        section = doc.add_section(type_, ())
         for sentence, tokens, entities in sentences:
-            section.add_sentence(sentence)
-            section[-1].set_tokens(tokens)
-            section[-1].add_entities(entities, offset=0)
+            sentence_unit = section.add_sentence(sentence)
+            sentence_unit.set_tokens(tokens)
+            sentence_unit.add_entities(entities, offset=0)
 
     def _iter_sentences(self, rows, ids):
         for non_blank, sent_rows in it.groupby(rows, key=any):

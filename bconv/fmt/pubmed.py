@@ -57,9 +57,9 @@ class _MedlineParser:
 
         anno_counter = it.count(1)
         for label, text, anno in sections:
-            doc.add_section(label, text)
+            section = doc.add_section(label, text)
             if any(anno):
-                self._insert_annotations(doc[-1], anno, anno_counter)
+                self._insert_annotations(section, anno, anno_counter)
 
         return doc
 

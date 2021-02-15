@@ -487,6 +487,7 @@ class Section(OffsetUnit):
         sentence = self._guess_offsets((text,), offset)
         self._add_sentences(sentence)
         self._text = None  # no longer valid
+        return self[-1]
 
 
 class Exportable(TextUnit):
@@ -530,6 +531,7 @@ class Document(Exportable, RelationUnit):
 
         section = Section(type, text, self, offset, entities, **metadata)
         self._add_child(section)
+        return section
 
     def sanitize_relations(self):
         """
@@ -572,6 +574,7 @@ class Collection(Exportable):
         """
         self._add_child(document)
         self._by_ids[document.id] = document
+        return document
 
     def get_document(self, id):
         """
@@ -656,4 +659,6 @@ class Relation(SequenceUnit):
         """
         Add a member to this relation.
         """
-        self._add_child(RelationMember(refid, role))
+        member = RelationMember(refid, role)
+        self._add_child(member)
+        return member
