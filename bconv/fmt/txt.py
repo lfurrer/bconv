@@ -133,20 +133,44 @@ class TXTFormatter(StreamFormatter):
 
     ext = 'txt'
 
+    def __init__(self, sentence_split=False):
+        self.sentence_split = sentence_split
+
+    def write(self, content, stream):
+        stream.writelines(self._iter_text(content))
+
+    def _iter_text(self, content):
+        if self.sentence_split:
+            return self._iter_text_sentence_split(content)
+        else:
+            return content.iter_text()
+
     @staticmethod
-    def write(content, stream):
-        stream.writelines(content.iter_text())
+    def _iter_text_sentence_split(content):
+        offset = None
+        for section in content.units('section'):
+            if offset is not None:
+                yield ' ' * (section.start - offset - 2)
+                yield '\n\n'  # blank line separating sections
+            offset = None
+            for sentence in section:
+                if offset is not None:
+                    yield ' ' * (sentence.start - offset - 1)
+                    yield '\n'  # newline separating sentences
+                text = sentence.text.rstrip().replace('\n', ' ')
+                offset = sentence.start + len(text)
+                yield text
+        yield '\n'  # trailing newline at EOF
 
 
-class TXTJSONFormatter(StreamFormatter):
+class TXTJSONFormatter(TXTFormatter):
     """
     Formatter for multiple plain-text documents embedded in JSON.
     """
 
     ext = 'json'
 
-    @staticmethod
-    def write(content, stream):
-        collection = [{'id': doc.id, 'text': doc.text}
+    def write(self, content, stream):
+        collection = [{'id': doc.id, 'text': ''.join(self._iter_text(doc))}
                       for doc in content.units('document')]
         json.dump(collection, stream)
