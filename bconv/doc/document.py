@@ -28,6 +28,7 @@ __author__ = "Lenz Furrer"
 import re
 import logging
 from collections import namedtuple
+from collections.abc import Sized
 
 from ..util.iterate import peek
 from ..nlp.tokenize import TOKENIZER
@@ -532,6 +533,14 @@ class Document(Exportable, RelationUnit):
         section = Section(type, text, self, offset, entities, **metadata)
         self._add_child(section)
         return section
+
+    def _adjust_entity_spans(self, entities, offset):
+        adjusted = super()._adjust_entity_spans(entities, offset)
+        # Avoid casting a list (or similar types) to an iterator.
+        # Only applies to cases where spans needed to be adjusted.
+        if adjusted is not entities and isinstance(entities, Sized):
+            adjusted = list(adjusted)
+        return adjusted
 
     def sanitize_relations(self):
         """
