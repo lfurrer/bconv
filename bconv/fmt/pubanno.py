@@ -14,6 +14,7 @@ import io
 import json
 import time
 import tarfile
+import warnings
 
 from ._export import Formatter, StreamFormatter
 from ..doc.document import Collection, Document, Section
@@ -43,6 +44,11 @@ class PubAnnoJSONFormatter(Formatter):
         elif isinstance(content, Document):
             json_object = self._document(content)
         elif isinstance(content, Collection):
+            warnings.warn(
+                'Serialising a collection of documents in a single JSON file '
+                'results in a format which violates the PubAnnotation specs '
+                'and which cannot be loaded back by bconv. '
+                'Please consider using the pubanno_json.tgz format instead.')
             json_object = [self._document(doc) for doc in content]
         else:
             raise ValueError('Cannot serialise {}'.format(type(content)))
