@@ -19,6 +19,7 @@ from .utils import DATA, get_cases, path_id, xopen
 
 TEXT_ONLY = 'text-only'
 NO_RELS = 'no-rels'
+BIN_REL_ONLY = 'bin-rel-only'
 STRIP_WS = 'strip-ws'
 SKIP_CUI = 'skip-cui'
 STR_IDS = 'str-ids'
@@ -27,6 +28,8 @@ UNNEST = 'unnest'
 RESTRICTIONS = {
     # Format-specific relaxations.
     'conll': {STRIP_WS, NO_RELS, SKIP_CUI},
+    'pubanno_json': {BIN_REL_ONLY},
+    'pubanno_json.tgz': {BIN_REL_ONLY},
     'pubtator': {NO_RELS},
     'pubtator_fbk': {NO_RELS, SKIP_CUI},
     'bioc_json': {STR_IDS},
@@ -109,6 +112,8 @@ def _validate(parsed, fmt, expected):
     ref = exp.get('relations') or [[] for _ in exp['text']]
     if STR_IDS in restrictions:
         ref = [list(_rel_str_ids(doc)) for doc in ref]
+    if BIN_REL_ONLY in restrictions:
+        ref = [list(_rel_subj_obj(doc)) for doc in ref]
     assert _get_relations(parsed) == ref
 
 
@@ -161,4 +166,13 @@ def _rel_str_ids(relations):
             rel,
             id=str(rel['id']),
             members=[[str(refid), role] for refid, role in rel['members']]
+        )
+
+
+def _rel_subj_obj(relations):
+    for rel in relations:
+        members = zip(rel['members'], ('subj', 'obj'))
+        yield dict(
+            rel,
+            members=[[refid, role] for (refid, _), role in members]
         )
