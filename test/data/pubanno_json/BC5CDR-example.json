@@ -1,98 +1,96 @@
-[
-  {
-    "text": "Lidocaine-induced cardiac asystole.\nIntravenous administration of a single 50-mg bolus of lidocaine in a 67-year-old man resulted in profound depression of the activity of the sinoatrial and atrioventricular nodal pacemakers. The patient had no apparent associated conditions which might have predisposed him to the development of bradyarrhythmias; and, thus, this probably represented a true idiosyncrasy to lidocaine.\n",
-    "denotations": [
-      {
-        "id": "T1",
-        "span": {
-          "begin": 0,
-          "end": 9
-        },
-        "obj": "Chemical"
+{
+  "text": "Lidocaine-induced cardiac asystole.\nIntravenous administration of a single 50-mg bolus of lidocaine in a 67-year-old man resulted in profound depression of the activity of the sinoatrial and atrioventricular nodal pacemakers. The patient had no apparent associated conditions which might have predisposed him to the development of bradyarrhythmias; and, thus, this probably represented a true idiosyncrasy to lidocaine.\n",
+  "denotations": [
+    {
+      "id": "T1",
+      "span": {
+        "begin": 0,
+        "end": 9
       },
-      {
-        "id": "T2",
-        "span": {
-          "begin": 18,
-          "end": 34
-        },
-        "obj": "Disease"
+      "obj": "Chemical"
+    },
+    {
+      "id": "T2",
+      "span": {
+        "begin": 18,
+        "end": 34
       },
-      {
-        "id": "T3",
-        "span": {
-          "begin": 90,
-          "end": 99
-        },
-        "obj": "Chemical"
+      "obj": "Disease"
+    },
+    {
+      "id": "T3",
+      "span": {
+        "begin": 90,
+        "end": 99
       },
-      {
-        "id": "T4",
-        "span": {
-          "begin": 142,
-          "end": 152
-        },
-        "obj": "Disease"
+      "obj": "Chemical"
+    },
+    {
+      "id": "T4",
+      "span": {
+        "begin": 142,
+        "end": 152
       },
-      {
-        "id": "T5",
-        "span": {
-          "begin": 331,
-          "end": 347
-        },
-        "obj": "Disease"
+      "obj": "Disease"
+    },
+    {
+      "id": "T5",
+      "span": {
+        "begin": 331,
+        "end": 347
       },
-      {
-        "id": "T6",
-        "span": {
-          "begin": 409,
-          "end": 418
-        },
-        "obj": "Chemical"
-      }
-    ],
-    "attributes": [
-      {
-        "id": "A1",
-        "subj": "T1",
-        "pred": "cui",
-        "obj": "D008012"
+      "obj": "Disease"
+    },
+    {
+      "id": "T6",
+      "span": {
+        "begin": 409,
+        "end": 418
       },
-      {
-        "id": "A2",
-        "subj": "T2",
-        "pred": "cui",
-        "obj": "D006323"
-      },
-      {
-        "id": "A3",
-        "subj": "T3",
-        "pred": "cui",
-        "obj": "D008012"
-      },
-      {
-        "id": "A4",
-        "subj": "T4",
-        "pred": "cui",
-        "obj": "D003866"
-      },
-      {
-        "id": "A5",
-        "subj": "T5",
-        "pred": "cui",
-        "obj": "D001919"
-      },
-      {
-        "id": "A6",
-        "subj": "T6",
-        "pred": "cui",
-        "obj": "D008012"
-      }
-    ],
-    "relations": [
-      {"id": "R1", "subj": "T1", "pred": "CID", "obj": "T2"}
-    ],
-    "sourceid": "354896",
-    "sourcedb": null
-  }
-]
+      "obj": "Chemical"
+    }
+  ],
+  "attributes": [
+    {
+      "id": "A1",
+      "subj": "T1",
+      "pred": "cui",
+      "obj": "D008012"
+    },
+    {
+      "id": "A2",
+      "subj": "T2",
+      "pred": "cui",
+      "obj": "D006323"
+    },
+    {
+      "id": "A3",
+      "subj": "T3",
+      "pred": "cui",
+      "obj": "D008012"
+    },
+    {
+      "id": "A4",
+      "subj": "T4",
+      "pred": "cui",
+      "obj": "D003866"
+    },
+    {
+      "id": "A5",
+      "subj": "T5",
+      "pred": "cui",
+      "obj": "D001919"
+    },
+    {
+      "id": "A6",
+      "subj": "T6",
+      "pred": "cui",
+      "obj": "D008012"
+    }
+  ],
+  "relations": [
+    {"id": "R1", "subj": "T1", "pred": "CID", "obj": "T2"}
+  ],
+  "sourceid": "354896",
+  "sourcedb": null
+}

@@ -44,12 +44,15 @@ class PubAnnoJSONFormatter(Formatter):
         elif isinstance(content, Document):
             json_object = self._document(content)
         elif isinstance(content, Collection):
-            warnings.warn(
-                'Serialising a collection of documents in a single JSON file '
-                'results in a format which violates the PubAnnotation specs '
-                'and which cannot be loaded back by bconv. '
-                'Please consider using the pubanno_json.tgz format instead.')
             json_object = [self._document(doc) for doc in content]
+            if len(json_object) == 1:
+                json_object = json_object[0]
+            else:
+                warnings.warn(
+                    'Serialising a collection of documents in a single JSON '
+                    'file results in a format which violates the PubAnnotation '
+                    'specs and which cannot be loaded back by bconv. '
+                    'Please consider using the pubanno_json.tgz format instead.')
         else:
             raise ValueError('Cannot serialise {}'.format(type(content)))
         return json_object

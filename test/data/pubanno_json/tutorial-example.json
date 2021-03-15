@@ -1,138 +1,136 @@
-[
-  {
-    "text": "Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.\nEstrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.\n",
-    "denotations": [
-      {
-        "id": "T1",
-        "span": {
-          "begin": 28,
-          "end": 47
-        },
-        "obj": "Gene"
+{
+  "text": "Lack of association between estrogen receptor 1 gene polymorphisms and multiple sclerosis in southern Italy in humans.\nEstrogen receptor 1 gene polymorphisms (ESR1) have been found to be associated with multiple sclerosis (MS) in both Japanese and Finnish populations. We investigated the association between ESR1 polymorphisms (PvuII and XbaI) and MS in a study of 132 MS patients and 129 controls from the same geographic background (southern Italy). Allelic and genotypic frequencies were not different between MS patients and population controls for either the PvuII or XbaI polymorphism. This result suggests that the association between a given disease and a genomic characteristic must be confirmed by separate investigations in different populations.\n",
+  "denotations": [
+    {
+      "id": "T1",
+      "span": {
+        "begin": 28,
+        "end": 47
       },
-      {
-        "id": "T2",
-        "span": {
-          "begin": 71,
-          "end": 89
-        },
-        "obj": "Disease"
+      "obj": "Gene"
+    },
+    {
+      "id": "T2",
+      "span": {
+        "begin": 71,
+        "end": 89
       },
-      {
-        "id": "T3",
-        "span": {
-          "begin": 119,
-          "end": 138
-        },
-        "obj": "Gene"
+      "obj": "Disease"
+    },
+    {
+      "id": "T3",
+      "span": {
+        "begin": 119,
+        "end": 138
       },
-      {
-        "id": "T4",
-        "span": {
-          "begin": 159,
-          "end": 163
-        },
-        "obj": "Gene"
+      "obj": "Gene"
+    },
+    {
+      "id": "T4",
+      "span": {
+        "begin": 159,
+        "end": 163
       },
-      {
-        "id": "T5",
-        "span": {
-          "begin": 203,
-          "end": 221
-        },
-        "obj": "Disease"
+      "obj": "Gene"
+    },
+    {
+      "id": "T5",
+      "span": {
+        "begin": 203,
+        "end": 221
       },
-      {
-        "id": "T6",
-        "span": {
-          "begin": 223,
-          "end": 225
-        },
-        "obj": "Disease"
+      "obj": "Disease"
+    },
+    {
+      "id": "T6",
+      "span": {
+        "begin": 223,
+        "end": 225
       },
-      {
-        "id": "T7",
-        "span": {
-          "begin": 309,
-          "end": 313
-        },
-        "obj": "Gene"
+      "obj": "Disease"
+    },
+    {
+      "id": "T7",
+      "span": {
+        "begin": 309,
+        "end": 313
       },
-      {
-        "id": "T8",
-        "span": {
-          "begin": 349,
-          "end": 351
-        },
-        "obj": "Disease"
+      "obj": "Gene"
+    },
+    {
+      "id": "T8",
+      "span": {
+        "begin": 349,
+        "end": 351
       },
-      {
-        "id": "T9",
-        "span": {
-          "begin": 514,
-          "end": 516
-        },
-        "obj": "Disease"
-      }
-    ],
-    "attributes": [
-      {
-        "id": "A1",
-        "subj": "T1",
-        "pred": "cui",
-        "obj": "2099"
+      "obj": "Disease"
+    },
+    {
+      "id": "T9",
+      "span": {
+        "begin": 514,
+        "end": 516
       },
-      {
-        "id": "A2",
-        "subj": "T2",
-        "pred": "cui",
-        "obj": "D009103"
-      },
-      {
-        "id": "A3",
-        "subj": "T3",
-        "pred": "cui",
-        "obj": "2099"
-      },
-      {
-        "id": "A4",
-        "subj": "T4",
-        "pred": "cui",
-        "obj": "2099"
-      },
-      {
-        "id": "A5",
-        "subj": "T5",
-        "pred": "cui",
-        "obj": "D009103"
-      },
-      {
-        "id": "A6",
-        "subj": "T6",
-        "pred": "cui",
-        "obj": "D009103"
-      },
-      {
-        "id": "A7",
-        "subj": "T7",
-        "pred": "cui",
-        "obj": "2099"
-      },
-      {
-        "id": "A8",
-        "subj": "T8",
-        "pred": "cui",
-        "obj": "D009103"
-      },
-      {
-        "id": "A9",
-        "subj": "T9",
-        "pred": "cui",
-        "obj": "D009103"
-      }
-    ],
-    "relations": [],
-    "sourceid": "12098649",
-    "sourcedb": null
-  }
-]
+      "obj": "Disease"
+    }
+  ],
+  "attributes": [
+    {
+      "id": "A1",
+      "subj": "T1",
+      "pred": "cui",
+      "obj": "2099"
+    },
+    {
+      "id": "A2",
+      "subj": "T2",
+      "pred": "cui",
+      "obj": "D009103"
+    },
+    {
+      "id": "A3",
+      "subj": "T3",
+      "pred": "cui",
+      "obj": "2099"
+    },
+    {
+      "id": "A4",
+      "subj": "T4",
+      "pred": "cui",
+      "obj": "2099"
+    },
+    {
+      "id": "A5",
+      "subj": "T5",
+      "pred": "cui",
+      "obj": "D009103"
+    },
+    {
+      "id": "A6",
+      "subj": "T6",
+      "pred": "cui",
+      "obj": "D009103"
+    },
+    {
+      "id": "A7",
+      "subj": "T7",
+      "pred": "cui",
+      "obj": "2099"
+    },
+    {
+      "id": "A8",
+      "subj": "T8",
+      "pred": "cui",
+      "obj": "D009103"
+    },
+    {
+      "id": "A9",
+      "subj": "T9",
+      "pred": "cui",
+      "obj": "D009103"
+    }
+  ],
+  "relations": [],
+  "sourceid": "12098649",
+  "sourcedb": null
+}
