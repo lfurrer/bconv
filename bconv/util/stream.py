@@ -27,8 +27,9 @@ def ropen(locator, encoding='utf-8', **kwargs):
     if isinstance(locator, PATHLIKE):
         f = locator.open(encoding=encoding, **kwargs)
     elif locator.startswith(REMOTE_PROTOCOLS):
-        r = urllib.request.urlopen(locator)
-        f = codecs.getreader(encoding)(r)
+        f = urllib.request.urlopen(locator)
+        if encoding is not None:
+            f = codecs.getreader(encoding)(f)
     else:
         f = open(locator, encoding=encoding, **kwargs)
     return f
@@ -46,6 +47,17 @@ def text_stream(source, encoding='utf-8', **kwargs):
         return source
     # Source is a path/URL.
     return ropen(source, encoding=encoding, **kwargs)
+
+
+def bin_stream(source, **kwargs):
+    """
+    Provide a binary stream for reading from a path, URL, or open file.
+    """
+    if hasattr(source, 'read'):
+        if isinstance(source, io.TextIOBase):
+            source = source.buffer
+        return source
+    return ropen(source, encoding=None, mode='rb', **kwargs)
 
 
 def basename(source):
