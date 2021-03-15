@@ -16,6 +16,7 @@ import json
 import time
 import tarfile
 import warnings
+import itertools as it
 from collections import defaultdict
 from contextlib import contextmanager
 
@@ -33,6 +34,15 @@ class _PubAnnoLoader:
 
     def __init__(self, obj='type'):
         self.obj = obj
+        # Map file-local prefixed IDs ('T1', 'T2, 'R1', etc.)
+        # to doc-local unprefixed integer IDs (1, 2, 3 etc.).
+        self._ids = None
+
+    def _reset_ids(self, keep_counter=False):
+        if keep_counter and self._ids is not None:
+            self._ids.clear()
+        else:
+            self._ids = defaultdict(it.count(1).__next__)
 
     def _add_section(self, doc, text='',
                      denotations=(), attributes=(), relations=(), **_ignored):
@@ -50,7 +60,7 @@ class _PubAnnoLoader:
     def _entities(self, denotations, text):
         with rephrase_keyerror('denotation', ('id', 'span', 'obj')):
             for deno in denotations:
-                tid = deno['id']
+                tid = self._ids[deno['id']]
                 obj = deno['obj']
                 spans = deno['span']
                 if not isinstance(spans, list):
@@ -59,11 +69,10 @@ class _PubAnnoLoader:
                 term = self._get_term(text, spans)
                 yield Entity(tid, term, spans, {self.obj: obj})
 
-    @staticmethod
-    def _insert_attributes(entities, attributes):
+    def _insert_attributes(self, entities, attributes):
         with rephrase_keyerror('attribute', ('subj', 'pred', 'obj')):
             for att in attributes:
-                tid = att['subj']
+                tid = self._ids[att['subj']]
                 key = att['pred']
                 value = att['obj']
                 entities[tid].metadata[key] = value
@@ -71,10 +80,10 @@ class _PubAnnoLoader:
     def _relations(self, entities, relations, text):
         with rephrase_keyerror('relation', ('id', 'subj', 'pred', 'obj')):
             for rel in relations:
-                rid = rel['id']
-                subj = rel['subj']
+                rid = self._ids[rel['id']]
+                subj = self._ids[rel['subj']]
                 pred = rel['pred']
-                obj = rel['obj']
+                obj = self._ids[rel['obj']]
                 if self._is_lexically_chained(pred, entities[obj]):
                     self._merge_entites(entities, subj, obj, text)
                 else:
@@ -104,6 +113,7 @@ class PubAnnoJSONLoader(DocLoader, _PubAnnoLoader):
     """
 
     def document(self, source, id):
+        self._reset_ids()
         with text_stream(source) as f:
             data = json.load(f)
         if id is None:
@@ -119,6 +129,7 @@ class PubAnnoTGZLoader(DocIterator, _PubAnnoLoader):
     """
 
     def iter_documents(self, source):
+        self._reset_ids()
         documents = defaultdict(list)
         for div in self._iter_divs(source):
             docid = div['sourceid']
@@ -128,6 +139,7 @@ class PubAnnoTGZLoader(DocIterator, _PubAnnoLoader):
             divisions.sort(key=lambda div: div.get('divid', float('nan')))
             for div in divisions:
                 self._add_section(doc, **div)
+                self._reset_ids(keep_counter=True)
             yield doc
 
     @staticmethod
