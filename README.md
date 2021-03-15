@@ -18,7 +18,7 @@ The following formats are currently supported:
 | `pubtator`, `pubtator_fbk`         | ✓ | ✓ | ✓ | ✓ | [PubTator][5] |
 | `pubmed`, `pxml`                   | ✓ |   | ✓ |   | [PubMed abstracts][6] |
 | `pmc`, `nxml`                      | ✓ |   | ✓ |   | [PMC full-text][6] |
-| `pubanno_json`, `pubanno_json.tgz` |   | ✓ | ✓ | ✓ | [PubAnnotation JSON][7] |
+| `pubanno_json`, `pubanno_json.tgz` | ✓ | ✓ | ✓ | ✓ | [PubAnnotation JSON][7] |
 | `csv`, `tsv`                       |   | ✓ |   | ✓ | [comma/tab-separated values][8] |
 | `text_csv`, `text_tsv`             |   | ✓ | ✓ | ✓ | [comma/tab-separated values][8] |
 | `txt`                              | ✓ | ✓ | ✓ |   | [plain text][9] |

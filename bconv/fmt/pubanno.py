@@ -7,7 +7,8 @@ http://www.pubannotation.org/docs/annotation-format/
 
 __author__ = "Nicola Colic, Lenz Furrer"
 
-__all__ = ['PubAnnoJSONFormatter', 'PubAnnoTGZFormatter']
+__all__ = ['PubAnnoJSONLoader', 'PubAnnoTGZLoader',
+           'PubAnnoJSONFormatter', 'PubAnnoTGZFormatter']
 
 
 import io
@@ -15,10 +16,131 @@ import json
 import time
 import tarfile
 import warnings
+from collections import defaultdict
+from contextlib import contextmanager
 
+from ._load import DocLoader, DocIterator
 from ._export import Formatter, StreamFormatter
-from ..doc.document import Collection, Document, Section
+from ..doc.document import Collection, Document, Section, Entity, Relation
 from ..util.iterate import pids
+from ..util.stream import text_stream, bin_stream, basename
+
+
+class _PubAnnoLoader:
+    """
+    Load a document in PubAnnotation format.
+    """
+
+    def __init__(self, obj='type'):
+        self.obj = obj
+
+    def _add_section(self, doc, text='',
+                     denotations=(), attributes=(), relations=(), **_ignored):
+        entities, relations = self._annotations(
+            denotations, attributes, relations, text)
+        sec = doc.add_section('', text, entities=entities)
+        sec.relations = relations
+
+    def _annotations(self, denotations, attributes, relations, text):
+        entities = {e.id: e for e in self._entities(denotations, text)}
+        self._insert_attributes(entities, attributes)
+        relations = list(self._relations(entities, relations, text))
+        return entities.values(), relations
+
+    def _entities(self, denotations, text):
+        with rephrase_keyerror('denotation', ('id', 'span', 'obj')):
+            for deno in denotations:
+                tid = deno['id']
+                obj = deno['obj']
+                spans = deno['span']
+                if not isinstance(spans, list):
+                    spans = [spans]
+                spans = [(s['begin'], s['end']) for s in spans]
+                term = self._get_term(text, spans)
+                yield Entity(tid, term, spans, {self.obj: obj})
+
+    @staticmethod
+    def _insert_attributes(entities, attributes):
+        with rephrase_keyerror('attribute', ('subj', 'pred', 'obj')):
+            for att in attributes:
+                tid = att['subj']
+                key = att['pred']
+                value = att['obj']
+                entities[tid].metadata[key] = value
+
+    def _relations(self, entities, relations, text):
+        with rephrase_keyerror('relation', ('id', 'subj', 'pred', 'obj')):
+            for rel in relations:
+                rid = rel['id']
+                subj = rel['subj']
+                pred = rel['pred']
+                obj = rel['obj']
+                if self._is_lexically_chained(pred, entities[obj]):
+                    self._merge_entites(entities, subj, obj, text)
+                else:
+                    members = [(subj, 'subj'), (obj, 'obj')]
+                    yield Relation(rid, members, type=pred)
+
+    @staticmethod
+    def _get_term(text, spans):
+        return ' [...] '.join(text[s:e] for s, e in sorted(spans))
+
+    def _is_lexically_chained(self, pred, entity):
+        return (pred == '_lexicallyChainedTo'
+                and entity.metadata[self.obj] == '_FRAGMENT')
+
+    def _merge_entites(self, entities, subj, obj, text):
+        fragment = entities.pop(obj)
+        fragment.metadata.pop(self.obj)
+        entity = entities[subj]
+        entity.spans = sorted(entity.spans + fragment.spans)
+        entity.text = self._get_term(text, entity.spans)
+        entity.metadata.update(fragment.metadata)
+
+
+class PubAnnoJSONLoader(DocLoader, _PubAnnoLoader):
+    """
+    Load a document in PubAnnotation JSON format.
+    """
+
+    def document(self, source, id):
+        with text_stream(source) as f:
+            data = json.load(f)
+        if id is None:
+            id = data.get('sourceid', basename(source))
+        doc = Document(id)
+        self._add_section(doc, **data)
+        return doc
+
+
+class PubAnnoTGZLoader(DocIterator, _PubAnnoLoader):
+    """
+    Load documents from an archive of PubAnnotation JSON files.
+    """
+
+    def iter_documents(self, source):
+        documents = defaultdict(list)
+        for div in self._iter_divs(source):
+            docid = div['sourceid']
+            documents[docid].append(div)
+        for docid, divisions in documents.items():
+            doc = Document(docid)
+            divisions.sort(key=lambda div: div.get('divid', float('nan')))
+            for div in divisions:
+                self._add_section(doc, **div)
+            yield doc
+
+    @staticmethod
+    def _iter_divs(source):
+        with bin_stream(source) as b:
+            with tarfile.open(fileobj=b, mode='r|*') as tar:
+                for info in tar:
+                    if info.isfile() and info.name.lower().endswith('.json'):
+                        with tar.extractfile(info) as f:
+                            with text_stream(f) as t:
+                                div = json.load(t)
+                        div.setdefault('sourceid', basename(info.name))
+                        yield div
 
 
 class PubAnnoJSONFormatter(Formatter):
@@ -168,3 +290,16 @@ class PubAnnoTGZFormatter(StreamFormatter, PubAnnoJSONFormatter):
                 div = self._division(sec, divid=divid)
                 name = '{}-{}.json'.format(div['sourceid'], divid)
                 yield name, div
+
+
+@contextmanager
+def rephrase_keyerror(name, keys):
+    """
+    Catch KeyErrors for `keys` and raise a ValueError instead.
+    """
+    try:
+        yield None
+    except KeyError as e:
+        if e.args[0] in keys:
+            raise ValueError('missing {} entry: {}'.format(name, e.args[0]))
+        raise

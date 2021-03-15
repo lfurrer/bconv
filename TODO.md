@@ -3,7 +3,7 @@
 ## Loading/Formatting
 
 - [ ] loaders for stand-off format (BioNLP/brat)
-- [ ] loader for PubAnnotation
+- [x] loader for PubAnnotation
 - [ ] loader for EuropePMC
 - [ ] accept CoNLL without offsets
 - [ ] extend pubmed/pmc fetchers to include BioC API

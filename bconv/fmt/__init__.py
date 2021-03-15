@@ -28,6 +28,8 @@ LOADERS = {
     'bioc_xml': bioc.BioCXMLLoader,
     'bioc_json': bioc.BioCJSONLoader,
     'conll': conll.CoNLLLoader,
+    'pubanno_json': pubanno.PubAnnoJSONLoader,
+    'pubanno_json.tgz': pubanno.PubAnnoTGZLoader,
     'pubtator': pubtator.PubTatorLoader,
     'pubtator_fbk': pubtator.PubTatorFBKLoader,
     'pxml': pubmed.PXMLLoader,
