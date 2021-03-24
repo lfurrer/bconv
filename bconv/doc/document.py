@@ -145,15 +145,27 @@ class TextUnit(SequenceUnit):
         """
         raise NotImplementedError
 
-    def iter_entities(self, split_discontinuous=False):
+    def iter_entities(self, split_discontinuous=False,
+                      avoid_gaps=None, avoid_overlaps=None):
         """
         Iterate over all entities, sorted by start offset.
 
-        If split_discontinuous is True, entities with multiple
-        spans are split into multiple contiguous entities.
+        If `avoid_gaps` is not None, discontinuous entities
+        are turned into contiguous entities through splitting,
+        merging, or pruning. Valid values are:
+        "split", "fill", "first", "last".
+
+        If `avoid_overlaps` is not None, colliding entities
+        are suppressed by keeping only the longest or shortest
+        of multiple (partially) co-located entities.
+        Value values are: "keep-longer", "keep-shorter"
+
+        The legacy flag `split_discontinuous` is an alias
+        for `avoid_gaps="split".
         """
         for sentence in self.units(Sentence):
-            yield from sentence.iter_entities(split_discontinuous)
+            yield from sentence.iter_entities(
+                split_discontinuous, avoid_gaps, avoid_overlaps)
 
     def add_entities(self, entities, offset=None):
         """
@@ -353,27 +365,79 @@ class Sentence(OffsetUnit):
             text = text[start+len(span):]
         assert text.strip(separators) == '', _mismatch()
 
-    def iter_entities(self, split_discontinuous=False):
+    def iter_entities(self, split_discontinuous=False,
+                      avoid_gaps=None, avoid_overlaps=None):
         if split_discontinuous:
-            return iter(sorted(self._split_discontinuous_entities(),
-                               key=Entity.sort_key))
-        else:
-            return iter(self.entities)
+            if avoid_gaps not in (None, 'split'):
+                raise ValueError(
+                    'legacy flag `split_discontinuous` contradicts '
+                    '`avoid_gaps` value {!r}'.format(avoid_gaps))
+            avoid_gaps = 'split'
 
-    def _split_discontinuous_entities(self):
+        entities = self.entities
+        if avoid_gaps:
+            entities = sorted(self._unify_entities(entities, avoid_gaps),
+                              key=Entity.sort_key)
+        if avoid_overlaps:
+            entities = sorted(self._unnest_entities(entities, avoid_overlaps),
+                              key=Entity.sort_key)
+        return iter(entities)
+
+    def _unify_entities(self, entities, strategy):
         """
-        Iterate over entities, splitting discontinuous ones on the fly.
+        Iterate over entities, unifying discontinuous ones on the fly.
         """
-        for entity in self.entities:
-            for start, end in entity.spans:
-                if (start, end) == (entity.start, entity.end):
-                    # Contiguous entity -- yield original.
-                    yield entity
-                else:
-                    # Discontinuous entity -- generate ad-hoc objects.
+        unify = getattr(self, '_unify_entities_{}'.format(strategy))
+        for entity in entities:
+            if len(entity.spans) == 1:
+                # Contiguous entity -- yield original.
+                yield entity
+            else:
+                # Discontinuous entity -- generate ad-hoc objects.
+                for start, end in unify(entity.spans):
                     text = self._text[start-self._start:end-self._end]
                     spans = [(start, end)]
                     yield Entity(entity.id, text, spans, entity.metadata)
+
+    @staticmethod
+    def _unify_entities_split(spans):
+        return spans
+
+    @staticmethod
+    def _unify_entities_fill(spans):
+        return [(spans[0][0], spans[-1][1])]
+
+    @staticmethod
+    def _unify_entities_first(spans):
+        return [spans[0]]
+
+    @staticmethod
+    def _unify_entities_last(spans):
+        return [spans[-1]]
+
+    def _unnest_entities(self, entities, strategy):
+        """
+        Iterate over entities, avoiding overlaps through skipping.
+        """
+        strategy = strategy.replace('-', '_')
+        unnest = dict(keep_longer=max, keep_shorter=min)[strategy]
+        for overlapping in self._group_overlapping_entities(entities):
+            yield unnest(overlapping, key=len)
+
+    @staticmethod
+    def _group_overlapping_entities(entities):
+        overlapping = []
+        end = 0
+        for entity in entities:
+            if entity.start < end:  # overlaps with previous
+                overlapping.append(entity)
+            else:                   # no overlap
+                if overlapping:
+                    yield overlapping
+                overlapping = [entity]
+            end = max(entity.end, end)
+        if overlapping:
+            yield overlapping
 
     def get_section_type(self, default=None):
         """
