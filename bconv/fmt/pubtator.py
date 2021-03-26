@@ -13,7 +13,7 @@ import csv
 import itertools as it
 
 from ._load import CollLoader
-from ._export import StreamFormatter
+from ._export import StreamFormatter, ContinuousEntityFormatter
 from ..doc.document import Collection, Document, Entity
 from ..util.misc import tsv_format
 from ..util.stream import text_stream, basename
@@ -134,14 +134,15 @@ class PubTatorFBKLoader(PubTatorLoader):
         return Entity(id_, text, [(int(start), int(end))], meta)
 
 
-class PubTatorFormatter(StreamFormatter):
+class PubTatorFormatter(StreamFormatter, ContinuousEntityFormatter):
     """
     Create a mixture of pipe- and tab-separated plain-text.
     """
 
     ext = 'txt'
 
-    def __init__(self, meta=('type', 'cui')):
+    def __init__(self, meta=('type', 'cui'), **kwargs):
+        super().__init__(**kwargs)
         (self.type,
          self.cui) = meta
 
@@ -187,7 +188,7 @@ class PubTatorFormatter(StreamFormatter):
         return '|'.join((id_, t, text))
 
     def _annotations(self, docid, sec, offset):
-        for entity in sec.iter_entities(split_discontinuous=True):
+        for entity in self.iter_entities(sec):
             start, end = entity.start+offset, entity.end+offset
             yield self._select_anno_fields(docid, start, end, entity)
 
@@ -215,8 +216,8 @@ class PubTatorFBKFormatter(PubTatorFormatter):
     FBK flavor of the PubTator format.
     """
 
-    def __init__(self, meta='type'):
-        super().__init__([meta, None])
+    def __init__(self, meta='type', **kwargs):
+        super().__init__([meta, None], **kwargs)
 
     def _select_anno_fields(self, docid, start, end, entity):
         try:

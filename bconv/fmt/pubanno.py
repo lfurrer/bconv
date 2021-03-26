@@ -21,7 +21,7 @@ from collections import defaultdict
 from contextlib import contextmanager
 
 from ._load import DocLoader, DocIterator
-from ._export import Formatter, StreamFormatter
+from ._export import Formatter, StreamFormatter, EntityFormatter
 from ..doc.document import Collection, Document, Section, Entity, Relation
 from ..util.iterate import pids
 from ..util.stream import text_stream, bin_stream, basename
@@ -155,14 +155,16 @@ class PubAnnoTGZLoader(DocIterator, _PubAnnoLoader):
                         yield div
 
 
-class PubAnnoJSONFormatter(Formatter):
+class PubAnnoJSONFormatter(Formatter, EntityFormatter):
     """
     PubAnnotation JSON format.
     """
 
     ext = 'json'
 
-    def __init__(self, obj='type', sourcedb=None, **meta):
+    def __init__(self, obj='type', sourcedb=None,
+                 avoid_gaps=None, avoid_overlaps=None, **meta):
+        super().__init__(avoid_gaps=avoid_gaps, avoid_overlaps=avoid_overlaps)
         self.obj = obj
         self.meta = {'sourcedb': sourcedb, **meta}
 
@@ -209,7 +211,7 @@ class PubAnnoJSONFormatter(Formatter):
         }
 
     def _entities(self, content, offset):
-        for entity, tid in zip(content.iter_entities(), pids('T')):
+        for entity, tid in zip(self.iter_entities(content), pids('T')):
             yield {
                 'id' : tid,
                 'span' : self._spans(entity, offset),
@@ -239,7 +241,7 @@ class PubAnnoJSONFormatter(Formatter):
 
     def _attributes(self, content):
         att_ids = pids('A')
-        for entity, tid in zip(content.iter_entities(), pids('T')):
+        for entity, tid in zip(self.iter_entities(content), pids('T')):
             for key, value in entity.metadata.items():
                 if key != self.obj:
                     yield {
@@ -249,11 +251,10 @@ class PubAnnoJSONFormatter(Formatter):
                         'obj': value,
                     }
 
-    @staticmethod
-    def _relations(content):
+    def _relations(self, content):
         refs = {
             a.id: pid
-            for annos, prefix in ((content.iter_entities(), 'T'),
+            for annos, prefix in ((self.iter_entities(content), 'T'),
                                   (content.iter_relations(), 'R'))
             for a, pid in zip(annos, pids(prefix))
         }

@@ -16,7 +16,7 @@ import itertools as it
 from collections import deque
 
 from ._load import DocIterator
-from ._export import StreamFormatter
+from ._export import StreamFormatter, ContinuousEntityFormatter
 from ..doc.document import Document, Entity
 from ..util.misc import tsv_format
 from ..util.iterate import context_coroutine
@@ -145,14 +145,15 @@ class _DocIDTracker:
         return self.docid
 
 
-class CoNLLFormatter(StreamFormatter):
+class CoNLLFormatter(StreamFormatter, ContinuousEntityFormatter):
     """Tab-separated verticalized text with annotations."""
 
     ext = 'conll'
 
     def __init__(self, label='type', tagset='IOBES',
-                 include_docid=True, include_offsets=True):
-        super().__init__()
+                 include_docid=True, include_offsets=True,
+                 avoid_overlaps='keep-longer', **kwargs):
+        super().__init__(avoid_overlaps=avoid_overlaps, **kwargs)
         self.label = label
         self.tagset = TAGSETS[tagset]
         self.include_docid = include_docid
@@ -201,7 +202,7 @@ class CoNLLFormatter(StreamFormatter):
                 yield self.tag(S, current)  # single
 
     def _tokenwise_labels(self, sentence):
-        entities = sentence.iter_entities(split_discontinuous=True)
+        entities = self.iter_entities(sentence)
         with self._entities_by_pos(entities) as entities:
             for token in sentence:
                 label = ';'.join(self._entity_label(e)

@@ -10,20 +10,21 @@ __all__ = ['CSVFormatter', 'TSVFormatter', 'TextCSVFormatter', 'TextTSVFormatter
 
 import csv
 
-from ._export import StreamFormatter
+from ._export import StreamFormatter, ContinuousEntityFormatter
 from ..util.iterate import CacheOneIter
 from ..util.misc import tsv_format
 
 
-class CSVFormatter(StreamFormatter):
+class CSVFormatter(StreamFormatter, ContinuousEntityFormatter):
     """
     Compact CSV format for annotations.
     """
 
     ext = 'csv'
 
-    def __init__(self, fields=(), include_header=False, **fmtparams):
-        super().__init__()
+    def __init__(self, fields=(), include_header=False,
+                 avoid_gaps='split', avoid_overlaps=None, **fmtparams):
+        super().__init__(avoid_gaps=avoid_gaps, avoid_overlaps=avoid_overlaps)
         self.extra_fields = fields
         self.include_header = include_header
         self.fmtparams = fmtparams
@@ -56,7 +57,7 @@ class CSVFormatter(StreamFormatter):
             loc = doc.id, section_type, sent_id
             last_end = 0  # offset history
 
-            for entity in sentence.iter_entities(split_discontinuous=True):
+            for entity in self.iter_entities(sentence):
                 # Add sparse lines for all tokens preceding the current entity.
                 yield from self._tok_rows(last_end, entity.start, toks, loc)
                 # Add a rich line for each entity (possibly multiple lines

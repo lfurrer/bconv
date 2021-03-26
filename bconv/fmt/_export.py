@@ -111,3 +111,41 @@ class XMLMemoryFormatter(MemoryFormatter):
         kwargs.setdefault('xml_declaration', True)
         kwargs.setdefault('pretty_print', True)
         return etree.tostring(node, **kwargs)
+
+
+class EntityFormatter:
+    """
+    Mix-in for formats with entity annotations.
+
+    This mix-in class provides two options to control
+    simplification (flattening) of entity annotations:
+    `avoid_gaps` (suppress discontinuous spans) and
+    `avoid_overlaps` (suppress collisions).
+    """
+
+    def __init__(self, *args, avoid_gaps=None, avoid_overlaps=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.avoid_gaps = avoid_gaps
+        self.avoid_overlaps = avoid_overlaps
+
+    def iter_entities(self, unit):
+        """
+        Iterate over (potentially modified) entities in unit.
+        """
+        return unit.iter_entities(avoid_gaps=self.avoid_gaps,
+                                  avoid_overlaps=self.avoid_overlaps)
+
+
+class ContinuousEntityFormatter(EntityFormatter):
+    """
+    Mix-in for formats with gap-free entity annotations.
+
+    This mix-in class requires the `avoid_gaps` option to
+    be different from None.
+    """
+
+    def __init__(self, *args, avoid_gaps='split', **kwargs):
+        if avoid_gaps is None:
+            raise ValueError('avoid_gaps cannot be None; choose from {}'
+                             .format('split fill first last'.split()))
+        super().__init__(*args, avoid_gaps=avoid_gaps, **kwargs)
