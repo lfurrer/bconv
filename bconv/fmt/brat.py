@@ -11,11 +11,11 @@ __all__ = ['BratFormatter', 'BioNLPFormatter']
 import re
 from collections import defaultdict
 
-from ._export import StreamFormatter
+from ._export import StreamFormatter, EntityFormatter
 from ..util.iterate import pids
 
 
-class _BaseBratFormatter(StreamFormatter):
+class _BaseBratFormatter(StreamFormatter, EntityFormatter):
     """
     Abstract base class for Brat and BioNLP formatting.
     """
@@ -26,8 +26,8 @@ class _BaseBratFormatter(StreamFormatter):
     R_LINE = '{}\t{} {}\n'
     E_LINE = '{}\t{}\n'
 
-    def __init__(self, att='type'):
-        super().__init__()
+    def __init__(self, att='type', **kwargs):
+        super().__init__(**kwargs)
         self.att = att
 
     def write(self, content, stream):
@@ -128,7 +128,7 @@ class BratFormatter(_BaseBratFormatter):
 
     def _get_mentions(self, document):
         mentions = defaultdict(list)
-        for e in document.iter_entities():
+        for e in self.iter_entities(document):
             att = self._valid_fieldname(self._get_att(e))
             offsets = self._format_offsets(e)
             # Include start and end offset for sorting.
@@ -155,7 +155,7 @@ class BioNLPFormatter(_BaseBratFormatter):
     ext = 'bionlp'
 
     def _write_entities(self, stream, document, c_t, *_):
-        for entity, t in zip(document.iter_entities(), c_t):
+        for entity, t in zip(self.iter_entities(document), c_t):
             att = self._get_att(entity)
             offsets = self._format_offsets(entity)
             stream.write(self.T_LINE.format(t, att, offsets, entity.text_wn))

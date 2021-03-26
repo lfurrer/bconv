@@ -18,7 +18,7 @@ from lxml.builder import E
 
 from ..doc.document import Collection, Document, Entity, Relation
 from ._load import CollLoader, text_node, wrap_in_collection
-from ._export import Formatter, XMLMemoryFormatter, StreamFormatter
+from ._export import XMLMemoryFormatter, StreamFormatter, EntityFormatter
 from ..util.iterate import peek, json_iterencode
 from ..util.misc import iter_codepoint_indices_utf8, iter_byte_indices_utf8
 from ..util.stream import text_stream, basename
@@ -234,13 +234,14 @@ class BioCJSONLoader(_BioCLoader):
         return text
 
 
-class _BioCFormatter(Formatter):
+class _BioCFormatter(EntityFormatter):
     """
     Base class for BioC formatting.
     """
 
-    def __init__(self, byte_offsets=True, sentence_level=False, metadata=None):
-        super().__init__()
+    def __init__(self, byte_offsets=True, sentence_level=False, metadata=None,
+                 **kwargs):
+        super().__init__(**kwargs)
         self.byte_offsets = byte_offsets
         self.sentence_level = sentence_level
         self.metadata = metadata
@@ -354,7 +355,7 @@ class BioCXMLFormatter(_BioCFormatter, XMLMemoryFormatter, _OffsetMixin):
         return node
 
     def _add_entities(self, node, sent, offset_mngr):
-        for entity in sent.iter_entities():
+        for entity in self.iter_entities(sent):
             node.append(self._entity(entity, offset_mngr))
 
     def _entity(self, entity, offset_mngr):
@@ -445,7 +446,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             text = section.text
             for sent in section:
                 offset_mngr.sentence(sent)  # synchronise without direct usage
-                for entity in sent.iter_entities():
+                for entity in self.iter_entities(sent):
                     annotations.append(self._entity(entity, offset_mngr))
 
         return {
@@ -463,7 +464,7 @@ class BioCJSONFormatter(_BioCFormatter, StreamFormatter, _OffsetMixin):
             'offset': offset_mngr.sentence(sent),
             'text': sent.text,
             'annotations': [self._entity(e, offset_mngr)
-                            for e in sent.iter_entities()],
+                            for e in self.iter_entities(sent)],
             'relations': list(map(self._relation, sent.relations)),
         }
 

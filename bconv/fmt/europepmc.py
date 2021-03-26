@@ -13,17 +13,19 @@ import json
 import zipfile
 import itertools as it
 
-from ._export import StreamFormatter
+from ._export import StreamFormatter, ContinuousEntityFormatter
 
 
-class EuPMCFormatter(StreamFormatter):
+class EuPMCFormatter(StreamFormatter, ContinuousEntityFormatter):
     """
     Formatter for Europe PMC's named-entity annotation format.
     """
 
     ext = 'jsonl'
 
-    def __init__(self, provider, src='MED', meta=('type', 'pref', 'uri')):
+    def __init__(self, provider, src='MED', meta=('type', 'pref', 'uri'),
+                 **kwargs):
+        super().__init__(**kwargs)
         self.metadata = {'provider': provider, 'src': src}
         (self.type,
          self.pref,
@@ -46,7 +48,7 @@ class EuPMCFormatter(StreamFormatter):
             text = sent.text
             offset = sent.start
             section = self._section_name(sent.section, meta['src'])
-            locations = it.groupby(sent.iter_entities(split_discontinuous=True),
+            locations = it.groupby(self.iter_entities(sent),
                                    key=lambda e: (e.start-offset, e.end-offset))
             for l, ((start, end), colocated) in enumerate(locations, start=1):
                 types = it.groupby(colocated, key=self._entity_type)
