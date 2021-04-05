@@ -25,6 +25,7 @@ from .utils import DATA, get_cases, xopen
 
 OPTIONS = {
     # Format-specific options.
+    'brat': dict(cui='cui'),
     'europepmc': dict(provider='bconv', meta=('type', 'cui', 'cui')),
     'europepmc.zip': dict(provider='bconv', meta=('type', 'cui', 'cui')),
     'csv': dict(lineterminator='\n'),
@@ -35,7 +36,7 @@ OPTIONS = {
 
     # Both format- and document-specific options.
     ('bionlp', 'CRAFT-example'): dict(att='cui'),
-    ('brat', 'BC5CDR-example'): dict(cui='cui'),
+    ('brat', 'tutorial-example'): dict(cui=None),
     ('bioc_json', 'CRAFT-example'): dict(sentence_level=True),
     ('bioc_xml', 'CRAFT-example'): dict(sentence_level=True),
 }
