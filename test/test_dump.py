@@ -72,7 +72,7 @@ def _build_internal(path):
 def case(request, internal):
     fmt, path = request.param
     coll = internal[path.stem]
-    options = OPTIONS.get(fmt, {})
+    options = dict(OPTIONS.get(fmt, {}))
     options.update(OPTIONS.get(path.stem, {}))
     options.update(OPTIONS.get((fmt, path.stem), {}))
     return Case(fmt, path, coll, options)
