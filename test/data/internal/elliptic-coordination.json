@@ -1,0 +1,119 @@
+{
+  "ids": ["30128536"],
+  "text": [
+    [
+      [
+        "Association of Breast and Ovarian Cancers With Predisposition Genes Identified by Large-Scale Sequencing.\n"
+      ],
+      [
+        "Importance: Since the discovery of BRCA1 and BRCA2, multiple high- and moderate-penetrance genes have been reported as risk factors for hereditary breast cancer, ovarian cancer, or both; however, it is unclear whether these findings represent the complete genetic landscape of these cancers. ",
+        "Systematic investigation of the genetic contributions to breast and ovarian cancers is needed to confirm these findings and explore potentially new associations.\n"
+      ]
+    ]
+  ],
+  "entities": [
+    [
+      [
+        1,
+        "Breast [...] Cancers",
+        [
+          [15, 21],
+          [34, 41]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D001943"
+        }
+      ],
+      [
+        2,
+        "Ovarian Cancers",
+        [
+          [26, 41]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D010051"
+        }
+      ],
+      [
+        3,
+        "BRCA1",
+        [
+          [141, 146]
+        ],
+        {
+          "type": "Gene",
+          "cui": "672"
+        }
+      ],
+      [
+        4,
+        "BRCA2",
+        [
+          [151, 156]
+        ],
+        {
+          "type": "Gene",
+          "cui": "675"
+        }
+      ],
+      [
+        5,
+        "hereditary breast cancer",
+        [
+          [242, 266]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D001943"
+        }
+      ],
+      [
+        6,
+        "ovarian cancer",
+        [
+          [268, 282]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D010051"
+        }
+      ],
+      [
+        7,
+        "cancers",
+        [
+          [389, 396]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D009369"
+        }
+      ],
+      [
+        8,
+        "breast [...] cancers",
+        [
+          [455, 461],
+          [474, 481]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D001943"
+        }
+      ],
+      [
+        9,
+        "ovarian cancers",
+        [
+          [466, 481]
+        ],
+        {
+          "type": "Disease",
+          "cui": "MESH:D010051"
+        }
+      ]
+    ]
+  ]
+}

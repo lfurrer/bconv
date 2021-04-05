@@ -1,0 +1,13 @@
+30128536|t|Association of Breast and Ovarian Cancers With Predisposition Genes Identified by Large-Scale Sequencing.
+30128536|a|Importance: Since the discovery of BRCA1 and BRCA2, multiple high- and moderate-penetrance genes have been reported as risk factors for hereditary breast cancer, ovarian cancer, or both; however, it is unclear whether these findings represent the complete genetic landscape of these cancers. Systematic investigation of the genetic contributions to breast and ovarian cancers is needed to confirm these findings and explore potentially new associations.
+30128536	T1	Disease	15	21	Breast
+30128536	T2	Disease	26	41	Ovarian Cancers
+30128536	T1	Disease	34	41	Cancers
+30128536	T3	Gene	141	146	BRCA1
+30128536	T4	Gene	151	156	BRCA2
+30128536	T5	Disease	242	266	hereditary breast cancer
+30128536	T6	Disease	268	282	ovarian cancer
+30128536	T7	Disease	389	396	cancers
+30128536	T8	Disease	455	461	breast
+30128536	T9	Disease	466	481	ovarian cancers
+30128536	T8	Disease	474	481	cancers

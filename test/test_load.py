@@ -45,6 +45,9 @@ RESTRICTIONS = {
 
     # Format- and document-specific relaxations.
     ('txt', 'CRAFT-example'): {UNNEST},
+    ('conll', 'elliptic-coordination'): {TEXT_ONLY},
+    ('pubtator', 'elliptic-coordination'): {TEXT_ONLY},
+    ('pubtator_fbk', 'elliptic-coordination'): {TEXT_ONLY},
 }
 
 

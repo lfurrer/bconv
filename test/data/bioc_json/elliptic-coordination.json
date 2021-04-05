@@ -1,0 +1,171 @@
+{
+  "source": "",
+  "date": "",
+  "key": "",
+  "infons": {},
+  "documents": [
+    {
+      "id": "30128536",
+      "infons": {},
+      "passages": [
+        {
+          "infons": {
+            "type": "Title"
+          },
+          "offset": 0,
+          "text": "Association of Breast and Ovarian Cancers With Predisposition Genes Identified by Large-Scale Sequencing.\n",
+          "sentences": [],
+          "annotations": [
+            {
+              "id": "1",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D001943"
+              },
+              "text": "Breast [...] Cancers",
+              "locations": [
+                {
+                  "offset": 15,
+                  "length": 6
+                },
+                {
+                  "offset": 34,
+                  "length": 7
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D010051"
+              },
+              "text": "Ovarian Cancers",
+              "locations": [
+                {
+                  "offset": 26,
+                  "length": 15
+                }
+              ]
+            }
+          ],
+          "relations": []
+        },
+        {
+          "infons": {
+            "type": "Abstract"
+          },
+          "offset": 106,
+          "text": "Importance: Since the discovery of BRCA1 and BRCA2, multiple high- and moderate-penetrance genes have been reported as risk factors for hereditary breast cancer, ovarian cancer, or both; however, it is unclear whether these findings represent the complete genetic landscape of these cancers. Systematic investigation of the genetic contributions to breast and ovarian cancers is needed to confirm these findings and explore potentially new associations.\n",
+          "sentences": [],
+          "annotations": [
+            {
+              "id": "3",
+              "infons": {
+                "type": "Gene",
+                "cui": "672"
+              },
+              "text": "BRCA1",
+              "locations": [
+                {
+                  "offset": 141,
+                  "length": 5
+                }
+              ]
+            },
+            {
+              "id": "4",
+              "infons": {
+                "type": "Gene",
+                "cui": "675"
+              },
+              "text": "BRCA2",
+              "locations": [
+                {
+                  "offset": 151,
+                  "length": 5
+                }
+              ]
+            },
+            {
+              "id": "5",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D001943"
+              },
+              "text": "hereditary breast cancer",
+              "locations": [
+                {
+                  "offset": 242,
+                  "length": 24
+                }
+              ]
+            },
+            {
+              "id": "6",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D010051"
+              },
+              "text": "ovarian cancer",
+              "locations": [
+                {
+                  "offset": 268,
+                  "length": 14
+                }
+              ]
+            },
+            {
+              "id": "7",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D009369"
+              },
+              "text": "cancers",
+              "locations": [
+                {
+                  "offset": 389,
+                  "length": 7
+                }
+              ]
+            },
+            {
+              "id": "8",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D001943"
+              },
+              "text": "breast [...] cancers",
+              "locations": [
+                {
+                  "offset": 455,
+                  "length": 6
+                },
+                {
+                  "offset": 474,
+                  "length": 7
+                }
+              ]
+            },
+            {
+              "id": "9",
+              "infons": {
+                "type": "Disease",
+                "cui": "MESH:D010051"
+              },
+              "text": "ovarian cancers",
+              "locations": [
+                {
+                  "offset": 466,
+                  "length": 15
+                }
+              ]
+            }
+          ],
+          "relations": []
+        }
+      ],
+      "relations": []
+    }
+  ]
+}

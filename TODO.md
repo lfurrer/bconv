@@ -29,4 +29,4 @@
 
 - [ ] add type hints
 - [ ] add a test file with non-ASCII characters to verify proper offsets
-- [ ] test format-specific parameters
+- [x] test format-specific parameters

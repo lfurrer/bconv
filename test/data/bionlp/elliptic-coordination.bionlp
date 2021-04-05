@@ -1,0 +1,9 @@
+T1	Disease 15 21;34 41	Breast [...] Cancers
+T2	Disease 26 41	Ovarian Cancers
+T3	Gene 141 146	BRCA1
+T4	Gene 151 156	BRCA2
+T5	Disease 242 266	hereditary breast cancer
+T6	Disease 268 282	ovarian cancer
+T7	Disease 389 396	cancers
+T8	Disease 455 461;474 481	breast [...] cancers
+T9	Disease 466 481	ovarian cancers
