@@ -1,40 +1,80 @@
 T1	Cell 0 20	Embryonic stem cells
+N1	Reference T1 CL:0002322	Embryonic stem cells
 T2	Cell 762 776;782 787	embryonic stem ... cells
+N2	Reference T2 CL:0002322	embryonic stem ... cells
 T3	Cell 778 780;782 787	ES ... cells
+N3	Reference T3 CL:0002322	ES ... cells
 T4	Cell 839 853;859 863	embryonic stem ... cell
+N4	Reference T4 CL:0002322	embryonic stem ... cell
 T5	Cell 855 857;859 863	ES ... cell
+N5	Reference T5 CL:0002322	ES ... cell
 T6	Cell 1249 1257	ES cells
+N6	Reference T6 CL:0002322	ES cells
 T7	Cell 1679 1687	ES cells
+N7	Reference T7 CL:0002322	ES cells
 T8	Cell 1981 1989	ES cells
+N8	Reference T8 CL:0002322	ES cells
 T9	Cell 2404 2412	ES cells
+N9	Reference T9 CL:0002322	ES cells
 T10	Cell 4337 4344	ES cell
+N10	Reference T10 CL:0002322	ES cell
 T11	Cell 5560 5568	ES cells
+N11	Reference T11 CL:0002322	ES cells
 T12	Cell 5720 5727	ES cell
+N12	Reference T12 CL:0002322	ES cell
 T13	Cell 5789 5797	ES cells
+N13	Reference T13 CL:0002322	ES cells
 T14	Cell 6350 6357	ES cell
+N14	Reference T14 CL:0002322	ES cell
 T15	Cell 6969 6977	ES cells
+N15	Reference T15 CL:0002322	ES cells
 T16	Cell 7132 7140	ES cells
+N16	Reference T16 CL:0002322	ES cells
 T17	Cell 7313 7321	ES cells
+N17	Reference T17 CL:0002322	ES cells
 T18	Cell 7380 7388	ES cells
+N18	Reference T18 CL:0002322	ES cells
 T19	Cell 7752 7760	ES cells
+N19	Reference T19 CL:0002322	ES cells
 T20	Cell 7932 7939	ES cell
+N20	Reference T20 CL:0002322	ES cell
 T21	Cell 7991 7998	ES cell
+N21	Reference T21 CL:0002322	ES cell
 T22	Cell 10345 10352	Zygotic
+N22	Reference T22 CL:0000365	Zygotic
 T23	Cell 10868 10875	ES cell
+N23	Reference T23 CL:0002322	ES cell
 T24	Cell 11256 11263	ES cell
+N24	Reference T24 CL:0002322	ES cell
 T25	Cell 11290 11297	ES cell
+N25	Reference T25 CL:0002322	ES cell
 T26	Cell 12005 12013	ES cells
+N26	Reference T26 CL:0002322	ES cells
 T27	Cell 12551 12559	ES cells
+N27	Reference T27 CL:0002322	ES cells
 T28	Cell 13355 13366	blastomeres
+N28	Reference T28 CL:0000353	blastomeres
 T29	Cell 13538 13546	ES cells
+N29	Reference T29 CL:0002322	ES cells
 T30	Cell 13664 13683	primary giant cells
+N30	Reference T30 CL:0002497	primary giant cells
 T31	Cell 14571 14585	endoderm cells
+N31	Reference T31 CL:0000223	endoderm cells
 T32	Cell 15841 15849	ES cells
+N32	Reference T32 CL:0002322	ES cells
 T33	Cell 16076 16084	ES cells
+N33	Reference T33 CL:0002322	ES cells
 T34	Cell 16851 16859	ES cells
+N34	Reference T34 CL:0002322	ES cells
 T35	Cell 19118 19134	eukaryotic cells
+N35	Reference T35 CL:0000255	eukaryotic cells
 T36	Cell 19205 19213	ES cells
+N36	Reference T36 CL:0002322	ES cells
 T37	Cell 19641 19649	ES cells
+N37	Reference T37 CL:0002322	ES cells
 T38	Cell 19703 19711	ES cells
+N38	Reference T38 CL:0002322	ES cells
 T39	Cell 20494 20501	ES cell
+N39	Reference T39 CL:0002322	ES cell
 T40	Cell 20768 20775	ES cell
+N40	Reference T40 CL:0002322	ES cell
