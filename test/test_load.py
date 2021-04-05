@@ -84,7 +84,7 @@ def test_fetch(fmt, path, expected, monkeypatch):
 
 
 def _validate(parsed, fmt, expected):
-    restrictions = RESTRICTIONS.get(fmt, set())
+    restrictions = set(RESTRICTIONS.get(fmt, ()))
     restrictions.update(RESTRICTIONS.get(parsed.id, ()))
     restrictions.update(RESTRICTIONS.get((fmt, parsed.id), ()))
     text = _get_text(parsed)
