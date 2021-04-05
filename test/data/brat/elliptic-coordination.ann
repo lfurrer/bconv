@@ -1,0 +1,18 @@
+T1	Disease 15 21;34 41	Breast [...] Cancers
+N1	Reference T1 MESH:D001943	Breast [...] Cancers
+T2	Disease 26 41	Ovarian Cancers
+N2	Reference T2 MESH:D010051	Ovarian Cancers
+T3	Gene 141 146	BRCA1
+N3	Reference T3 672	BRCA1
+T4	Gene 151 156	BRCA2
+N4	Reference T4 675	BRCA2
+T5	Disease 242 266	hereditary breast cancer
+N5	Reference T5 MESH:D001943	hereditary breast cancer
+T6	Disease 268 282	ovarian cancer
+N6	Reference T6 MESH:D010051	ovarian cancer
+T7	Disease 389 396	cancers
+N7	Reference T7 MESH:D009369	cancers
+T8	Disease 455 461;474 481	breast [...] cancers
+N8	Reference T8 MESH:D001943	breast [...] cancers
+T9	Disease 466 481	ovarian cancers
+N9	Reference T9 MESH:D010051	ovarian cancers

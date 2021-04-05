@@ -1,0 +1,148 @@
+{
+  "text": "Association of Breast and Ovarian Cancers With Predisposition Genes Identified by Large-Scale Sequencing.\nImportance: Since the discovery of BRCA1 and BRCA2, multiple high- and moderate-penetrance genes have been reported as risk factors for hereditary breast cancer, ovarian cancer, or both; however, it is unclear whether these findings represent the complete genetic landscape of these cancers. Systematic investigation of the genetic contributions to breast and ovarian cancers is needed to confirm these findings and explore potentially new associations.\n",
+  "denotations": [
+    {
+      "id": "T1",
+      "span": [
+        {
+          "begin": 15,
+          "end": 21
+        },
+        {
+          "begin": 34,
+          "end": 41
+        }
+    ],
+      "obj": "Disease"
+    },
+    {
+      "id": "T2",
+      "span": {
+        "begin": 26,
+        "end": 41
+      },
+      "obj": "Disease"
+    },
+    {
+      "id": "T3",
+      "span": {
+        "begin": 141,
+        "end": 146
+      },
+      "obj": "Gene"
+    },
+    {
+      "id": "T4",
+      "span": {
+        "begin": 151,
+        "end": 156
+      },
+      "obj": "Gene"
+    },
+    {
+      "id": "T5",
+      "span": {
+        "begin": 242,
+        "end": 266
+      },
+      "obj": "Disease"
+    },
+    {
+      "id": "T6",
+      "span": {
+        "begin": 268,
+        "end": 282
+      },
+      "obj": "Disease"
+    },
+    {
+      "id": "T7",
+      "span": {
+        "begin": 389,
+        "end": 396
+      },
+      "obj": "Disease"
+    },
+    {
+      "id": "T8",
+      "span": [
+        {
+          "begin": 455,
+          "end": 461
+        },
+        {
+          "begin": 474,
+          "end": 481
+        }
+      ],
+      "obj": "Disease"
+    },
+    {
+      "id": "T9",
+      "span": {
+        "begin": 466,
+        "end": 481
+      },
+      "obj": "Disease"
+    }
+  ],
+  "attributes": [
+    {
+      "id": "A1",
+      "subj": "T1",
+      "pred": "cui",
+      "obj": "MESH:D001943"
+    },
+    {
+      "id": "A2",
+      "subj": "T2",
+      "pred": "cui",
+      "obj": "MESH:D010051"
+    },
+    {
+      "id": "A3",
+      "subj": "T3",
+      "pred": "cui",
+      "obj": "672"
+    },
+    {
+      "id": "A4",
+      "subj": "T4",
+      "pred": "cui",
+      "obj": "675"
+    },
+    {
+      "id": "A5",
+      "subj": "T5",
+      "pred": "cui",
+      "obj": "MESH:D001943"
+    },
+    {
+      "id": "A6",
+      "subj": "T6",
+      "pred": "cui",
+      "obj": "MESH:D010051"
+    },
+    {
+      "id": "A7",
+      "subj": "T7",
+      "pred": "cui",
+      "obj": "MESH:D009369"
+    },
+    {
+      "id": "A8",
+      "subj": "T8",
+      "pred": "cui",
+      "obj": "MESH:D001943"
+    },
+    {
+      "id": "A9",
+      "subj": "T9",
+      "pred": "cui",
+      "obj": "MESH:D010051"
+    }
+  ],
+  "relations": [],
+  "sourceid": "30128536",
+  "sourcedb": null
+}

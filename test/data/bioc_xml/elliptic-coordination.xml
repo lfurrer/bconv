@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE collection SYSTEM "BioC.dtd">
+<collection>
+  <source/>
+  <date/>
+  <key/>
+  <document>
+    <id>30128536</id>
+    <passage>
+      <infon key="type">Title</infon>
+      <offset>0</offset>
+      <text>Association of Breast and Ovarian Cancers With Predisposition Genes Identified by Large-Scale Sequencing.
+</text>
+      <annotation id="1">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D001943</infon>
+        <location offset="15" length="6"/>
+        <location offset="34" length="7"/>
+        <text>Breast [...] Cancers</text>
+      </annotation>
+      <annotation id="2">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D010051</infon>
+        <location offset="26" length="15"/>
+        <text>Ovarian Cancers</text>
+      </annotation>
+    </passage>
+    <passage>
+      <infon key="type">Abstract</infon>
+      <offset>106</offset>
+      <text>Importance: Since the discovery of BRCA1 and BRCA2, multiple high- and moderate-penetrance genes have been reported as risk factors for hereditary breast cancer, ovarian cancer, or both; however, it is unclear whether these findings represent the complete genetic landscape of these cancers. Systematic investigation of the genetic contributions to breast and ovarian cancers is needed to confirm these findings and explore potentially new associations.
+</text>
+      <annotation id="3">
+        <infon key="type">Gene</infon>
+        <infon key="cui">672</infon>
+        <location offset="141" length="5"/>
+        <text>BRCA1</text>
+      </annotation>
+      <annotation id="4">
+        <infon key="type">Gene</infon>
+        <infon key="cui">675</infon>
+        <location offset="151" length="5"/>
+        <text>BRCA2</text>
+      </annotation>
+      <annotation id="5">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D001943</infon>
+        <location offset="242" length="24"/>
+        <text>hereditary breast cancer</text>
+      </annotation>
+      <annotation id="6">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D010051</infon>
+        <location offset="268" length="14"/>
+        <text>ovarian cancer</text>
+      </annotation>
+      <annotation id="7">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D009369</infon>
+        <location offset="389" length="7"/>
+        <text>cancers</text>
+      </annotation>
+      <annotation id="8">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D001943</infon>
+        <location offset="455" length="6"/>
+        <location offset="474" length="7"/>
+        <text>breast [...] cancers</text>
+      </annotation>
+      <annotation id="9">
+        <infon key="type">Disease</infon>
+        <infon key="cui">MESH:D010051</infon>
+        <location offset="466" length="15"/>
+        <text>ovarian cancers</text>
+      </annotation>
+    </passage>
+  </document>
+</collection>
