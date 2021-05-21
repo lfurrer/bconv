@@ -615,6 +615,10 @@ class Entity:
         self.spans = sorted((start, end) for start, end in spans)
         self.metadata = _meta if meta is None else {**meta, **_meta}
 
+    def __len__(self):
+        """Total length in characters."""
+        return sum(end - start for start, end in self.spans)
+
     @property
     def text_wn(self):
         """Whitespace normalised text: replace newlines and tabs."""
