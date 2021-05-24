@@ -46,8 +46,6 @@ The following formats are currently supported:
 ```sh
 $ pip install bconv
 ```
-By default, `pip` attempts a system-level installation, which might require admin privileges.
-Alternatively, use `pip`'s `--user` flag for an installation owned by the current user.
 
 
 ## Usage
