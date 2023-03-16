@@ -601,7 +601,8 @@ class OffsetWriter(_OffsetManager):
         """
         Calculate start and length of this annotation.
         """
-        return entity.start, entity.end-entity.start
+        for start, end in entity.offsets:
+            yield start, end-start
 
     # Aliases for backward compatibility.
     def passage(self, unit):
