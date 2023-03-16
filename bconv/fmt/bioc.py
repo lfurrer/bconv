@@ -601,7 +601,7 @@ class OffsetWriter(_OffsetManager):
         """
         Calculate start and length of this annotation.
         """
-        for start, end in entity.offsets:
+        for start, end in entity.spans:
             yield start, end-start
 
     # Aliases for backward compatibility.
