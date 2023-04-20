@@ -39,6 +39,8 @@ OPTIONS = {
     ('brat', 'tutorial-example'): dict(cui=None),
     ('bioc_json', 'CRAFT-example'): dict(sentence_level=True),
     ('bioc_xml', 'CRAFT-example'): dict(sentence_level=True),
+    ('bioc_json', 'BC5CDR-example'): dict(byte_offsets=False),
+    ('bioc_xml', 'BC5CDR-example'): dict(byte_offsets=False),
     ('conll', 'elliptic-coordination'):
         dict(label='cui', avoid_gaps='first', avoid_overlaps='keep-longer'),
     ('csv', 'elliptic-coordination'): dict(fields=('type', 'cui')),
