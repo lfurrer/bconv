@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bconv"
-version = "1.2.0"
+version = "1.2.1"
 description = "Convert between BioNLP formats"
 authors = ["Lenz Furrer <lenz.furrer@gmail.com>"]
 license = "MIT"

@@ -1,5 +1,9 @@
 # CHANGES
 
+## Version 1.2.1
+
+- Fixed a bug that caused a crash in BioC exporting for `byte_offsets=False`.
+
 ## Version 1.2
 
 - Added entity-flattening options `avoid_gaps` and `avoid_overlaps` for all formatters supporting entity annotations.

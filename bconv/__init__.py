@@ -5,7 +5,7 @@ bconv: converter for bio-NLP formats.
 
 __author__ = "Lenz Furrer"
 
-__version__ = '1.2.0'
+__version__ = '1.2.1'
 
 
 from .fmt import load, loads, fetch, dump, dumps, LOADERS, FETCHERS, EXPORTERS
